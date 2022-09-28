@@ -13,7 +13,26 @@ package spaceinvaders;
 public class SpaceInvaders {
 
     public static void main(String[] args) {
+        long frameRate = 60;
 
+        // game loop
+        while (true) {
+            // start time counting
+            long start = System.currentTimeMillis();
+            
+            // processInput()
+            // update()
+            // render()
+            
+            // wait the correct amount of time for the cycle to end
+            try {
+                Thread.sleep((long)(100/frameRate) + start - System.currentTimeMillis());
+            } catch (IllegalArgumentException ex) {
+                // do nothing -- framerate lower than expected
+            } catch (InterruptedException ex) {
+                System.out.println("Thread interrupted");
+            }
+        }
     }
     
 }
