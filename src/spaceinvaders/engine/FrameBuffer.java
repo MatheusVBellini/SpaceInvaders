@@ -34,6 +34,6 @@ public class FrameBuffer {
 
     // draws x and y coordinates on the screen
     public void draw(int x, int y) {
-        this.pixel[x][y] = 255;
+        this.pixel[y][x] = 255;
     }
 }

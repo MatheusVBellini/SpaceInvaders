@@ -6,8 +6,12 @@ public class Alien extends GameObject {
     * Attibutes
     *
     */
+
+    // game object geometry
     private static int height = 10;
     private static int width = 10;
+
+    // game object stats
     private int health;
 
 
