@@ -1,9 +1,12 @@
 package spaceinvaders.game_objects;
 
+/*
+ * Define the barricade that defends player 
+ */
 public class Barricade extends GameObject {
     /*
     *
-    * Attibutes
+    * Attributes
     *
     */
     // game object geometry

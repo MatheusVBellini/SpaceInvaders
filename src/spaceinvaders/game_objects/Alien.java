@@ -1,9 +1,12 @@
 package spaceinvaders.game_objects;
 
-public class Alien extends GameObject {
+/*
+ * Base enemy class
+ */
+public class Alien extends GameObjectDynamic {
     /*
     *
-    * Attibutes
+    * Attributes
     *
     */
 

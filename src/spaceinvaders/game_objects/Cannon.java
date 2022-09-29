@@ -1,9 +1,12 @@
 package spaceinvaders.game_objects;
 
-public class Cannon extends GameObject {
+/*
+ * Playable character
+ */ 
+public class Cannon extends GameObjectDynamic {
     /*
     *
-    * Attibutes
+    * Attributes
     *
     */
     // game object geometry
