@@ -1,6 +1,11 @@
 package spaceinvaders;
 
-/**
+// imports
+import spaceinvaders.engine.*;
+import spaceinvaders.game_objects.*;
+import java.util.LinkedList;
+
+/*
  *
  * Matheus Violaro Bellini
  * Número USP: 12547600
@@ -11,9 +16,24 @@ package spaceinvaders;
  * 
  */
 public class SpaceInvaders {
+    /*
+     *
+     * Game Specs
+     *
+     */
+    // frame rate
+    private static long frameRate = 60;
+    private static long frameTime = 1000 / frameRate;
 
+    // object collection
+    private static LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
+
+    /*
+     * 
+     * Main 
+     * 
+     */
     public static void main(String[] args) {
-        long frameRate = 60;
 
         // game loop
         while (true) {
@@ -26,7 +46,7 @@ public class SpaceInvaders {
             
             // wait the correct amount of time for the cycle to end
             try {
-                Thread.sleep((long)(100/frameRate) + start - System.currentTimeMillis());
+                Thread.sleep(SpaceInvaders.frameTime + start - System.currentTimeMillis());
             } catch (IllegalArgumentException ex) {
                 // do nothing -- framerate lower than expected
             } catch (InterruptedException ex) {
