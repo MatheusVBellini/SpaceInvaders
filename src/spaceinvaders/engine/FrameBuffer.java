@@ -3,7 +3,7 @@ package spaceinvaders.engine;
 public class FrameBuffer {
     /*
     *
-    * Attibutes
+    * Attributes
     *
     */
     private static int height;

@@ -3,11 +3,12 @@ package spaceinvaders.engine;
 public class Scene {
     /*
     *
-    * Attibutes
+    * Attributes
     * 
     */
-    FrameBuffer currentFrame;
-    FrameBuffer nextFrame;
+    // double buffer
+    private FrameBuffer currentFrame;
+    private FrameBuffer nextFrame;
 
     /*
     *
