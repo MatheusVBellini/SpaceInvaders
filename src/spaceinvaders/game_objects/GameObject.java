@@ -17,6 +17,9 @@ public abstract class GameObject {
     private int x;
     private int y;
 
+    // game object sprite
+    protected Sprite sprite;
+
     /*
      * 
      * Methods

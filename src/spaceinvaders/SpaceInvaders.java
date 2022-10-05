@@ -1,7 +1,7 @@
 package spaceinvaders;
 
 // imports
-import spaceinvaders.engine.*;
+import spaceinvaders.engine.graphics.*;
 import spaceinvaders.game_objects.*;
 import java.util.LinkedList;
 
@@ -28,14 +28,8 @@ public class SpaceInvaders {
     // object collection
     private static LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
 
-    /*
-     * 
-     * Main 
-     * 
-     */
-    public static void main(String[] args) {
-
-        // game loop
+    // game loop
+    public void game_loop() {
         while (true) {
             // start time counting
             long start = System.currentTimeMillis();
@@ -53,6 +47,15 @@ public class SpaceInvaders {
                 System.out.println("Thread interrupted");
             }
         }
+    }
+
+    /*
+     * 
+     * Main 
+     * 
+     */
+    public static void main(String[] args) {
+
     }
     
 }
