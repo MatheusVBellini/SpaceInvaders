@@ -10,8 +10,8 @@ public abstract class GameObject {
     *
     */
     // game object geometry
-    private int height;
-    private int width;
+    protected static int hitbox_height = 7;
+    protected static int hitbox_width = 7;
 
     // game object position
     private int x;
@@ -33,10 +33,16 @@ public abstract class GameObject {
 
     // setters
     public void setX(int x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("X coordinate must be greater than zero");
+        }
         this.x = x;
     }
 
     public void setY(int y) {
+        if (y <= 0) {
+            throw new IllegalArgumentException("Y coordinate must be greater than zero");
+        }
         this.y = y;
     }
 

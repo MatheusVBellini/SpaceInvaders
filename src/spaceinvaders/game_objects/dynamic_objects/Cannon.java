@@ -1,4 +1,4 @@
-package spaceinvaders.game_objects;
+package spaceinvaders.game_objects.dynamic_objects;
 
 /*
  * Playable character
@@ -9,9 +9,6 @@ public class Cannon extends GameObjectDynamic {
     * Attributes
     *
     */
-    // game object geometry
-    private static int height = 10;
-    private static int width = 10;
 
     // game object stats
 

@@ -1,4 +1,6 @@
-package spaceinvaders.game_objects;
+package spaceinvaders.game_objects.static_objects;
+
+import spaceinvaders.game_objects.GameObject;
 
 /*
  * Define the barricade that defends player 
@@ -10,8 +12,6 @@ public class Barricade extends GameObject {
     *
     */
     // game object geometry
-    private static int height = 10;
-    private static int width = 10;
 
     // game object stats
 

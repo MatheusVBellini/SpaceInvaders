@@ -1,4 +1,6 @@
-package spaceinvaders.game_objects;
+package spaceinvaders.game_objects.dynamic_objects;
+
+import spaceinvaders.game_objects.GameObject;
 
 public abstract class GameObjectDynamic extends GameObject {
     /*

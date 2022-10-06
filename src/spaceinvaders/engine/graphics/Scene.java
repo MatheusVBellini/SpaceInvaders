@@ -7,35 +7,50 @@ public class Scene {
     * 
     */
     // resolution
-    private static int height = 480;
-    private static int width = 640;
+    private int height = 480;
+    private int width = 640;
 
     // screen map
-    private static ScreenMap screenMap;
+    private ScreenMap screenMap;
 
     // game grid
-    private static GameGrid gameGrid;
+    private GameGrid gameGrid;
 
     /*
     *
     * Methods
     *
     */
-    // getters
-    public static int getHeight() {
-        return Scene.height;
+    // constructor
+    public Scene() {
+        // initializes the screen map
+        this.screenMap = new ScreenMap();
+
+        // initializes the game grid
+        this.gameGrid = new GameGrid();
     }
 
-    public static int getWidth() {
-        return Scene.width;
+    // getters
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getWidth() {
+        return this.width;
     }
 
     // setters
-    public static void setHeight(int height) {
-        Scene.height = height;
+    public void setHeight(int height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Height must be greater than zero");
+        }
+        this.height = height;
     }
 
-    public static void setWidth(int width) {
-        Scene.width = width;
+    public void setWidth(int width) {
+        if (width <= 0) {
+            throw new IllegalArgumentException("Width must be greater than zero");
+        }
+        this.width = width;
     }
 }

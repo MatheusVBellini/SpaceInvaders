@@ -26,7 +26,10 @@ public class SpaceInvaders {
     private static long frameTime = 1000 / frameRate;
 
     // object collection
-    private static LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
+    private static GameObject gameObjectCollection[] = new GameObject[];
+
+    // scene collection
+    private static Scene sceneCollection[] = new Scene[];
 
     // game loop
     public void game_loop() {

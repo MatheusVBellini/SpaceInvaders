@@ -1,4 +1,4 @@
-package spaceinvaders.game_objects;
+package spaceinvaders.game_objects.dynamic_objects;
 
 public class Projectile extends GameObjectDynamic {
     /*
