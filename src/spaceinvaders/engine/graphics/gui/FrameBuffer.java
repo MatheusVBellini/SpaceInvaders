@@ -1,4 +1,4 @@
-package spaceinvaders.engine.graphics;
+package spaceinvaders.engine.graphics.gui;
 
 public class FrameBuffer {
     /*
@@ -6,8 +6,8 @@ public class FrameBuffer {
     * Attributes
     *
     */
-    private final int height = Scene.getHeight();
-    private final int width = Scene.getWidth();
+    private final int height = SceneGUI.getHeight();
+    private final int width = SceneGUI.getWidth();
     private int pixel[][];
 
     /*

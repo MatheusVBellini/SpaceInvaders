@@ -1,9 +1,14 @@
 package spaceinvaders;
 
-// imports
-import spaceinvaders.engine.graphics.*;
+// intern imports
+import spaceinvaders.engine.graphics.Scene;
+import spaceinvaders.engine.graphics.tui.*;
+import spaceinvaders.engine.graphics.gui.*;
 import spaceinvaders.game_objects.*;
-import java.util.LinkedList;
+
+// extern imports
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
  *
@@ -21,18 +26,35 @@ public class SpaceInvaders {
      * Game Specs
      *
      */
+    // game option
+    private static ArrayList<String> args = new ArrayList<>();
+    private static boolean gameOption = isTUI(args.get(1));
+    private static boolean isTUI(String arg) {
+        if (arg.equals("-t") || arg.equals("--tui")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static void setArgs(ArrayList<String> args) {
+        SpaceInvaders.args = args;
+    }
+    public static boolean getGameOption() {
+        return SpaceInvaders.gameOption;
+    }
+    
     // frame rate
     private static long frameRate = 60;
     private static long frameTime = 1000 / frameRate;
 
     // object collection
-    private static GameObject gameObjectCollection[] = new GameObject[];
+    private static ArrayList<GameObject> gameObjectCollection = new ArrayList<>();
 
     // scene collection
-    private static Scene sceneCollection[] = new Scene[];
+    private static ArrayList<Scene> sceneCollection= new ArrayList<>();
 
     // game loop
-    public void game_loop() {
+    private void game_loop() {
         while (true) {
             // start time counting
             long start = System.currentTimeMillis();
@@ -58,7 +80,9 @@ public class SpaceInvaders {
      * 
      */
     public static void main(String[] args) {
-
+        // process command line args
+        SpaceInvaders.setArgs(new ArrayList<>(Arrays.asList(args)));
+        System.out.println(args);
     }
     
 }

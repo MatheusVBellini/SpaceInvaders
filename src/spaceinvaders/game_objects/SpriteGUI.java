@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-public class SpriteGUI implements Sprite {
+public class SpriteGUI extends Sprite {
     /*
      * 
      * Attributes

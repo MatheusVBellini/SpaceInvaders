@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/game_objects/dynamic_objects/Projectile.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/gui/FrameBuffer.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/Scene.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/game_objects/dynamic_objects/GameObjectDynamic.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/SpaceInvaders.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/gui/SceneGUI.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/gui/GameGrid.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/gui/ScreenMap.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/game_objects/GameObject.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/engine/graphics/tui/SceneTUI.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/SpaceInvaders/src/spaceinvaders/game_objects/Sprite.java</file>
         </group>
     </open-files>
 </project-private>
