@@ -2,6 +2,12 @@ package spaceinvaders.engine.graphics;
 
 public abstract class Scene {
     /*
+     *
+     *
+     *
+     */
+
+    /*
      * 
      * Methods
      * 

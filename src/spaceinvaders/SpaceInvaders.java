@@ -5,10 +5,12 @@ import spaceinvaders.engine.graphics.Scene;
 import spaceinvaders.engine.graphics.tui.*;
 import spaceinvaders.engine.graphics.gui.*;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.docs.*;
 
 // extern imports
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /*
  *
@@ -26,23 +28,35 @@ public class SpaceInvaders {
      * Game Specs
      *
      */
-    // game option
+    // software usage documentation
+    private static Doc documentation;
+
+    // game options
     private static ArrayList<String> args = new ArrayList<>();
-    private static boolean gameOption = isTUI(args.get(1));
-    private static boolean isTUI(String arg) {
-        if (arg.equals("-t") || arg.equals("--tui")) {
-            return true;
-        } else {
-            return false;
+
+    private static enum gameGraphicOptions {GUI, TUI};
+    private static gameGraphicOptions gameGraphicOption = gameGraphicOptions.GUI;
+
+    // setters
+    private static void setGameOptions() {
+        Iterator<String> it = args.iterator();
+        while (it.hasNext()) {
+            if (it.next().equals("-t") || it.next().equals("--tui")) {
+                gameGraphicOption = gameGraphicOptions.TUI;
+            }
         }
     }
+
     public static void setArgs(ArrayList<String> args) {
         SpaceInvaders.args = args;
+        setGameOptions();
     }
-    public static boolean getGameOption() {
-        return SpaceInvaders.gameOption;
+
+    // getters
+    public static boolean getGameGraphicOption() {
+        return (SpaceInvaders.gameGraphicOption == gameGraphicOptions.TUI) ? true : false; // true == TUI | false == GUI
     }
-    
+
     // frame rate
     private static long frameRate = 60;
     private static long frameTime = 1000 / frameRate;
@@ -51,7 +65,7 @@ public class SpaceInvaders {
     private static ArrayList<GameObject> gameObjectCollection = new ArrayList<>();
 
     // scene collection
-    private static ArrayList<Scene> sceneCollection= new ArrayList<>();
+    private static Scene[] sceneCollection = new Scene[3];
 
     // game loop
     private void game_loop() {
@@ -82,7 +96,12 @@ public class SpaceInvaders {
     public static void main(String[] args) {
         // process command line args
         SpaceInvaders.setArgs(new ArrayList<>(Arrays.asList(args)));
-        System.out.println(args);
+
+        // debugging and testing
+        if (SpaceInvaders.gameGraphicOption == gameGraphicOptions.TUI) {
+            Scene test = new SceneTUI();
+            test.build();
+        }
     }
     
 }

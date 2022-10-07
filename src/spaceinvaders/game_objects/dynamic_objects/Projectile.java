@@ -14,7 +14,7 @@ public class Projectile extends GameObjectDynamic {
      */
     // constructor
     public Projectile(int x, int y) {
-        super(x,y);
+        super(x,y,objectType.Projectile);
     }
 
     // update method for redrawing game objects every frame

@@ -22,7 +22,7 @@ public class Barricade extends GameObject {
     */
     // constructor
     public Barricade(int x, int y) {
-        super(x,y);
+        super(x,y,objectType.Barricade);
     }
 
     // update method for redrawing game objects every frame

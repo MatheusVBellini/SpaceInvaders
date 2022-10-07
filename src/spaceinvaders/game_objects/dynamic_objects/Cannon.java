@@ -1,5 +1,6 @@
 package spaceinvaders.game_objects.dynamic_objects;
 
+
 /*
  * Playable character
  */ 
@@ -9,7 +10,6 @@ public class Cannon extends GameObjectDynamic {
     * Attributes
     *
     */
-
     // game object stats
 
 
@@ -20,7 +20,7 @@ public class Cannon extends GameObjectDynamic {
     */
     // constructor
     public Cannon(int x, int y) {
-        super(x,y);
+        super(x,y,objectType.Cannon);
     }
 
     // update method for redrawing game objects every frame

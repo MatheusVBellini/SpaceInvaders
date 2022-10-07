@@ -21,7 +21,7 @@ public class Alien extends GameObjectDynamic {
     */
     // constructor
     Alien(int x, int y) {
-        super(x,y);
+        super(x,y,objectType.Alien);
         this.health = 1;
     }
 
