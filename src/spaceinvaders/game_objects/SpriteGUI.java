@@ -17,9 +17,4 @@ public class SpriteGUI extends Sprite {
     SpriteGUI(objectType type) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    // draw the sprite
-    public void draw() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
 }

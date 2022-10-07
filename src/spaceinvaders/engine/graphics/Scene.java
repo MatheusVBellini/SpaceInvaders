@@ -1,5 +1,7 @@
 package spaceinvaders.engine.graphics;
 
+import spaceinvaders.game_objects.GameObject;
+
 public abstract class Scene {
     /*
      *
@@ -13,4 +15,6 @@ public abstract class Scene {
      * 
      */
     public abstract void build();
+
+    public abstract void draw(GameObject gameObject);
 }

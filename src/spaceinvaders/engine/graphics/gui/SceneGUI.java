@@ -1,6 +1,7 @@
 package spaceinvaders.engine.graphics.gui;
 
 import spaceinvaders.engine.graphics.Scene;
+import spaceinvaders.game_objects.GameObject;
 
 public class SceneGUI extends Scene {
     /*
@@ -46,16 +47,19 @@ public class SceneGUI extends Scene {
         if (height <= 0) {
             throw new IllegalArgumentException("Height must be greater than zero");
         }
-        this.height = height;
+        SceneGUI.height = height;
     }
 
     public void setWidth(int width) {
         if (width <= 0) {
             throw new IllegalArgumentException("Width must be greater than zero");
         }
-        this.width = width;
+        SceneGUI.width = width;
     }
 
     // builds the scene in the screen
     public void build() {}
+
+    // draw sprites
+    public void draw(GameObject gameObject) {}
 }

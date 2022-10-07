@@ -8,7 +8,7 @@ public class SpriteTUI extends Sprite {
      * Attributes
      * 
      */
-    char pixels[][];
+    private char pixels[][];
 
     /*
      * 
@@ -16,19 +16,46 @@ public class SpriteTUI extends Sprite {
      * 
      */
     SpriteTUI(objectType type) {
-        if (type == objectType.Cannon) {
+        pixels = new char[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                pixels[i][j] = '.';
+            }
+        }
 
-        } else if (type == objectType.Alien) {
+        //. . . # . . .
+        //. . . # . . .
+        //. . # # # . .
+        //. # # # # # .
+        //# # # # # # #
+        if (type == objectType.Cannon) {
+            for (int i = height - 1; i >= height - 3; i--) {
+                for (int j = (width - 1) - i; j <= i; j++) {
+                    pixels[i][j] = '#';
+                }
+            }
+            pixels[0][width / 2] = '#';
+            pixels[1][width / 2] = '#';
+        }
+        //. # # # # # .
+        //# # . . . # #
+        //# . # # # . #
+        //# . . # . . #
+        //# # . . . # #
+        else if (type == objectType.Alien) {
 
         } else if (type == objectType.Barricade) {
 
-        } else if (type == objectType.Projectile) {
-
+        }
+        //~
+        else if (type == objectType.Projectile) {
+            pixels = new char[1][1];
+            pixels[0][0] = '~';
         }
     }
 
-    // draw the sprite
-    public void draw() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
+    // getters
+    public char[][] getPixels() {
+        return this.pixels;
+    }
 }

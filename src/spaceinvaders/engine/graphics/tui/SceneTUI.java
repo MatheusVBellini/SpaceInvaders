@@ -1,6 +1,10 @@
 package spaceinvaders.engine.graphics.tui;
 
 import spaceinvaders.engine.graphics.Scene;
+import spaceinvaders.game_objects.GameObject;
+import spaceinvaders.game_objects.Sprite;
+import spaceinvaders.game_objects.SpriteTUI;
+import spaceinvaders.game_objects.dynamic_objects.Projectile;
 
 public class SceneTUI extends Scene {
     /*
@@ -53,6 +57,29 @@ public class SceneTUI extends Scene {
                 System.out.print(' ');
             }
             System.out.print('\n');
+        }
+    }
+
+    // draw an object
+    public void draw(GameObject gameObject) {
+        int x = gameObject.getX();
+        int y = gameObject.getY();
+        int offsetX = GameObject.getHitboxWidth();
+        int offsetY = GameObject.getHitboxHeight();
+        if (gameObject.getClass() == (new Projectile(0,0)).getClass()) {
+            offsetX = 0;
+            offsetY = 0;
+        }
+        SpriteTUI sprite = (SpriteTUI)gameObject.getSprite();
+        char spritePixels[][] = sprite.getPixels();
+
+        // substitutes pixels in the pixel array
+        int a = y - offsetY;
+        int b = x - offsetX;
+        for (int i = offsetY-1; i >= 0; i++) {
+            for (int j = offsetX-1; j >= 0; j++) {
+                pixels[a + i][b + j - (offsetX + 1)] = spritePixels[i][j];
+            }
         }
     }
 }

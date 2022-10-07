@@ -17,8 +17,8 @@ public abstract class GameObject {
     };
 
     // game object geometry
-    protected static int hitbox_height = 7;
-    protected static int hitbox_width = 7;
+    private static int hitboxHeight = 5;
+    private static int hitboxWidth = 7;
 
     // game object position (pivot)
     private int x;
@@ -61,6 +61,18 @@ public abstract class GameObject {
 
     public int getY() {
         return this.y;
+    }
+
+    public static int getHitboxHeight() {
+        return hitboxHeight;
+    }
+
+    public static int getHitboxWidth() {
+        return hitboxWidth;
+    }
+
+    public Sprite getSprite() {
+        return this.sprite;
     }
 
     // update method for redrawing game objects every frame

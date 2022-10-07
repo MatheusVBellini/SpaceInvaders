@@ -5,6 +5,8 @@ import spaceinvaders.engine.graphics.Scene;
 import spaceinvaders.engine.graphics.tui.*;
 import spaceinvaders.engine.graphics.gui.*;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.game_objects.dynamic_objects.*;
+import spaceinvaders.game_objects.static_objects.*;
 import spaceinvaders.docs.*;
 
 // extern imports
@@ -100,6 +102,9 @@ public class SpaceInvaders {
         // debugging and testing
         if (SpaceInvaders.gameGraphicOption == gameGraphicOptions.TUI) {
             Scene test = new SceneTUI();
+            test.build();
+            GameObject cannon = new Cannon(5,5);
+            test.draw(cannon);
             test.build();
         }
     }
