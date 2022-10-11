@@ -13,7 +13,7 @@ public class SceneTUI extends Scene {
      * 
      */
     private int height = 32;
-    private int width = 32;
+    private int width = 60;
     private char pixels[][];
 
     /*
@@ -33,6 +33,14 @@ public class SceneTUI extends Scene {
     }
 
     // getters
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
     public int getCenterX() {
         return this.width / 2;
     }
@@ -64,21 +72,19 @@ public class SceneTUI extends Scene {
     public void draw(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
-        int offsetX = GameObject.getHitboxWidth();
-        int offsetY = GameObject.getHitboxHeight();
-        if (gameObject.getClass() == (new Projectile(0,0)).getClass()) {
-            offsetX = 0;
-            offsetY = 0;
+        int objectHeight = GameObject.getHitboxHeight();
+        int objectWidth = GameObject.getHitboxWidth();
+        if (gameObject instanceof Projectile) {
+            objectHeight = Projectile.getHitboxHeight();
+            objectWidth = Projectile.getHitboxWidth();
         }
         SpriteTUI sprite = (SpriteTUI)gameObject.getSprite();
         char spritePixels[][] = sprite.getPixels();
 
         // substitutes pixels in the pixel array
-        int a = y - offsetY;
-        int b = x - offsetX;
-        for (int i = offsetY-1; i >= 0; i++) {
-            for (int j = offsetX-1; j >= 0; j++) {
-                pixels[a + i][b + j - (offsetX + 1)] = spritePixels[i][j];
+        for (int i = 0; i < objectHeight; i++) {
+            for (int j = 0; j < objectWidth; j++) {
+                pixels[y + i][x + j] = spritePixels[i][j];
             }
         }
     }

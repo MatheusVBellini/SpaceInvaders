@@ -17,8 +17,8 @@ public abstract class GameObject {
     };
 
     // game object geometry
-    private static int hitboxHeight = 5;
-    private static int hitboxWidth = 7;
+    private static int hitboxHeight = 3;
+    private static int hitboxWidth = 5;
 
     // game object position (pivot)
     private int x;
@@ -34,24 +34,26 @@ public abstract class GameObject {
      */
     // constructor
     public GameObject(int x, int y, objectType type) {
-        this.x = x;
-        this.y = y;
+        this.x = x - (hitboxWidth / 2);
+        this.y = y - (hitboxHeight - 1);
         sprite = (SpaceInvaders.getGameGraphicOption()) ? new SpriteTUI(type) : new SpriteGUI(type);
     }
 
     // setters
     public void setX(int x) {
-        if (x <= 0) {
-            throw new IllegalArgumentException("X coordinate must be greater than zero");
+        int coordinate = x - (hitboxWidth / 2);
+        if (coordinate <= 0) {
+            throw new IllegalArgumentException("Object collision detected! Operation aborted.");
         }
-        this.x = x;
+        this.x = coordinate;
     }
 
     public void setY(int y) {
-        if (y <= 0) {
-            throw new IllegalArgumentException("Y coordinate must be greater than zero");
+        int coordinate = y - (hitboxHeight - 1);
+        if (coordinate <= 0) {
+            throw new IllegalArgumentException("Object collision detected! Operation aborted.");
         }
-        this.y = y;
+        this.y = coordinate;
     }
 
     // getters

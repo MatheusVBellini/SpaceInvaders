@@ -103,7 +103,9 @@ public class SpaceInvaders {
         if (SpaceInvaders.gameGraphicOption == gameGraphicOptions.TUI) {
             Scene test = new SceneTUI();
             test.build();
-            GameObject cannon = new Cannon(5,5);
+            GameObject projectile = new Projectile(2,2);
+            GameObject cannon = new Cannon( ((SceneTUI)test).getCenterX() , ((SceneTUI)test).getHeight() - 1 );
+            test.draw(projectile);
             test.draw(cannon);
             test.build();
         }
