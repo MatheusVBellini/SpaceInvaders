@@ -36,7 +36,7 @@ public abstract class GameObject {
     protected GameObject(int x, int y, objectType type) {
         this.x = x - (hitboxWidth / 2);
         this.y = y - (hitboxHeight - 1);
-        sprite = (SpaceInvaders.getGameGraphicOption()) ? new SpriteTUI(type) : new SpriteGUI(type);
+        sprite = (true) ? new SpriteTUI(type) : new SpriteGUI(type);
     }
 
     // setters

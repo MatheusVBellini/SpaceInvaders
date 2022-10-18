@@ -21,8 +21,8 @@ public class Config {
         // defining graphical mode
         Iterator<String> it = args.iterator();
         while (it.hasNext()) {
-            if (it.next().equals("-t") || it.next().equals("--tui")) {
-                gameGraphicOption = gameGraphicOptions.TUI;
+            if (it.next().equals("-g") || it.next().equals("--gui")) {
+                gameGraphicOption = gameGraphicOptions.GUI;
             }
         }
     }
@@ -32,7 +32,7 @@ public class Config {
 
     // graphical mode option
     private enum gameGraphicOptions {GUI, TUI};
-    private gameGraphicOptions gameGraphicOption = gameGraphicOptions.GUI;
+    private gameGraphicOptions gameGraphicOption = gameGraphicOptions.TUI;
     public boolean getGameGraphicOption() {
         return (this.gameGraphicOption == gameGraphicOptions.TUI) ? true : false; // true == TUI | false == GUI
     }
