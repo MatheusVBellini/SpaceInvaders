@@ -15,7 +15,7 @@ public abstract class GameObjectDynamic extends GameObject {
      *
      */
     // constructor
-    GameObjectDynamic(int x, int y, objectType type) {
+    protected GameObjectDynamic(int x, int y, objectType type) {
         super(x,y,type);
     }
 

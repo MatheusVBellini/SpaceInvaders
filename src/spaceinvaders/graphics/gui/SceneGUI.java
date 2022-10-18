@@ -1,7 +1,9 @@
-package spaceinvaders.engine.graphics.gui;
+package spaceinvaders.graphics.gui;
 
-import spaceinvaders.engine.graphics.Scene;
+import spaceinvaders.graphics.Scene;
 import spaceinvaders.game_objects.GameObject;
+
+import java.util.ArrayList;
 
 public class SceneGUI extends Scene {
     /*
@@ -27,19 +29,27 @@ public class SceneGUI extends Scene {
     // constructor
     public SceneGUI() {
         // initializes the screen map
-        this.screenMap = new ScreenMap();
+        this.screenMap = new ScreenMap(width, height);
 
         // initializes the game grid
         this.gameGrid = new GameGrid();
     }
 
     // getters
-    public static int getHeight() {
-        return SceneGUI.height;
+    public int getHeight() {
+        return this.height;
     }
 
-    public static int getWidth() {
-        return SceneGUI.width;
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getCenterX() {
+        return this.width / 2;
+    }
+
+    public int getCenterY() {
+        return this.height / 2;
     }
 
     // setters
@@ -57,9 +67,6 @@ public class SceneGUI extends Scene {
         SceneGUI.width = width;
     }
 
-    // builds the scene in the screen
-    public void build() {}
-
-    // draw sprites
-    public void draw(GameObject gameObject) {}
+    // renders the scene
+    public void render(ArrayList<GameObject> gameObjectCollection) {}
 }

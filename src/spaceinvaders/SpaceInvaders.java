@@ -1,9 +1,9 @@
 package spaceinvaders;
 
 // intern imports
-import spaceinvaders.engine.graphics.Scene;
-import spaceinvaders.engine.graphics.tui.*;
-import spaceinvaders.engine.graphics.gui.*;
+import spaceinvaders.graphics.Scene;
+import spaceinvaders.graphics.tui.*;
+import spaceinvaders.graphics.gui.*;
 import spaceinvaders.game_objects.*;
 import spaceinvaders.game_objects.dynamic_objects.*;
 import spaceinvaders.game_objects.static_objects.*;
@@ -60,25 +60,24 @@ public class SpaceInvaders {
     }
 
     // frame rate
-    private static long frameRate = 60;
+    private static long frameRate = 1;
     private static long frameTime = 1000 / frameRate;
 
     // object collection
     private static ArrayList<GameObject> gameObjectCollection = new ArrayList<>();
 
-    // scene collection
-    private static Scene[] sceneCollection = new Scene[3];
-
     // game loop
-    private void game_loop() {
+    private static void game_loop(Scene scene) {
         while (true) {
             // start time counting
             long start = System.currentTimeMillis();
             
             // processInput()
-            // update()
             // render()
-            
+            scene.render(gameObjectCollection);
+            // update()
+            //gameObjectCollection.forEach(gameObject -> gameObject.update());
+
             // wait the correct amount of time for the cycle to end
             try {
                 Thread.sleep(SpaceInvaders.frameTime + start - System.currentTimeMillis());
@@ -99,16 +98,28 @@ public class SpaceInvaders {
         // process command line args
         SpaceInvaders.setArgs(new ArrayList<>(Arrays.asList(args)));
 
-        // debugging and testing
+        // initializing game graphics
+        Scene game_scene;
         if (SpaceInvaders.gameGraphicOption == gameGraphicOptions.TUI) {
-            Scene test = new SceneTUI();
-            test.build();
-            GameObject projectile = new Projectile(2,2);
-            GameObject cannon = new Cannon( ((SceneTUI)test).getCenterX() , ((SceneTUI)test).getHeight() - 1 );
-            test.draw(projectile);
-            test.draw(cannon);
-            test.build();
+            game_scene = new SceneTUI();
+        } else {
+            game_scene = new SceneGUI();
         }
+
+        // feeding gameObjectCollection
+        gameObjectCollection.add(new Cannon(game_scene.getCenterX() , game_scene.getHeight() - 1 ));
+        for (int i = 1; i <= 3; i++) {
+            gameObjectCollection.add(new Alien(game_scene.getCenterX(), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(game_scene.getCenterX() - 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(game_scene.getCenterX() - 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(game_scene.getCenterX() + 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(game_scene.getCenterX() + 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+        }
+        gameObjectCollection.add(new Barricade(game_scene.getCenterX(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(game_scene.getCenterX() - 3 * GameObject.getHitboxWidth(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(game_scene.getCenterX() + 3 * GameObject.getHitboxWidth(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
+
+        game_loop(game_scene);
     }
     
 }

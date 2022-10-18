@@ -1,4 +1,4 @@
-package spaceinvaders.engine.graphics.gui;
+package spaceinvaders.graphics.gui;
 
 import spaceinvaders.game_objects.GameObject;
 

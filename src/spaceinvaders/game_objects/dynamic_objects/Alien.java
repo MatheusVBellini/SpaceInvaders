@@ -20,7 +20,7 @@ public class Alien extends GameObjectDynamic {
     *
     */
     // constructor
-    Alien(int x, int y) {
+    public Alien(int x, int y) {
         super(x,y,objectType.Alien);
         this.health = 1;
     }
@@ -37,6 +37,6 @@ public class Alien extends GameObjectDynamic {
     // update method for redrawing game objects every frame
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        move(1, 0);
     }
 }

@@ -1,6 +1,8 @@
-package spaceinvaders.engine.graphics.tui;
+package spaceinvaders.graphics.tui;
 
-import spaceinvaders.engine.graphics.Scene;
+import java.util.ArrayList;
+
+import spaceinvaders.graphics.Scene;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.Sprite;
 import spaceinvaders.game_objects.SpriteTUI;
@@ -50,13 +52,13 @@ public class SceneTUI extends Scene {
     }
 
     // clears the terminal
-    public void clearTerminal() {
+    private void clearTerminal() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     // builds the scene in the screen
-    public void build() {
+    private void build() {
         this.clearTerminal();
         // draws pixels values in the terminal
         for (int i = 0; i < height; i++) {
@@ -69,7 +71,7 @@ public class SceneTUI extends Scene {
     }
 
     // draw an object
-    public void draw(GameObject gameObject) {
+    private void draw(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
         int objectHeight = GameObject.getHitboxHeight();
@@ -87,5 +89,16 @@ public class SceneTUI extends Scene {
                 pixels[y + i][x + j] = spritePixels[i][j];
             }
         }
+    }
+
+    // draw an objectCollection
+    private void draw(ArrayList<GameObject> gameObjectCollection) {
+        gameObjectCollection.forEach(gameObject -> draw(gameObject));
+    }
+
+    // renders current estabilished scene
+    public void render(ArrayList<GameObject> gameObjectCollection) {
+        draw(gameObjectCollection);
+        build();
     }
 }
