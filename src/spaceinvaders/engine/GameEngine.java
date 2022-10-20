@@ -1,12 +1,12 @@
 package spaceinvaders.engine;
 
 // internal imports
+import spaceinvaders.game_objects.dynamic.Cannon;
+import spaceinvaders.game_objects.dynamic.Alien;
 import spaceinvaders.graphics.Scene;
 import spaceinvaders.graphics.tui.*;
 import spaceinvaders.graphics.gui.*;
 import spaceinvaders.game_objects.*;
-import spaceinvaders.game_objects.dynamic_objects.*;
-import spaceinvaders.game_objects.static_objects.*;
 
 // external imports
 import java.util.ArrayList;
@@ -14,16 +14,18 @@ import java.util.Arrays;
 
 public class GameEngine {
     private Config config;
+    private Control control;
     private ArrayList<GameObject> gameObjectCollection;
     Scene game_scene;
 
     // NULL constructor
     public GameEngine() {}
 
-    // 'boot' process -- goes directly to main game
+    // 'boot' process
     public void bootGame(String[] args) {
         // initialize configs
-        config = new Config(10, new ArrayList<>(Arrays.asList(args)));
+        config = new Config(1, new ArrayList<>(Arrays.asList(args)));
+        control = new Control();
 
         // fetch infos on game's graphics
         if (config.getGameGraphicOption()) {
@@ -32,9 +34,14 @@ public class GameEngine {
             game_scene = new SceneGUI();
         }
 
-        // fill gameObjectColletion with inital state
+        // initualizes array
         gameObjectCollection = new ArrayList<>();
-        gameObjectCollection.add(new Cannon(game_scene.getCenterX() , game_scene.getHeight() - 1 ));
+    }
+
+    // loads main game
+    public void loadGame() {
+        // fill gameObjectColletion with inital state
+        gameObjectCollection.add(new Cannon(game_scene.getCenterX() , game_scene.getHeight() - 1));
         for (int i = 1; i <= 3; i++) {
             gameObjectCollection.add(new Alien(game_scene.getCenterX(), i * (GameObject.getHitboxHeight() + 1)));
             gameObjectCollection.add(new Alien(game_scene.getCenterX() - 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
@@ -48,7 +55,7 @@ public class GameEngine {
     }
 
     // game loop
-    public void game_loop() {
+    public void gameLoop() {
         while (true) {
             // start time counting
             long start = System.currentTimeMillis();
@@ -56,8 +63,9 @@ public class GameEngine {
             // processInput()
             // render()
             game_scene.render(gameObjectCollection);
+
             // update()
-            //gameObjectCollection.forEach(gameObject -> gameObject.update());
+            //gameObjectCollection.forEach(gameObject -> control.move(gameObject));
 
             // wait the correct amount of time for the cycle to end
             try {

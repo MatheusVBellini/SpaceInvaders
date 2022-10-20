@@ -1,7 +1,8 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.game_objects.GameObject.objectType;
-import spaceinvaders.game_objects.dynamic_objects.Projectile;
+import spaceinvaders.game_objects.dynamic.Projectile;
+import spaceinvaders.game_objects.dynamic.Cannon;
+import spaceinvaders.game_objects.dynamic.Alien;
 
 public class SpriteTUI extends Sprite {
     /*
@@ -16,7 +17,7 @@ public class SpriteTUI extends Sprite {
      * Methods
      * 
      */
-    SpriteTUI(objectType type) {
+    SpriteTUI(GameObject gameObject) {
         pixels = new char[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -27,7 +28,7 @@ public class SpriteTUI extends Sprite {
         //. . H . .
         //. / # \ .
         //[ 0 0 0 ]
-        if (type == objectType.Cannon) {
+        if (gameObject instanceof Cannon) {
             pixels[0][2] = 'H';
 
             pixels[1][1] = '/';
@@ -43,7 +44,7 @@ public class SpriteTUI extends Sprite {
         //| = = = |
         //H 0 v 0 H
         //H > . < H
-        else if (type == objectType.Alien) {
+        else if (gameObject instanceof Alien) {
             pixels[0][0] = '|';
             pixels[0][1] = '=';
             pixels[0][2] = '=';
@@ -64,7 +65,7 @@ public class SpriteTUI extends Sprite {
         // # # # # #
         // # # # # #
         // # . . . #
-        else if (type == objectType.Barricade) {
+        else if (gameObject instanceof Barricade) {
             pixels[0][0] = '#';
             pixels[0][1] = '#';
             pixels[0][2] = '#';
@@ -81,7 +82,7 @@ public class SpriteTUI extends Sprite {
             pixels[2][4] = '#';
         }
         //~
-        else if (type == objectType.Projectile) {
+        else if (gameObject instanceof Projectile) {
             pixels = new char[Projectile.getHitboxHeight()][Projectile.getHitboxWidth()];
             pixels[0][0] = '~';
         }

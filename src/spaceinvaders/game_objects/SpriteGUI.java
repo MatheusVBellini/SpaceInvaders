@@ -1,7 +1,5 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.game_objects.GameObject.objectType;
-
 public class SpriteGUI extends Sprite {
     /*
      * 
@@ -14,7 +12,7 @@ public class SpriteGUI extends Sprite {
      * Methods
      * 
      */
-    SpriteGUI(objectType type) {
+    SpriteGUI(GameObject gameObject) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

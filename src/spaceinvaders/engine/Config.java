@@ -12,7 +12,7 @@ public class Config {
      */
     // constructor
     public Config(long frameRate, ArrayList<String> args) {
-        this.args = args;
+        this.args = new ArrayList<String>(args);
 
         // defining frame rate
         this.frameRate = frameRate;
@@ -28,7 +28,7 @@ public class Config {
     }
 
     // build arguments
-    private ArrayList<String> args = new ArrayList<>();
+    private ArrayList<String> args;
 
     // graphical mode option
     private enum gameGraphicOptions {GUI, TUI};

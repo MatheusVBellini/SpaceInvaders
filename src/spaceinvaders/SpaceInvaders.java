@@ -14,16 +14,18 @@ import spaceinvaders.engine.GameEngine;
  * 
  */
 public class SpaceInvaders {
+    // Game variables
+    private static GameEngine gameEngine = new GameEngine();
+
     /*
      * 
      * Main 
      * 
      */
     public static void main(String[] args) {
-        GameEngine gameEngine = new GameEngine();
-
         gameEngine.bootGame(args);
-        gameEngine.game_loop();
+        gameEngine.loadGame();
+        gameEngine.gameLoop();
     }
     
 }

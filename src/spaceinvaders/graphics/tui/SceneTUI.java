@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 import spaceinvaders.graphics.Scene;
 import spaceinvaders.game_objects.GameObject;
-import spaceinvaders.game_objects.Sprite;
 import spaceinvaders.game_objects.SpriteTUI;
-import spaceinvaders.game_objects.dynamic_objects.Projectile;
+import spaceinvaders.game_objects.dynamic.Projectile;
 
 public class SceneTUI extends Scene {
     /*
@@ -14,7 +13,7 @@ public class SceneTUI extends Scene {
      * Attributes
      * 
      */
-    private int height = 32;
+    private int height = 34;
     private int width = 60;
     private char pixels[][];
 
@@ -35,18 +34,22 @@ public class SceneTUI extends Scene {
     }
 
     // getters
+    @Override
     public int getHeight() {
         return this.height;
     }
 
+    @Override
     public int getWidth() {
         return this.width;
     }
 
+    @Override
     public int getCenterX() {
         return this.width / 2;
     }
 
+    @Override
     public int getCenterY() {
         return this.height / 2;
     }

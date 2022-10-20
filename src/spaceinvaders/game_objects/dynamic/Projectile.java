@@ -1,4 +1,4 @@
-package spaceinvaders.game_objects.dynamic_objects;
+package spaceinvaders.game_objects.dynamic;
 
 import spaceinvaders.game_objects.GameObject;
 
@@ -20,7 +20,7 @@ public class Projectile extends GameObjectDynamic {
      */
     // constructor
     public Projectile(int x, int y) {
-        super(x + (GameObject.getHitboxWidth() / 2), y + (GameObject.getHitboxHeight() - 1), objectType.Projectile);
+        super(x + (GameObject.getHitboxWidth() / 2), y + (GameObject.getHitboxHeight() - 1));
     }
 
     // getters
@@ -42,6 +42,8 @@ public class Projectile extends GameObjectDynamic {
     public void setY(int y) {
         super.setY(y + (hitboxHeight - 1));
     }
+    
+    void move() {}
 
     // update method for redrawing game objects every frame
     @Override
