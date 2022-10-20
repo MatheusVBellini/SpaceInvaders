@@ -34,15 +34,26 @@ public class Projectile extends GameObjectDynamic {
 
     // setters
     @Override
-    public void setX(int x) {
-        super.setX(x + (hitboxWidth / 2));
+    public void setPivotX(int x) {
+        super.setPivotX(x + (hitboxWidth / 2));
     }
 
     @Override
-    public void setY(int y) {
-        super.setY(y + (hitboxHeight - 1));
+    public void setPivotY(int y) {
+        super.setPivotY(y + (hitboxHeight - 1));
+    }
+
+    @Override
+    public int getPivotX() {
+        return getX();
+    }
+
+    @Override
+    public int getPivotY() {
+        return getY();
     }
     
+    @Override
     void move() {}
 
     // update method for redrawing game objects every frame

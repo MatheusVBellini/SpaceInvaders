@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class GameEngine {
     private Config config;
-    private Control control;
+    private MovementHandler movementHandler;
     private ArrayList<GameObject> gameObjectCollection;
     Scene game_scene;
 
@@ -25,7 +25,7 @@ public class GameEngine {
     public void bootGame(String[] args) {
         // initialize configs
         config = new Config(1, new ArrayList<>(Arrays.asList(args)));
-        control = new Control();
+        movementHandler = new MovementHandler();
 
         // fetch infos on game's graphics
         if (config.getGameGraphicOption()) {
