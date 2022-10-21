@@ -1,8 +1,6 @@
-package spaceinvaders.game_objects.dynamic;
+package spaceinvaders.game_objects;
 
-import spaceinvaders.game_objects.GameObject;
-
-public class Projectile extends GameObjectDynamic {
+public class Projectile extends GameObject {
     /*
      * 
      * Attributes
@@ -53,8 +51,7 @@ public class Projectile extends GameObjectDynamic {
         return getY();
     }
     
-    @Override
-    void move() {}
+    private void move() {}
 
     // update method for redrawing game objects every frame
     @Override

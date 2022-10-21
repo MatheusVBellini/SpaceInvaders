@@ -1,12 +1,10 @@
-package spaceinvaders.game_objects.dynamic;
-
-import spaceinvaders.game_objects.GameObject;
+package spaceinvaders.game_objects;
 
 
 /*
  * Playable character
  */ 
-public class Cannon extends GameObjectDynamic {
+public class Cannon extends GameObject {
     /*
     *
     * Attributes
@@ -25,7 +23,7 @@ public class Cannon extends GameObjectDynamic {
         super(x,y);
     }
 
-    void move() {}
+    private void move() {}
     
     // update method for redrawing game objects every frame
     @Override

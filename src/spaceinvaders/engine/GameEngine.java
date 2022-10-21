@@ -1,8 +1,8 @@
 package spaceinvaders.engine;
 
 // internal imports
-import spaceinvaders.game_objects.dynamic.Cannon;
-import spaceinvaders.game_objects.dynamic.Alien;
+import spaceinvaders.game_objects.Cannon;
+import spaceinvaders.game_objects.Alien;
 import spaceinvaders.graphics.Scene;
 import spaceinvaders.graphics.tui.*;
 import spaceinvaders.graphics.gui.*;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class GameEngine {
     private Config config;
-    private MovementHandler movementHandler;
+    private StateHandler stateHandler;
     private ArrayList<GameObject> gameObjectCollection;
     Scene game_scene;
 
@@ -25,7 +25,7 @@ public class GameEngine {
     public void bootGame(String[] args) {
         // initialize configs
         config = new Config(1, new ArrayList<>(Arrays.asList(args)));
-        movementHandler = new MovementHandler();
+        stateHandler = new StateHandler();
 
         // fetch infos on game's graphics
         if (config.getGameGraphicOption()) {
@@ -41,17 +41,17 @@ public class GameEngine {
     // loads main game
     public void loadGame() {
         // fill gameObjectColletion with inital state
-        gameObjectCollection.add(new Cannon(game_scene.getCenterX() , game_scene.getHeight() - 1));
+        gameObjectCollection.add(new Cannon(SceneTUI.getCenterX() , SceneTUI.getHeight() - 1));
         for (int i = 1; i <= 3; i++) {
-            gameObjectCollection.add(new Alien(game_scene.getCenterX(), i * (GameObject.getHitboxHeight() + 1)));
-            gameObjectCollection.add(new Alien(game_scene.getCenterX() - 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
-            gameObjectCollection.add(new Alien(game_scene.getCenterX() - 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
-            gameObjectCollection.add(new Alien(game_scene.getCenterX() + 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
-            gameObjectCollection.add(new Alien(game_scene.getCenterX() + 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(SceneTUI.getCenterX(), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(SceneTUI.getCenterX() - 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(SceneTUI.getCenterX() - 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(SceneTUI.getCenterX() + 1 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
+            gameObjectCollection.add(new Alien(SceneTUI.getCenterX() + 2 * (GameObject.getHitboxWidth() + 2), i * (GameObject.getHitboxHeight() + 1)));
         }
-        gameObjectCollection.add(new Barricade(game_scene.getCenterX(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(game_scene.getCenterX() - 3 * GameObject.getHitboxWidth(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(game_scene.getCenterX() + 3 * GameObject.getHitboxWidth(), game_scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(SceneTUI.getCenterX(), SceneTUI.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(SceneTUI.getCenterX() - 3 * GameObject.getHitboxWidth(), SceneTUI.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(SceneTUI.getCenterX() + 3 * GameObject.getHitboxWidth(), SceneTUI.getHeight() - GameObject.getHitboxHeight() - 3));
     }
 
     // game loop
@@ -63,9 +63,8 @@ public class GameEngine {
             // processInput()
             // render()
             game_scene.render(gameObjectCollection);
-
             // update()
-            //gameObjectCollection.forEach(gameObject -> control.move(gameObject));
+            stateHandler.updateCollection(gameObjectCollection);
 
             // wait the correct amount of time for the cycle to end
             try {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import spaceinvaders.graphics.Scene;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.SpriteTUI;
-import spaceinvaders.game_objects.dynamic.Projectile;
+import spaceinvaders.game_objects.Projectile;
 
 public class SceneTUI extends Scene {
     /*
@@ -13,8 +13,8 @@ public class SceneTUI extends Scene {
      * Attributes
      * 
      */
-    private int height = 34;
-    private int width = 60;
+    private static int height = 34;
+    private static int width = 60;
     private char pixels[][];
 
     /*
@@ -34,24 +34,20 @@ public class SceneTUI extends Scene {
     }
 
     // getters
-    @Override
-    public int getHeight() {
-        return this.height;
+    public static int getHeight() {
+        return height;
     }
 
-    @Override
-    public int getWidth() {
-        return this.width;
+    public static int getWidth() {
+        return width;
     }
 
-    @Override
-    public int getCenterX() {
-        return this.width / 2;
+    public static int getCenterX() {
+        return width / 2;
     }
 
-    @Override
-    public int getCenterY() {
-        return this.height / 2;
+    public static int getCenterY() {
+        return height / 2;
     }
 
     // clears the terminal
@@ -73,7 +69,6 @@ public class SceneTUI extends Scene {
         }
     }
 
-    // draw an object
     private void draw(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
@@ -94,14 +89,36 @@ public class SceneTUI extends Scene {
         }
     }
 
-    // draw an objectCollection
     private void draw(ArrayList<GameObject> gameObjectCollection) {
         gameObjectCollection.forEach(gameObject -> draw(gameObject));
+    }
+
+    private void clean(GameObject gameObject) {
+        int x = gameObject.getX();
+        int y = gameObject.getY();
+        int objectHeight = GameObject.getHitboxHeight();
+        int objectWidth = GameObject.getHitboxWidth();
+        if (gameObject instanceof Projectile) {
+            objectHeight = Projectile.getHitboxHeight();
+            objectWidth = Projectile.getHitboxWidth();
+        }
+
+        // substitutes pixels in the pixel array
+        for (int i = 0; i < objectHeight; i++) {
+            for (int j = 0; j < objectWidth; j++) {
+                pixels[y + i][x + j] = '.';
+            }
+        }
+    }
+
+    private void clean(ArrayList<GameObject> gameObjectCollection) {
+        gameObjectCollection.forEach(gameObject -> clean(gameObject));
     }
 
     // renders current estabilished scene
     public void render(ArrayList<GameObject> gameObjectCollection) {
         draw(gameObjectCollection);
         build();
+        clean(gameObjectCollection);
     }
 }

@@ -36,20 +36,20 @@ public class SceneGUI extends Scene {
     }
 
     // getters
-    public int getHeight() {
-        return this.height;
+    public static int getHeight() {
+        return height;
     }
 
-    public int getWidth() {
-        return this.width;
+    public static int getWidth() {
+        return width;
     }
 
-    public int getCenterX() {
-        return this.width / 2;
+    public static int getCenterX() {
+        return width / 2;
     }
 
-    public int getCenterY() {
-        return this.height / 2;
+    public static int getCenterY() {
+        return height / 2;
     }
 
     // setters

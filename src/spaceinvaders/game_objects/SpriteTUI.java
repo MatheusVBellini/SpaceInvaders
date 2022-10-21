@@ -1,9 +1,5 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.game_objects.dynamic.Projectile;
-import spaceinvaders.game_objects.dynamic.Cannon;
-import spaceinvaders.game_objects.dynamic.Alien;
-
 public class SpriteTUI extends Sprite {
     /*
      * 
