@@ -115,9 +115,11 @@ public class Scene {
     }
 
     // renders current estabilished scene
-    public void render(ArrayList<GameObject> gameObjectCollection) {
+    public void render(ArrayList<GameObject> gameObjectCollection, ArrayList<GameObject> arrayOfAliens) {
         draw(gameObjectCollection);
+        draw(arrayOfAliens);
         build();
         clean(gameObjectCollection);
+        clean(arrayOfAliens);
     }
 }

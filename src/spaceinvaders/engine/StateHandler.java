@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 public class StateHandler {
     public void updateCollection(ArrayList<GameObject> gameObjectColletion) {
-        // render default movement
         gameObjectColletion.forEach(gameObject -> gameObject.update());
-
-        // treat collision
+    }
+    
+    public void updateSwarm(Swarm swarm) {
+        swarm.update();
     }
 
 }

@@ -41,38 +41,42 @@ public class Alien extends GameObject {
     };
     private Direction direction = Direction.right;
 
-    private void move_right() {
+    private void moveRight() {
         setPivotX(getPivotX() + 1);
     }
 
-    private void move_left() {
+    private void moveLeft() {
         setPivotX(getPivotX() - 1);
     }
 
-    private void move_down() {
-        setPivotY(getPivotY() + 1);
+    private void moveDown() {
+        setPivotY(getPivotY() + getHitboxHeight());
     }
 
-    private void move() {
+    public void move() {
         if (direction == Direction.left) {
-            move_left();
+            moveLeft();
         } else {
-            move_right();
+            moveRight();
+        }
+    }
+    
+    private void switchDirection() {
+        if (direction == Direction.left) {
+            direction = Direction.right;
+        } else {
+            direction = Direction.left;
         }
     }
 
     // if hits a wall descend and switch direction
     @Override
     public void update() {
-        move();
-        if (getX() <= 0) {
-            direction = Direction.right;
-            move_down();
+        //move();
+        //if (getX() < 0 || getX() > Scene.getWidth() - getHitboxWidth()) {
+            switchDirection();
+            moveDown();
             move();
-        } else if (getX() + getHitboxWidth() >= Scene.getWidth()) {
-            direction = Direction.left;
-            move_down();
-            move();
-        }
+        //}
     }
 }

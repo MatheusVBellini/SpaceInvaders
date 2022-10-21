@@ -36,17 +36,11 @@ public abstract class GameObject {
     // setters
     public void setPivotX(int x) {
         int coordinate = x - (hitboxWidth / 2);
-        if (coordinate <= 0) {
-            throw new IllegalArgumentException("Object collision detected! Operation aborted.");
-        }
         this.x = coordinate;
     }
 
     public void setPivotY(int y) {
         int coordinate = y - (hitboxHeight - 1);
-        if (coordinate <= 0) {
-            throw new IllegalArgumentException("Object collision detected! Operation aborted.");
-        }
         this.y = coordinate;
     }
 
