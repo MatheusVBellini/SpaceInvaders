@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.tui.SceneTUI;
+import spaceinvaders.graphics.Scene;
 
 /*
  * Base enemy class
@@ -69,7 +69,7 @@ public class Alien extends GameObject {
             direction = Direction.right;
             move_down();
             move();
-        } else if (getX() + getHitboxWidth() >= SceneTUI.getWidth()) {
+        } else if (getX() + getHitboxWidth() >= Scene.getWidth()) {
             direction = Direction.left;
             move_down();
             move();

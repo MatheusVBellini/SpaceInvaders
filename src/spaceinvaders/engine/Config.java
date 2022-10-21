@@ -18,25 +18,14 @@ public class Config {
         this.frameRate = frameRate;
         this.frameTime = 1000 / frameRate;
 
-        // defining graphical mode
+        // reading args from terminal
         Iterator<String> it = args.iterator();
-        while (it.hasNext()) {
-            if (it.next().equals("-g") || it.next().equals("--gui")) {
-                gameGraphicOption = gameGraphicOptions.GUI;
-            }
-        }
+        while (it.hasNext()) {}
     }
 
     // build arguments
     private ArrayList<String> args;
-
-    // graphical mode option
-    private enum gameGraphicOptions {GUI, TUI};
-    private gameGraphicOptions gameGraphicOption = gameGraphicOptions.TUI;
-    public boolean getGameGraphicOption() {
-        return (this.gameGraphicOption == gameGraphicOptions.TUI) ? true : false; // true == TUI | false == GUI
-    }
-
+    
     // frame rate
     private long frameRate;
     private long frameTime;

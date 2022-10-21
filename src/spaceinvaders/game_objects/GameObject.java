@@ -30,7 +30,7 @@ public abstract class GameObject {
     protected GameObject(int x, int y) {
         this.x = x - (hitboxWidth / 2);
         this.y = y - (hitboxHeight - 1);
-        sprite = (true) ? new SpriteTUI(this) : new SpriteGUI(this);
+        sprite = new Sprite(this);
     }
 
     // setters
