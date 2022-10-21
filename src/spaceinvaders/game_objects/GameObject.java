@@ -1,6 +1,5 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.SpaceInvaders;
 
 /*
  * Abstract class for defining game objects
@@ -11,11 +10,6 @@ public abstract class GameObject {
     * Attributes
     *
     */
-    // object types
-    protected static enum objectType {
-        Cannon, Alien, Barricade, Projectile
-    };
-
     // game object geometry
     private static int hitboxHeight = 3;
     private static int hitboxWidth = 5;
@@ -33,14 +27,14 @@ public abstract class GameObject {
      * 
      */
     // constructor
-    protected GameObject(int x, int y, objectType type) {
+    protected GameObject(int x, int y) {
         this.x = x - (hitboxWidth / 2);
         this.y = y - (hitboxHeight - 1);
-        sprite = (SpaceInvaders.getGameGraphicOption()) ? new SpriteTUI(type) : new SpriteGUI(type);
+        sprite = (true) ? new SpriteTUI(this) : new SpriteGUI(this);
     }
 
     // setters
-    public void setX(int x) {
+    public void setPivotX(int x) {
         int coordinate = x - (hitboxWidth / 2);
         if (coordinate <= 0) {
             throw new IllegalArgumentException("Object collision detected! Operation aborted.");
@@ -48,7 +42,7 @@ public abstract class GameObject {
         this.x = coordinate;
     }
 
-    public void setY(int y) {
+    public void setPivotY(int y) {
         int coordinate = y - (hitboxHeight - 1);
         if (coordinate <= 0) {
             throw new IllegalArgumentException("Object collision detected! Operation aborted.");
@@ -57,12 +51,20 @@ public abstract class GameObject {
     }
 
     // getters
+    public int getPivotX() {
+        return x + (hitboxWidth / 2);
+    }
+
+    public int getPivotY() {
+        return y + (hitboxHeight - 1);
+    }
+
     public int getX() {
-        return this.x;
+        return x;
     }
 
     public int getY() {
-        return this.y;
+        return y;
     }
 
     public static int getHitboxHeight() {
@@ -74,7 +76,7 @@ public abstract class GameObject {
     }
 
     public Sprite getSprite() {
-        return this.sprite;
+        return sprite;
     }
 
     // update method for redrawing game objects every frame

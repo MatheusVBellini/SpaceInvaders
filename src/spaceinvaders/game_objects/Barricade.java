@@ -1,6 +1,4 @@
-package spaceinvaders.game_objects.static_objects;
-
-import spaceinvaders.game_objects.GameObject;
+package spaceinvaders.game_objects;
 
 /*
  * Define the barricade that defends player 
@@ -22,7 +20,7 @@ public class Barricade extends GameObject {
     */
     // constructor
     public Barricade(int x, int y) {
-        super(x,y,objectType.Barricade);
+        super(x,y);
     }
 
     // update method for redrawing game objects every frame

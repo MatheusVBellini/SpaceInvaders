@@ -18,9 +18,4 @@ public abstract class Scene {
      */
 
     public abstract void render(ArrayList<GameObject> gameObjectCollection);
-
-    public abstract int getHeight();
-    public abstract int getWidth();
-    public abstract int getCenterX();
-    public abstract int getCenterY();
 }
