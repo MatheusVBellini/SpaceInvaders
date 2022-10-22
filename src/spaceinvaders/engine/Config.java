@@ -1,9 +1,5 @@
 package spaceinvaders.engine;
 
-// extern imports
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class Config {
     /*
      *
@@ -11,22 +7,26 @@ public class Config {
      *
      */
     // constructor
-    public Config(long frameRate, ArrayList<String> args) {
-        this.args = new ArrayList<String>(args);
-
-        // defining frame rate
+    public Config() {
+        swarmHeight = 3;
+        swarmWidth = 5;
+        frameRate = 60;
+        frameTime = 1000 / frameRate;
+    }
+    
+    public Config setFrameRate(long frameRate) {
         this.frameRate = frameRate;
         this.frameTime = 1000 / frameRate;
-
-        // reading args from terminal
-        Iterator<String> it = args.iterator();
-        while (it.hasNext()) {}
+        return this;
     }
-
-    // build arguments
-    private ArrayList<String> args;
     
-    // frame rate
+    public Config setSwarmSize(int height, int width) {
+        this.swarmHeight = height;
+        this.swarmWidth = width;
+        return this;
+    }
+    
+    // frame rate infromation
     private long frameRate;
     private long frameTime;
     public long getFrameRate() {
@@ -34,5 +34,15 @@ public class Config {
     }
     public long getFrameTime() {
         return frameTime;
+    }
+    
+    // swarm information
+    private int swarmHeight;
+    private int swarmWidth;
+    public int getSwarmHeight() {
+        return swarmHeight;
+    }
+    public int getSwarmWidth() {
+        return swarmWidth;
     }
 }

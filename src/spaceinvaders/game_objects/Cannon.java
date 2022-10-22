@@ -28,4 +28,9 @@ public class Cannon extends GameObject {
     // update method for redrawing game objects every frame
     @Override
     public void update() {}
+    
+    @Override
+    public Cannon copy() {
+        return new Cannon(getPivotX(), getPivotY());
+    }
 }

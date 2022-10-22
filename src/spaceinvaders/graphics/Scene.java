@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.Sprite;
 import spaceinvaders.game_objects.Projectile;
+import spaceinvaders.game_objects.GameObjectCollection;
 
 public class Scene {
     /*
@@ -115,11 +116,11 @@ public class Scene {
     }
 
     // renders current estabilished scene
-    public void render(ArrayList<GameObject> gameObjectCollection, ArrayList<GameObject> arrayOfAliens) {
-        draw(gameObjectCollection);
-        draw(arrayOfAliens);
+    public void render(GameObjectCollection gameObjectCollection) {
+        draw(gameObjectCollection.getAllies());
+        draw(gameObjectCollection.getAliens().getArrayOfAliens());
         build();
-        clean(gameObjectCollection);
-        clean(arrayOfAliens);
+        clean(gameObjectCollection.getAllies());
+        clean(gameObjectCollection.getAliens().getArrayOfAliens());
     }
 }

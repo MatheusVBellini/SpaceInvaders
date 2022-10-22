@@ -26,4 +26,9 @@ public class Barricade extends GameObject {
     // update method for redrawing game objects every frame
     @Override
     public void update() {}
+    
+    @Override
+    public Barricade copy() {
+        return new Barricade(getPivotX(), getPivotY());
+    }
 }

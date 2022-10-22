@@ -56,4 +56,9 @@ public class Projectile extends GameObject {
     // update method for redrawing game objects every frame
     @Override
     public void update() {}
+    
+    @Override
+    public Projectile copy() {
+        return new Projectile(getPivotX(), getPivotY());
+    }
 }

@@ -50,7 +50,7 @@ public class Alien extends GameObject {
     }
 
     private void moveDown() {
-        setPivotY(getPivotY() + getHitboxHeight());
+        setPivotY(getPivotY() + 1);
     }
 
     public void move() {
@@ -78,5 +78,10 @@ public class Alien extends GameObject {
             moveDown();
             move();
         //}
+    }
+    
+    @Override
+    public Alien copy() {
+        return new Alien(getPivotX(), getPivotY());
     }
 }

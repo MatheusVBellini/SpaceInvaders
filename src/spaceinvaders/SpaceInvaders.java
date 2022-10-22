@@ -23,7 +23,12 @@ public class SpaceInvaders {
      * 
      */
     public static void main(String[] args) {
-        gameEngine.bootGame(args);
+        // configuring game
+        gameEngine.settings()
+                .setFrameRate(40)
+                .setSwarmSize(4,6);
+        
+        
         gameEngine.loadGame();
         gameEngine.gameLoop();
     }

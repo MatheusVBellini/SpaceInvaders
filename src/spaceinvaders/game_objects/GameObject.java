@@ -75,4 +75,5 @@ public abstract class GameObject {
 
     // update method for redrawing game objects every frame
     public abstract void update();
+    public abstract GameObject copy();
 }
