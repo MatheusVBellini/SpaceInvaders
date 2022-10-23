@@ -12,9 +12,6 @@ public class Alien extends GameObject {
     *
     */
 
-    // game object stats
-    private int health;
-
 
     /*
     *
@@ -24,15 +21,7 @@ public class Alien extends GameObject {
     // constructor
     public Alien(int x, int y) {
         super(x,y);
-        this.health = 1;
-    }
-
-    boolean isAlive() {
-        if (this.health == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        health = 1;
     }
 
     // movement methods

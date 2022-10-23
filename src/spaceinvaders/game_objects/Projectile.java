@@ -19,6 +19,7 @@ public class Projectile extends GameObject {
     // constructor
     public Projectile(int x, int y) {
         super(x + (GameObject.getHitboxWidth() / 2), y + (GameObject.getHitboxHeight() - 1));
+        health = 1;
     }
 
     // getters
@@ -51,11 +52,13 @@ public class Projectile extends GameObject {
         return getY();
     }
     
-    private void move() {}
+    protected void move() {}
 
     // update method for redrawing game objects every frame
     @Override
-    public void update() {}
+    public void update() {
+        move();
+    }
     
     @Override
     public Projectile copy() {

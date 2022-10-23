@@ -20,6 +20,9 @@ public abstract class GameObject {
 
     // game object sprite
     protected Sprite sprite;
+    
+    // game object stats
+    protected int health;
 
     /*
      * 

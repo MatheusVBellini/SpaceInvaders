@@ -1,5 +1,7 @@
 package spaceinvaders.engine;
 
+import spaceinvaders.graphics.Scene;
+
 public class Config {
     /*
      *
@@ -23,6 +25,12 @@ public class Config {
     public Config setSwarmSize(int height, int width) {
         this.swarmHeight = height;
         this.swarmWidth = width;
+        return this;
+    }
+    
+    public Config setResolution(int height, int width) {
+        Scene.setHeight(height);
+        Scene.setWidth(width);
         return this;
     }
     

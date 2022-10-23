@@ -23,14 +23,35 @@ public class Scene {
      * 
      */
     // constructor
+    // no arguments for standard game screen
     public Scene() {
-        this.pixels = new char[height][width];
+        pixels = new char[height][width];
         // initalizes pixels with '.'
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 pixels[i][j] = '.';
             }
         }
+        
+        // score
+        pixels[0][0] = 'S';
+        pixels[0][1] = 'C';
+        pixels[0][2] = 'O';
+        pixels[0][3] = 'R';
+        pixels[0][4] = 'E';
+        pixels[0][5] = ':';
+        pixels[0][6] = '0';
+        
+        // lives
+        pixels[0][width-1] = '\u2661';
+        pixels[0][width-2] = '\u2661';
+        pixels[0][width-3] = '\u2661';
+        pixels[0][width-9] = 'L';
+        pixels[0][width-8] = 'I';
+        pixels[0][width-7] = 'V';
+        pixels[0][width-6] = 'E';
+        pixels[0][width-5] = 'S';
+        pixels[0][width-4] = ':';
     }
 
     // getters
@@ -48,6 +69,15 @@ public class Scene {
 
     public static int getCenterY() {
         return height / 2;
+    }
+    
+    // config setters
+    public static void setHeight(int height) {
+        Scene.height = height;
+    }
+    
+    public static void setWidth(int width) {
+        Scene.width = width;
     }
 
     // clears the terminal

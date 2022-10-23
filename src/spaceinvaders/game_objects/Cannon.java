@@ -21,6 +21,7 @@ public class Cannon extends GameObject {
     // constructor
     public Cannon(int x, int y) {
         super(x,y);
+        health = 3;
     }
 
     private void move() {}

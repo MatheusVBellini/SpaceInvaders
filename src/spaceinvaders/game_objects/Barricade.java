@@ -21,6 +21,7 @@ public class Barricade extends GameObject {
     // constructor
     public Barricade(int x, int y) {
         super(x,y);
+        health = 3;
     }
 
     // update method for redrawing game objects every frame
