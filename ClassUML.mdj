@@ -1758,7 +1758,7 @@
 											"_parent": {
 												"$ref": "AAAAAAGDjklPU6OBsNE="
 											},
-											"font": "Arial;13;1",
+											"font": "Arial;13;3",
 											"left": 917,
 											"top": 1127,
 											"width": 131.84716796875,
@@ -1888,7 +1888,7 @@
 											"top": 1188,
 											"width": 131.84716796875,
 											"height": 13,
-											"text": "+Projectile(x: int, y: int)",
+											"text": "#Projectile(x: int, y: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2004,7 +2004,7 @@
 											"model": {
 												"$ref": "AAAAAAGD9z7+HS0E6JA="
 											},
-											"font": "Arial;13;0",
+											"font": "Arial;13;2",
 											"left": 917,
 											"top": 1293,
 											"width": 131.84716796875,
@@ -2038,7 +2038,7 @@
 											"model": {
 												"$ref": "AAAAAAGD+tt/WaASv6A="
 											},
-											"font": "Arial;13;0",
+											"font": "Arial;13;2",
 											"left": 917,
 											"top": 1323,
 											"width": 131.84716796875,
@@ -10403,6 +10403,7 @@
 								"$ref": "AAAAAAGDjklPUqN+dx0="
 							},
 							"name": "Projectile",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -10575,7 +10576,8 @@
 									"type": "void",
 									"direction": "return"
 								}
-							]
+							],
+							"isAbstract": true
 						},
 						{
 							"_type": "UMLOperation",
@@ -10615,9 +10617,11 @@
 									},
 									"direction": "return"
 								}
-							]
+							],
+							"isAbstract": true
 						}
-					]
+					],
+					"isAbstract": true
 				},
 				{
 					"_type": "UMLClass",

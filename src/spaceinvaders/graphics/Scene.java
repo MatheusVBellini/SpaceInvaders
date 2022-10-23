@@ -3,7 +3,6 @@ package spaceinvaders.graphics;
 import java.util.ArrayList;
 
 import spaceinvaders.game_objects.GameObject;
-import spaceinvaders.game_objects.Sprite;
 import spaceinvaders.game_objects.Projectile;
 import spaceinvaders.game_objects.GameObjectCollection;
 
@@ -13,8 +12,8 @@ public class Scene {
      * Attributes
      * 
      */
-    private static int height = 34;
-    private static int width = 60;
+    private static int height = 26;
+    private static int width = 30;
     private char pixels[][];
 
     /*

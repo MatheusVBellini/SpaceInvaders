@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-public class Projectile extends GameObject {
+public abstract class Projectile extends GameObject {
     /*
      * 
      * Attributes
@@ -17,7 +17,7 @@ public class Projectile extends GameObject {
      *
      */
     // constructor
-    public Projectile(int x, int y) {
+    protected Projectile(int x, int y) {
         super(x + (GameObject.getHitboxWidth() / 2), y + (GameObject.getHitboxHeight() - 1));
         health = 1;
     }
@@ -52,7 +52,7 @@ public class Projectile extends GameObject {
         return getY();
     }
     
-    protected void move() {}
+    public abstract void move();
 
     // update method for redrawing game objects every frame
     @Override
@@ -61,7 +61,6 @@ public class Projectile extends GameObject {
     }
     
     @Override
-    public Projectile copy() {
-        return new Projectile(getPivotX(), getPivotY());
-    }
+    public abstract Projectile copy();
+    
 }

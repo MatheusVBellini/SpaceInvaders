@@ -25,9 +25,9 @@ public class SpaceInvaders {
     public static void main(String[] args) {
         // configuring game
         gameEngine.settings()
-                .setFrameRate(40)
-                .setSwarmSize(4,6)
-                .setResolution(34, 60);
+                .setFrameRate(10) // 10fps recommended for terminal update smoothness 
+                .setSwarmSize(4,5)
+                .setResolution(26, 30);
         
         
         gameEngine.loadGame();

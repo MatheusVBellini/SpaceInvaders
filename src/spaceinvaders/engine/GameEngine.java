@@ -27,9 +27,18 @@ public class GameEngine {
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(new Cannon(Scene.getCenterX() , Scene.getHeight() - 1));
+        
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         gameObjectCollection.add(new Barricade(Scene.getCenterX(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 3 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 3 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
     }
 
     // game loop

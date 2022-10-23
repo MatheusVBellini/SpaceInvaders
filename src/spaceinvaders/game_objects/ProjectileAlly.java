@@ -10,7 +10,12 @@ public class ProjectileAlly extends Projectile {
     }
     
     @Override
-    protected void move() {
+    public void move() {
         setPivotY(getPivotY() - 1);
     }
+    
+    @Override
+    public ProjectileAlly copy() {
+        return new ProjectileAlly(getPivotX(),getPivotY());
+    } 
 }

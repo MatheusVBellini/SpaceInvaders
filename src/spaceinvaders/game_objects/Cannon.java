@@ -1,6 +1,5 @@
 package spaceinvaders.game_objects;
 
-
 /*
  * Playable character
  */ 
@@ -24,7 +23,7 @@ public class Cannon extends GameObject {
         health = 3;
     }
 
-    private void move() {}
+    public void move() {}
     
     // update method for redrawing game objects every frame
     @Override

@@ -1,5 +1,7 @@
 package spaceinvaders.game_objects;
 
+import spaceinvaders.graphics.Sprite;
+
 
 /*
  * Abstract class for defining game objects
@@ -11,8 +13,8 @@ public abstract class GameObject {
     *
     */
     // game object geometry
-    private static int hitboxHeight = 3;
-    private static int hitboxWidth = 5;
+    private static int hitboxHeight = 1;
+    private static int hitboxWidth = 1;
 
     // game object position (pivot)
     private int x;

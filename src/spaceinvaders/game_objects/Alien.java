@@ -1,7 +1,5 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.Scene;
-
 /*
  * Base enemy class
  */

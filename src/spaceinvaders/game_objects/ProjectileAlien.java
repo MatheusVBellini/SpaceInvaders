@@ -10,7 +10,12 @@ public class ProjectileAlien extends Projectile {
     }
     
     @Override
-    protected void move() {
+    public void move() {
         setPivotY(getPivotY() + 1);
     }
+    
+    @Override
+    public ProjectileAlien copy() {
+        return new ProjectileAlien(getPivotX(),getPivotY());
+    } 
 }
