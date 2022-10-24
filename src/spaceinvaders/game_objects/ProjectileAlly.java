@@ -13,7 +13,7 @@ public class ProjectileAlly extends Projectile {
     public void move() {
         setPivotY(getPivotY() - 1);
     }
-    
+     
     @Override
     public ProjectileAlly copy() {
         return new ProjectileAlly(getPivotX(),getPivotY());

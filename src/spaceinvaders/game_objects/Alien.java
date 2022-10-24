@@ -59,12 +59,9 @@ public class Alien extends GameObject {
     // if hits a wall descend and switch direction
     @Override
     public void update() {
-        //move();
-        //if (getX() < 0 || getX() > Scene.getWidth() - getHitboxWidth()) {
-            switchDirection();
-            moveDown();
-            move();
-        //}
+        switchDirection();
+        moveDown();
+        move();
     }
     
     @Override

@@ -3,9 +3,22 @@ package spaceinvaders.engine;
 import spaceinvaders.game_objects.*;
 
 public class StateHandler {
+    private int alienMovesPerSec;
+    
+    public StateHandler(GameObjectCollection gameObjectCollection) {
+        alienMovesPerSec = gameObjectCollection.getAliens().getSpeed();
+    }
+    
     public void updateCollection(GameObjectCollection gameObjectCollection) {
         gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());
-        gameObjectCollection.getAliens().update();
+        if (alienMovesPerSec > 0) {
+            gameObjectCollection.getAliens().update();
+            alienMovesPerSec--;
+        }
+    }
+    
+    public void resetSpeedStates(GameObjectCollection gameObjectCollection) {
+        alienMovesPerSec = gameObjectCollection.getAliens().getSpeed();
     }
             
     /* Hazard codification

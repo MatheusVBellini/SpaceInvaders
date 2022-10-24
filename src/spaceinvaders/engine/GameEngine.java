@@ -21,9 +21,9 @@ public class GameEngine {
 
     // loads main game
     public void loadGame() {
-        stateHandler = new StateHandler();
         gameScene = new Scene();
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
+        stateHandler = new StateHandler(gameObjectCollection);
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(new Cannon(Scene.getCenterX() , Scene.getHeight() - 1));
@@ -44,6 +44,7 @@ public class GameEngine {
     // game loop
     public void gameLoop() {
         boolean breakLoop = false;
+        long dt = 0;
         while (!breakLoop) {
             // start time counting
             long start = System.currentTimeMillis();
@@ -56,6 +57,12 @@ public class GameEngine {
             // collision check
             switch (stateHandler.checkHazards(gameObjectCollection)) {
                 case 1 -> breakLoop = true;
+            }
+            // reset states after 1 second
+            dt++;
+            dt = dt % config.getFrameRate();
+            if (dt == 0) {
+                stateHandler.resetSpeedStates(gameObjectCollection);
             }
 
             // wait the correct amount of time for the cycle to end
