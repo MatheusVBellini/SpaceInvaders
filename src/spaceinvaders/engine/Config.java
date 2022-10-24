@@ -16,7 +16,7 @@ public class Config {
         frameTime = 1000 / frameRate;
     }
     
-    public Config setFrameRate(long frameRate) {
+    public Config setFrameRate(int frameRate) {
         if (frameRate < 1) {
             throw new IllegalArgumentException("Framerate must be a positive integer value.");
         }
@@ -49,12 +49,12 @@ public class Config {
     }
     
     // frame rate infromation
-    private long frameRate;
-    private long frameTime;
-    public long getFrameRate() {
+    private int frameRate;
+    private int frameTime;
+    public int getFrameRate() {
         return frameRate;
     }
-    public long getFrameTime() {
+    public int getFrameTime() {
         return frameTime;
     }
     
