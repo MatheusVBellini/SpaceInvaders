@@ -1,36 +1,16 @@
 package spaceinvaders.game_objects;
 
-/*
- * Playable character
- */ 
+import spaceinvaders.graphics.Scene;
 
 /**
- *
- * @author matheusbellini
+ * Playable character of the game
  */
- 
 public class Cannon extends GameObject {
-    /*
-    *
-    * Attributes
-    *
-    */
-    // game object stats
-
-
-    /*
-    *
-    * Methods
-    *
-    */
-    // constructor
-    
     /**
+     * Sets the initial position on screen of the cannon and sets its health to 3
      * 
-     * @param x
-     * @param x
-     * @param y
-     * @param y
+     * @param x x-axis alien's pivot position
+     * @param y y-axis alien's pivot position
      */
     public Cannon(int x, int y) {
         super(x,y);
@@ -38,20 +18,31 @@ public class Cannon extends GameObject {
     }
     
     /**
-     * 
+     * Cannon relies on user's input, if there's no input, then it does not move
      */
     public void move() {}
     
-    // update method for redrawing game objects every frame
+    /**
+     * Move cannon in the x-axis
+     * 
+     * <p><i>Limits the movement to the game screen</i></p>
+     */
+    public void move(int x) {
+        int newPivotX = getPivotX() + x;
+        if (newPivotX >= 0 || newPivotX < Scene.getWidth()) {
+            setPivotX(newPivotX);
+        }
+    }
     
     /**
-     * 
+     * To be implemented when InputHandler is available in spaceinvaders.engine
      */
     public void update() {}
     
     /**
+     * Returns a copy of the original object
      * 
-     * @return 
+     * @return copy of the original object
      */
     public Cannon copy() {
         return new Cannon(getPivotX(), getPivotY());

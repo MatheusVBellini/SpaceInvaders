@@ -1,28 +1,30 @@
 package spaceinvaders.game_objects;
 
 /**
- *
- * @author matheusbellini
+ * Projectiles shot by aliens
  */
-public class ProjectileAlien extends Projectile {
-    
+public class ProjectileAlien extends Projectile {   
     /**
+     * Set the coordinates of the projectile
      * 
+     * @param x x-axis coordinate
+     * @param y y-axis coordinate
      */
     ProjectileAlien(int x, int y) {
         super(x,y);
     }
     
     /**
-     * 
+     * Move the projectile a pixel downwards
      */
     public void move() {
         setPivotY(getPivotY() + 1);
     }
     
     /**
+     * Returns a copy of the original object
      * 
-     * @return 
+     * @return copy of the original object
      */
     public ProjectileAlien copy() {
         return new ProjectileAlien(getPivotX(),getPivotY());

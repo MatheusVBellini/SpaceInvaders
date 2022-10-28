@@ -3,40 +3,28 @@ package spaceinvaders.graphics;
 import spaceinvaders.game_objects.*;
 
 /**
- *
- * @author matheusbellini
+ * Graphical information game objects
  */
 public class Sprite {
-    /*
-     * 
-     * Attributes
-     * 
-     */
-    
     /**
-     * 
+     * Height of the sprite according to the game object's hitbox height
      */
     private int height = GameObject.getHitboxHeight();
     
     /**
-     * 
+     * Width of the sprite according to the game object's hitbox width
      */
     private int width = GameObject.getHitboxWidth();
     
     /**
-     * 
+     * Pixel information of the game object sprite
      */
     private char pixels[][];
 
-    /*
-     * 
-     * Methods
-     * 
-     */
-    
     /**
+     * Fills the pixel matrix with the gameObject sprite information
      * 
-     * @param gameObject
+     * @param gameObject GameObject that has the sprite
      */
     public Sprite(GameObject gameObject) {
         pixels = new char[height][width];
@@ -46,26 +34,13 @@ public class Sprite {
             }
         }
 
-        //. . H . .
-        //. / # \ .
-        //[ 0 0 0 ]
         if (gameObject instanceof Cannon) {
             pixels[0][0] = '\u26E2';
-        }
-        //| = = = |
-        //H 0 v 0 H
-        //H > . < H
-        else if (gameObject instanceof Alien) {
+        } else if (gameObject instanceof Alien) {
             pixels[0][0] = '\u2689';
-        }
-        // # # # # #
-        // # # # # #
-        // # . . . #
-        else if (gameObject instanceof Barricade) {
+        } else if (gameObject instanceof Barricade) {
             pixels[0][0] = '\u2617';
-        }
-        //~
-        else if (gameObject instanceof Projectile) {
+        } else if (gameObject instanceof Projectile) {
             pixels = new char[Projectile.getHitboxHeight()][Projectile.getHitboxWidth()];
             if (gameObject instanceof ProjectileAlien) {
                 pixels[0][0] = '\u29BF';
@@ -75,14 +50,13 @@ public class Sprite {
         }
     }
 
-    // getters
-    
     /**
+     * return the matrix of pixels
      * 
-     * @return 
+     * @return pixel matrix
      */
     public char[][] getPixels() {
-        return this.pixels;
+        return pixels;
     }
 
 }

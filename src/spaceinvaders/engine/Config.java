@@ -29,7 +29,7 @@ public class Config {
      * Sets the frame-rate of the game
      * 
      * @throws IllegalArgumentException argument smaller than 1
-     * @param frameRate game's running frame-rate 
+     * @param frameRate game running frame-rate 
      * @return this
      */
     public Config setFrameRate(int frameRate) {
@@ -56,11 +56,12 @@ public class Config {
     }
     
     /**
-     * Sets game's resolution 
+     * Sets game resolution 
      * 
      * @param height y-axis number of pixels
      * @param width x-axis number of pixels
      * @return this
+     * @throws IllegalArgumentException game objects don't fit in specified resolution
      */
     public Config setResolution(int height, int width) {
         int minResBySwarm = swarmWidth + 2 * (swarmWidth - 1) + 3;

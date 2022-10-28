@@ -1,53 +1,55 @@
 package spaceinvaders.game_objects;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
- *
- * @author matheusbellini
+ * Collection of game elements (GameObjects, Swarm)
  */
 public class GameObjectCollection {
     /**
-     * 
+     * List of non-enemies (Cannon, Spaceship, Barricade, Projectile)
      */
-    private ArrayList<GameObject> allies;
+    private LinkedList<GameObject> allies;
     
     /**
-     * 
+     * Collection of enemies defined within the Swarm class
      */
     private Swarm aliens;
     
     /**
+     * Define initial parameters to be followed when 
+     * instantiating the GameObjectColection
      * 
-     * @param swarmHeight
-     * @param swarmWidth
+     * @param swarmHeight height of the swarm of aliens of the game
+     * @param swarmWidth width of the swarm of aliens of the game
      */
     public GameObjectCollection(int swarmHeight, int swarmWidth) {
-        allies = new ArrayList<>();
+        allies = new LinkedList<>();
         aliens = new Swarm(swarmHeight,swarmWidth);
     }
     
     /**
+     * General method for adding objects to collections
      * 
-     * @param gameObject
-     * @param gameObject
+     * @param gameObject object to be added
      */
     public void add(GameObject gameObject) {
         allies.add(gameObject);
     }
     
     /**
+     * Get the list of non-enemy game objects
      * 
-     * @return 
+     * @return list of non-enemy game objects
      */
-    public ArrayList<GameObject> getAllies() {
+    public LinkedList<GameObject> getAllies() {
         return allies;
     }
     
     /**
+     * Get the object containing game enemies
      * 
-     * @return 
-     * @return  
+     * @return  object containing game enemies
      */
     public Swarm getAliens() {
         return aliens;

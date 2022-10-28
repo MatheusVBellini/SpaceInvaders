@@ -1,36 +1,14 @@
 package spaceinvaders.game_objects;
 
-/*
- * Define the barricade that defends player 
- */
-
 /**
- *
- * @author matheusbellini
+ * Barricade that defends the player's cannon from incoming bullets from the aliens
  */
-
 public class Barricade extends GameObject {
-    /*
-    *
-    * Attributes
-    *
-    */
-    // game object geometry
-
-    // game object stats
-
-    /*
-    *
-    * Methods
-    *
-    */
-    // constructor
-    
     /**
+     * Set barricade pivot position and its health to 1
      * 
-     * @param x
-     * @param x
-     * @param y
+     * @param x x-axis barricade's pivot position
+     * @param y y-axis barricade's pivot position
      */
     public Barricade(int x, int y) {
         super(x,y);
@@ -38,15 +16,17 @@ public class Barricade extends GameObject {
     }
     
     /**
-     * 
+     * Static object, does nothing when updated
      */
+    @Override
     public void update() {}
     
     /**
+     * Returns a copy of the original object
      * 
-     * @return 
-     * @return  
+     * @return copy of the original object
      */
+    @Override
     public Barricade copy() {
         return new Barricade(getPivotX(), getPivotY());
     }

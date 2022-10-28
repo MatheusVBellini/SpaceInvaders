@@ -21,7 +21,7 @@ import spaceinvaders.engine.GameEngine;
 public class SpaceInvaders {
     /**
      * Static declaration of a GameEngine object responsible 
-     * for commanding the game's settings and succession of events
+     * for commanding the game settings and succession of events
      */
     private static GameEngine gameEngine = new GameEngine();
 

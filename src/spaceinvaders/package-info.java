@@ -1,5 +1,5 @@
 /**
- * Top-level package (contains the main static class)
+ * Top-level package 
  * 
  * @author Matheus Violaro Bellini
  */

@@ -78,9 +78,11 @@ public class GameEngine {
      * Main game loop
      * 
      * <p>
-     *  Responsible for coordinating gameplay's sequentiality, such as 
+     *  Responsible for coordinating gameplay sequentiality, such as 
      *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
      * </p>
+     * 
+     * @throws InterruptedException thread was interrupted
      */
     private void gameLoop() {
         boolean breakLoop = false;
@@ -115,7 +117,7 @@ public class GameEngine {
     }
     
     /**
-     * Used to initate the main game
+     * Used to initiate the main game
      * 
      * <p>
      *  Guarantees that the loadGame method is called before the gameLoop method

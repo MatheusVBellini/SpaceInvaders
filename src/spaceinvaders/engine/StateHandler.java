@@ -50,13 +50,24 @@ public class StateHandler {
      * <strong>Hazard codification</strong>
      * </p>
      * 
-     * 
-     * <ul>
-     *  <li><strong><i>Code    --    Type of Hazard     --    Solution</i></strong></li>
-     *  <li> 0 --           no hazard           -- continue</li>
-     *  <li> 1 -- swarm collided with barricade -- end game</li>
-     * </ul>
-     * 
+     * <table>
+     * <caption>Hazard Codification</caption>
+     *  <tr>
+     *      <th>Code</th>
+     *      <th>Type of Hazard</th>
+     *      <th>Solution</th>
+     *  </tr>
+     *  <tr>
+     *      <td>0</td>
+     *      <td>no hazard</td>
+     *      <td>continue</td>
+     *  </tr>
+     *  <tr>
+     *      <td>1</td>
+     *      <td>swarm collided with barricade</td>
+     *      <td>end game</td>
+     *  </tr>
+     * </table>
      * 
      * @param gameobjectCollection instantiated GameObjects that need to be verified 
      * @return hazard codification
@@ -81,7 +92,7 @@ public class StateHandler {
      */
     private boolean swarmCourseComplete(GameObjectCollection gameObjectCollection) {
         int y = Scene.getHeight() - GameObject.getHitboxHeight() - 3;
-        for (GameObject alien : gameObjectCollection.getAliens().getArrayOfAliens()) {
+        for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {
             if (alien.getY() + GameObject.getHitboxHeight() - 1 == y) {
                 return true; 
             }

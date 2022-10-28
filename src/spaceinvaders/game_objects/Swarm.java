@@ -1,40 +1,39 @@
 package spaceinvaders.game_objects;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import spaceinvaders.graphics.Scene;
 
 /**
- *
- * @author matheusbellini
+ * Collection of aliens that move together
  */
 public class Swarm {
     /**
-     * 
+     * Number of aliens in the swarm
      */
     private int numOfAliens;
     
     /**
-     * 
+     * Speed of the swarm movement in pixels per second
      */
-    private int speed; // pixel / second
+    private int speed;
     
     /**
-     * 
+     * List of aliens that compose the swarm
      */
-    private ArrayList<Alien> swarm;
+    private LinkedList<Alien> swarm;
     
     /**
+     * Instantiates the swarm with a specified height and 
+     * width and with default initial speed of 1
      * 
-     * @param rAliens
-     * @param rAliens
-     * @param cAliens
-     * @param cAliens
+     * @param rAliens number of alien rows
+     * @param cAliens number of alien columns
      */
     public Swarm(int rAliens, int cAliens) {
-        speed = 6;
+        speed = 1;
         numOfAliens = rAliens * cAliens;
-        swarm = new ArrayList<>();
+        swarm = new LinkedList<>();
         
         int initX = (GameObject.getHitboxWidth() / 2) + (Scene.getWidth() / cAliens);
         int initY = GameObject.getHitboxHeight() + 1;
@@ -50,7 +49,8 @@ public class Swarm {
     }
     
     /**
-     * 
+     * Move aliens in the swarm, if one of them hits a wall, the 
+     * movement is inverted and all the aliens go downwards by 1 pixel
      */
     public void update() {
         boolean switch_warning = false;
@@ -69,18 +69,18 @@ public class Swarm {
     }
     
     /**
+     * Get the list of aliens
      * 
-     * @return 
-     * @return  
+     * @return  list of aliens
      */
-    public ArrayList<GameObject> getArrayOfAliens() {
-        return new ArrayList<>(swarm);
+    public LinkedList<GameObject> getListOfAliens() {
+        return new LinkedList<>(swarm);
     }
     
     /**
+     * Get the current speed of the swarm
      * 
-     * @return 
-     * @return  
+     * @return current speed of the swarm
      */
     public int getSpeed() {
         return speed;

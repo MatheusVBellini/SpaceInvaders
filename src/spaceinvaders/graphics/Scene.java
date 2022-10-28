@@ -1,7 +1,5 @@
 package spaceinvaders.graphics;
 
-import java.util.ArrayList;
-
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.Projectile;
 import spaceinvaders.game_objects.GameObjectCollection;
@@ -60,7 +58,6 @@ public class Scene {
         pixels[0][width-4] = ':';
     }
 
-    // getters
     
     /**
      * Gets scene default height
@@ -149,10 +146,12 @@ public class Scene {
         int y = gameObject.getY();
         int objectHeight = GameObject.getHitboxHeight();
         int objectWidth = GameObject.getHitboxWidth();
+        
         if (gameObject instanceof Projectile) {
             objectHeight = Projectile.getHitboxHeight();
             objectWidth = Projectile.getHitboxWidth();
         }
+        
         Sprite sprite = gameObject.getSprite();
         char spritePixels[][] = sprite.getPixels();
 
@@ -169,18 +168,22 @@ public class Scene {
      * 
      * @param gameObjectCollection collection with all the GameObjects to be drawn
      */
-    private void draw(ArrayList<GameObject> gameObjectCollection) {
-        gameObjectCollection.forEach(gameObject -> draw(gameObject));
+    private void draw(GameObjectCollection gameObjectCollection) {
+        gameObjectCollection.getAliens().getListOfAliens().forEach(gameObject -> draw(gameObject));
+        gameObjectCollection.getAllies().forEach(gameObject -> draw(gameObject));
     }
 
     /**
-     *  
+     * Removes GameObject Sprite information in the pixels attribute
+     * 
+     * @param gameObject gameObject to be cleansed
      */
     private void clean(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
         int objectHeight = GameObject.getHitboxHeight();
         int objectWidth = GameObject.getHitboxWidth();
+        
         if (gameObject instanceof Projectile) {
             objectHeight = Projectile.getHitboxHeight();
             objectWidth = Projectile.getHitboxWidth();
@@ -195,23 +198,24 @@ public class Scene {
     }
 
     /**
+     * Removes the information of a entire collection's Sprite to the pixels attribute
      * 
+     * @param gameObjectCollection collection with all the GameObjects to be cleansed
      */
-    private void clean(ArrayList<GameObject> gameObjectCollection) {
-        gameObjectCollection.forEach(gameObject -> clean(gameObject));
+    private void clean(GameObjectCollection gameObjectCollection) {
+        gameObjectCollection.getAliens().getListOfAliens().forEach(gameObject -> clean(gameObject));
+        gameObjectCollection.getAllies().forEach(gameObject -> clean(gameObject));
     }
-
-    // renders current estabilished scene
     
     /**
+     * Shows in the screen an instant-state of the GameObjectCollection, then
+     * removes its information from the pixels matrix
      * 
-     * @param gameObjectCollection
+     * @param gameObjectCollection current collection of game objects
      */
     public void render(GameObjectCollection gameObjectCollection) {
-        draw(gameObjectCollection.getAllies());
-        draw(gameObjectCollection.getAliens().getArrayOfAliens());
+        draw(gameObjectCollection);
         build();
-        clean(gameObjectCollection.getAllies());
-        clean(gameObjectCollection.getAliens().getArrayOfAliens());
+        clean(gameObjectCollection);
     }
 }
