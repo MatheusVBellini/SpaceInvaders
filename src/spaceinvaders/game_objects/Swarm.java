@@ -4,13 +4,35 @@ import java.util.ArrayList;
 
 import spaceinvaders.graphics.Scene;
 
+/**
+ *
+ * @author matheusbellini
+ */
 public class Swarm {
+    /**
+     * 
+     */
     private int numOfAliens;
+    
+    /**
+     * 
+     */
     private int speed; // pixel / second
+    
+    /**
+     * 
+     */
     private ArrayList<Alien> swarm;
     
+    /**
+     * 
+     * @param rAliens
+     * @param rAliens
+     * @param cAliens
+     * @param cAliens
+     */
     public Swarm(int rAliens, int cAliens) {
-        speed = 1;
+        speed = 6;
         numOfAliens = rAliens * cAliens;
         swarm = new ArrayList<>();
         
@@ -27,6 +49,9 @@ public class Swarm {
         }
     }
     
+    /**
+     * 
+     */
     public void update() {
         boolean switch_warning = false;
         for (Alien alien : swarm) {
@@ -43,10 +68,20 @@ public class Swarm {
         }
     }
     
+    /**
+     * 
+     * @return 
+     * @return  
+     */
     public ArrayList<GameObject> getArrayOfAliens() {
         return new ArrayList<>(swarm);
     }
     
+    /**
+     * 
+     * @return 
+     * @return  
+     */
     public int getSpeed() {
         return speed;
     }

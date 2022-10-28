@@ -2,20 +2,41 @@ package spaceinvaders.graphics;
 
 import spaceinvaders.game_objects.*;
 
+/**
+ *
+ * @author matheusbellini
+ */
 public class Sprite {
     /*
      * 
      * Attributes
      * 
      */
+    
+    /**
+     * 
+     */
     private int height = GameObject.getHitboxHeight();
+    
+    /**
+     * 
+     */
     private int width = GameObject.getHitboxWidth();
+    
+    /**
+     * 
+     */
     private char pixels[][];
 
     /*
      * 
      * Methods
      * 
+     */
+    
+    /**
+     * 
+     * @param gameObject
      */
     public Sprite(GameObject gameObject) {
         pixels = new char[height][width];
@@ -55,6 +76,11 @@ public class Sprite {
     }
 
     // getters
+    
+    /**
+     * 
+     * @return 
+     */
     public char[][] getPixels() {
         return this.pixels;
     }

@@ -6,23 +6,30 @@ import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.Projectile;
 import spaceinvaders.game_objects.GameObjectCollection;
 
-public class Scene {
-    /*
-     * 
-     * Attributes
-     * 
+/**
+ * Canvas that define the game screens
+ */
+public class Scene {   
+    /**
+     * Y-axis size of the scene
      */
     private static int height = 26;
+    
+    /**
+     * X-axis size of the scene
+     */
     private static int width = 30;
+    
+    /**
+     * pixels that compose the scene imagery
+     */
     private char pixels[][];
 
-    /*
-     * 
-     * Methods
-     * 
-     */
-    // constructor
     // no arguments for standard game screen
+    
+    /**
+     * Initializes pixels with main game screen information 
+     */
     public Scene() {
         pixels = new char[height][width];
         // initalizes pixels with '.'
@@ -54,38 +61,72 @@ public class Scene {
     }
 
     // getters
+    
+    /**
+     * Gets scene default height
+     * 
+     * @return scene height 
+     */
     public static int getHeight() {
         return height;
     }
 
+    /**
+     * Gets scene default width
+     * 
+     * @return scene width
+     */
     public static int getWidth() {
         return width;
     }
 
+    /**
+     * Gets the center of the scene relative to the x-axis
+     * 
+     * @return center coordinate of x-axis
+     */
     public static int getCenterX() {
         return width / 2;
     }
 
+    /**
+     * Gets the center of the scene relative to the y-axis
+     * 
+     * @return center coordinate of y-axis
+     */
     public static int getCenterY() {
         return height / 2;
     }
     
-    // config setters
+    /**
+     * Sets a new height for the scenes
+     * 
+     * @param height scene height
+     */
     public static void setHeight(int height) {
         Scene.height = height;
     }
     
+    /**
+     * Sets a new width for the scenes
+     * 
+     * @param width scene width
+     */
     public static void setWidth(int width) {
         Scene.width = width;
     }
-
-    // clears the terminal
+    
+    /**
+     * Clears the terminal window
+     */
     private void clearTerminal() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
-    // builds the scene in the screen
+    
+    /**
+     * Prints the composed scene out on the terminal screen
+     */
     private void build() {
         this.clearTerminal();
         // draws pixels values in the terminal
@@ -97,7 +138,12 @@ public class Scene {
             System.out.print('\n');
         }
     }
-
+    
+    /**
+     * Adds GameObject Sprite information in the pixels attribute
+     * 
+     * @param gameObject gameObject to be drawn
+     */
     private void draw(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
@@ -118,10 +164,18 @@ public class Scene {
         }
     }
 
+    /**
+     * Adds the information of a entire collection's Sprite to the pixels attribute
+     * 
+     * @param gameObjectCollection collection with all the GameObjects to be drawn
+     */
     private void draw(ArrayList<GameObject> gameObjectCollection) {
         gameObjectCollection.forEach(gameObject -> draw(gameObject));
     }
 
+    /**
+     *  
+     */
     private void clean(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
@@ -140,11 +194,19 @@ public class Scene {
         }
     }
 
+    /**
+     * 
+     */
     private void clean(ArrayList<GameObject> gameObjectCollection) {
         gameObjectCollection.forEach(gameObject -> clean(gameObject));
     }
 
     // renders current estabilished scene
+    
+    /**
+     * 
+     * @param gameObjectCollection
+     */
     public void render(GameObjectCollection gameObjectCollection) {
         draw(gameObjectCollection.getAllies());
         draw(gameObjectCollection.getAliens().getArrayOfAliens());

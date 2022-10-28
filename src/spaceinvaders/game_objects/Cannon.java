@@ -3,6 +3,12 @@ package spaceinvaders.game_objects;
 /*
  * Playable character
  */ 
+
+/**
+ *
+ * @author matheusbellini
+ */
+ 
 public class Cannon extends GameObject {
     /*
     *
@@ -18,18 +24,35 @@ public class Cannon extends GameObject {
     *
     */
     // constructor
+    
+    /**
+     * 
+     * @param x
+     * @param x
+     * @param y
+     * @param y
+     */
     public Cannon(int x, int y) {
         super(x,y);
         health = 3;
     }
-
+    
+    /**
+     * 
+     */
     public void move() {}
     
     // update method for redrawing game objects every frame
-    @Override
+    
+    /**
+     * 
+     */
     public void update() {}
     
-    @Override
+    /**
+     * 
+     * @return 
+     */
     public Cannon copy() {
         return new Cannon(getPivotX(), getPivotY());
     }

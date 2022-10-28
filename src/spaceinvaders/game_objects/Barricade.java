@@ -3,6 +3,12 @@ package spaceinvaders.game_objects;
 /*
  * Define the barricade that defends player 
  */
+
+/**
+ *
+ * @author matheusbellini
+ */
+
 public class Barricade extends GameObject {
     /*
     *
@@ -19,16 +25,28 @@ public class Barricade extends GameObject {
     *
     */
     // constructor
+    
+    /**
+     * 
+     * @param x
+     * @param x
+     * @param y
+     */
     public Barricade(int x, int y) {
         super(x,y);
         health = 1;
     }
-
-    // update method for redrawing game objects every frame
-    @Override
+    
+    /**
+     * 
+     */
     public void update() {}
     
-    @Override
+    /**
+     * 
+     * @return 
+     * @return  
+     */
     public Barricade copy() {
         return new Barricade(getPivotX(), getPivotY());
     }
