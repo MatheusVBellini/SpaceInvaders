@@ -7,12 +7,12 @@ public abstract class Projectile extends GameObject {
     /**
      * Special hitbox height for the class 
      */
-    private static int hitboxHeight = 1;
+    private static final int hitboxHeight = 1;
     
     /**
      * Special hitbox width for the class 
      */
-    private static int hitboxWidth = 1;
+    private static final int hitboxWidth = 1;
 
 
     /**
@@ -29,11 +29,12 @@ public abstract class Projectile extends GameObject {
     /**
      * Move the projectile on the screen according to it's shooter
      */
-    public abstract void move();
+    protected abstract void move();
 
     /**
      * Move the projectile according to its move() method
      */
+    @Override
     public void update() {
         move();
     }
@@ -43,6 +44,7 @@ public abstract class Projectile extends GameObject {
      * 
      * @return copy of the original object
      */
+    @Override
     public abstract Projectile copy();
     
 }

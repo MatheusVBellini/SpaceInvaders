@@ -17,7 +17,8 @@ public class ProjectileAlly extends Projectile {
     /**
      * Move the projectile a pixel upwards
      */
-    public void move() {
+    @Override
+    protected void move() {
         setPivotY(getPivotY() - 1);
     }
      
@@ -26,6 +27,7 @@ public class ProjectileAlly extends Projectile {
      * 
      * @return copy of the original object
      */
+    @Override
     public ProjectileAlly copy() {
         return new ProjectileAlly(getPivotX(),getPivotY());
     } 

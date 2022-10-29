@@ -51,7 +51,7 @@ public class Alien extends GameObject {
     /**
      * Move the alien according to the direction attribute value
      */
-    public void move() {
+    private void move() {
         if (direction == Direction.left) {
             moveLeft();
         } else {
@@ -71,15 +71,30 @@ public class Alien extends GameObject {
     }
     
     /**
-     * Switch direction of movement and go down
-     * 
-     * <p><i>should be called only when alien hits the wall</i></p>
+     * Move the aliens
      */
     @Override
     public void update() {
-        switchDirection();
-        moveDown();
         move();
+    }
+    
+    /**
+     * <p>If swarm hit a wall</p>
+     * Switch direction of movement and go down
+     * 
+     * <p>Else</p>
+     * Move the aliens like the trivial case
+     * 
+     * @param hitwall boolean defining whether the alien hit a wall
+     */
+    public void update(boolean hitwall) {
+        if (hitwall) {
+            switchDirection();
+            moveDown();
+            move();
+        } else {
+            move();
+        }
     }
     
     /**

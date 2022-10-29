@@ -12,7 +12,7 @@ public class GameEngine {
     /**
      * Configuration class composed into the GameEngine
      */
-    private Config config;
+    private final Config config;
     
     /**
      * StateHandler class composed into the GameEngine
@@ -72,6 +72,8 @@ public class GameEngine {
         gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        
+        gameObjectCollection.add(new SpaceShip(0, 1));
     }
     
     /**
@@ -91,13 +93,19 @@ public class GameEngine {
             // start time counting
             long start = System.currentTimeMillis();
 
-            // processInput()
+            // process input
+            
             // render
             gameScene.render(gameObjectCollection);
+            
             // update
             stateHandler.updateCollection(gameObjectCollection, dt);
-            // collision check
-            switch (stateHandler.checkHazards(gameObjectCollection)) {
+            
+            // hazards check
+            stateHandler.checkHazards(gameObjectCollection);
+            
+            // fatal hazards check
+            switch (stateHandler.checkFatalHazards(gameObjectCollection)) {
                 case 1 -> breakLoop = true;
             }
             

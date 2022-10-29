@@ -9,12 +9,12 @@ public class Sprite {
     /**
      * Height of the sprite according to the game object's hitbox height
      */
-    private int height = GameObject.getHitboxHeight();
+    private final int height = GameObject.getHitboxHeight();
     
     /**
      * Width of the sprite according to the game object's hitbox width
      */
-    private int width = GameObject.getHitboxWidth();
+    private final int width = GameObject.getHitboxWidth();
     
     /**
      * Pixel information of the game object sprite
@@ -47,6 +47,8 @@ public class Sprite {
             } else {
                 pixels[0][0] = '\u29BE';
             } 
+        } else if (gameObject instanceof SpaceShip) {
+            pixels[0][0] = '\u21E8';
         }
     }
 

@@ -54,4 +54,20 @@ public class GameObjectCollection {
     public Swarm getAliens() {
         return aliens;
     }
+    
+    /**
+     * Get the space ship in the gameObjectCollection
+     * 
+     * @return space ship in gameObjectCollection or null pointer 
+     * if it does not exist
+     */
+    public GameObject getSpaceShip() {
+        for (GameObject gameObject : this.allies) {
+            if (gameObject instanceof SpaceShip) {
+                return gameObject;
+            }
+        }
+        
+        return null;
+    }
 }

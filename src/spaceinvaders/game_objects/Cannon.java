@@ -9,8 +9,8 @@ public class Cannon extends GameObject {
     /**
      * Sets the initial position on screen of the cannon and sets its health to 3
      * 
-     * @param x x-axis alien's pivot position
-     * @param y y-axis alien's pivot position
+     * @param x x-axis cannon's pivot position
+     * @param y y-axis cannon's pivot position
      */
     public Cannon(int x, int y) {
         super(x,y);
@@ -20,14 +20,16 @@ public class Cannon extends GameObject {
     /**
      * Cannon relies on user's input, if there's no input, then it does not move
      */
-    public void move() {}
+    private void move() {}
     
     /**
      * Move cannon in the x-axis
      * 
      * <p><i>Limits the movement to the game screen</i></p>
+     * 
+     * @param x how much the cannon is to be moved in the x-axis
      */
-    public void move(int x) {
+    private void move(int x) {
         int newPivotX = getPivotX() + x;
         if (newPivotX >= 0 || newPivotX < Scene.getWidth()) {
             setPivotX(newPivotX);
@@ -35,15 +37,25 @@ public class Cannon extends GameObject {
     }
     
     /**
-     * To be implemented when InputHandler is available in spaceinvaders.engine
+     * Trivial case - no input, no change of state
      */
-    public void update() {}
+    @Override
+    public void update() {
+        move();
+    }
+    
+    /**
+     * To be implemented when InputHandler is available in spaceinvaders.engine
+     * @param input parsed keyboard input
+     */
+    public void update(int input) {}
     
     /**
      * Returns a copy of the original object
      * 
      * @return copy of the original object
      */
+    @Override
     public Cannon copy() {
         return new Cannon(getPivotX(), getPivotY());
     }

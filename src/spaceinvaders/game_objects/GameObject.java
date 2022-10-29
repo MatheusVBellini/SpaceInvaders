@@ -10,12 +10,17 @@ public abstract class GameObject {
     /**
      * Height of the collision susceptible box which the object is contained within
      */
-    private static int hitboxHeight = 1;
+    private static final int hitboxHeight = 1;
     
     /**
      * Width of the collision susceptible box which the object is contained within
      */
-    private static int hitboxWidth = 1;
+    private static final int hitboxWidth = 1;
+    
+    /**
+     * Maximum moving speed of game objects
+     */
+    private static final int speed = 6;
     
     /**
      *  x-axis position of object's pivot
@@ -71,6 +76,8 @@ public abstract class GameObject {
         int coordinate = y - (hitboxHeight - 1);
         this.y = coordinate;
     }
+    
+    // getters
     
     /**
      * Gets the pivot coordinate of the x-axis
@@ -133,6 +140,15 @@ public abstract class GameObject {
      */
     public Sprite getSprite() {
         return sprite;
+    }
+    
+    /**
+     * Gets the general speed of gameObjects
+     * 
+     * @return speed of gameObjects
+     */
+    public static int getSpeed() {
+        return speed;
     }
     
     /**

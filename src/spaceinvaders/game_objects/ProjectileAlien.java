@@ -17,7 +17,8 @@ public class ProjectileAlien extends Projectile {
     /**
      * Move the projectile a pixel downwards
      */
-    public void move() {
+    @Override
+    protected void move() {
         setPivotY(getPivotY() + 1);
     }
     
@@ -26,6 +27,7 @@ public class ProjectileAlien extends Projectile {
      * 
      * @return copy of the original object
      */
+    @Override
     public ProjectileAlien copy() {
         return new ProjectileAlien(getPivotX(),getPivotY());
     } 
