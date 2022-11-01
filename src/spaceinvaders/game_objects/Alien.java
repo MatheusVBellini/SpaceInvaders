@@ -1,17 +1,21 @@
 package spaceinvaders.game_objects;
 
+import spaceinvaders.graphics.sprite.AlienSprite;
+
 /**
  * Base enemy class
  */
 public class Alien extends GameObject {  
     /**
-     * Sets the initial position on screen of the alien and sets its health to 1
+     * Sets the initial position on screen of the alien, sets its health to 1
+     * and assigns a sprite to the object
      * 
      * @param x x-axis alien's pivot position
      * @param y y-axis alien's pivot position
      */
     public Alien(int x, int y) {
         super(x,y);
+        sprite = new AlienSprite();
         health = 1;
     }
     

@@ -1,19 +1,22 @@
 package spaceinvaders.game_objects;
 
 import spaceinvaders.graphics.Scene;
+import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
  * Playable character of the game
  */
 public class Cannon extends GameObject {
     /**
-     * Sets the initial position on screen of the cannon and sets its health to 3
+     * Sets the initial position on screen of the cannon, sets its health to 3
+     * and assigns a sprite to the object
      * 
      * @param x x-axis cannon's pivot position
      * @param y y-axis cannon's pivot position
      */
     public Cannon(int x, int y) {
         super(x,y);
+        sprite = new CannonSprite();
         health = 3;
     }
     

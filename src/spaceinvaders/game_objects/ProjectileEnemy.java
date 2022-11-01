@@ -1,17 +1,20 @@
 package spaceinvaders.game_objects;
 
+import spaceinvaders.graphics.sprite.ProjectileEnemySprite;
+
 /**
  * Projectiles shot by aliens
  */
-public class ProjectileAlien extends Projectile {   
+public class ProjectileEnemy extends Projectile {   
     /**
-     * Set the coordinates of the projectile
+     * Set the coordinates of the projectile and assigns a sprite to it
      * 
      * @param x x-axis coordinate
      * @param y y-axis coordinate
      */
-    ProjectileAlien(int x, int y) {
+    ProjectileEnemy(int x, int y) {
         super(x,y);
+        sprite = new ProjectileEnemySprite();
     }
     
     /**
@@ -28,7 +31,7 @@ public class ProjectileAlien extends Projectile {
      * @return copy of the original object
      */
     @Override
-    public ProjectileAlien copy() {
-        return new ProjectileAlien(getPivotX(),getPivotY());
+    public ProjectileEnemy copy() {
+        return new ProjectileEnemy(getPivotX(),getPivotY());
     } 
 }

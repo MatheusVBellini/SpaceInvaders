@@ -1,5 +1,6 @@
 package spaceinvaders.graphics;
 
+import spaceinvaders.graphics.sprite.Sprite;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.Projectile;
 import spaceinvaders.game_objects.GameObjectCollection;

@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.Sprite;
+import spaceinvaders.graphics.sprite.Sprite;
 
 /**
  *  Abstract class for defining game objects
@@ -52,7 +52,6 @@ public abstract class GameObject {
     protected GameObject(int x, int y) {
         this.x = x - (hitboxWidth / 2);
         this.y = y - (hitboxHeight - 1);
-        sprite = new Sprite(this);
     }
 
     // setters
