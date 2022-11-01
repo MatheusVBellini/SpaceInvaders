@@ -122,7 +122,8 @@ public class StateHandler {
     
     
     /**
-     * Checks if swarm has completed its course
+     * Checks if swarm has completed its course, that is, if any alien has hit 
+     * a barricade
      * 
      * <p>
      *  if it did, end game, continue otherwise
@@ -134,10 +135,8 @@ public class StateHandler {
     private boolean swarmCourseComplete(Swarm swarm) {
         int y = Scene.getHeight() - GameObject.getHitboxHeight() - 3;
         
-        for (GameObject alien : swarm.getListOfAliens()) {
-            if (alien.getY() + GameObject.getHitboxHeight() - 1 == y) {
-                return true; 
-            }
+        if (swarm.getListOfAliens().getLast().getY() + GameObject.getHitboxHeight() - 1 == y) {
+            return true;
         }
         
         return false;
