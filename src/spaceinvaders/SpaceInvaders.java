@@ -1,6 +1,5 @@
 package spaceinvaders;
 
-// internal imports
 import spaceinvaders.engine.GameEngine;
 
 /**

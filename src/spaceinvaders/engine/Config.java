@@ -8,6 +8,26 @@ import spaceinvaders.graphics.Scene;
  */
 public class Config {    
     /**
+     * Game's running frame-rate in frames-per-second
+     */
+    private int frameRate;
+    
+    /**
+     * Game's frame-time in milliseconds
+     */
+    private int frameTime;
+    
+    /**
+     * Height of the swarm in units of alien
+     */
+    private int swarmHeight;
+    
+    /**
+     * Width of the swarm in units of alien
+     */
+    private int swarmWidth;
+    
+    /**
      * Constructor that instantiate variables with default values
      * 
      * <p><strong>Default values:</strong></p>
@@ -80,16 +100,6 @@ public class Config {
     }
     
     /**
-     * Game's running frame-rate in frames-per-second
-     */
-    private int frameRate;
-    
-    /**
-     * Game's frame-time in milliseconds
-     */
-    private int frameTime;
-    
-    /**
      * Gets the value of the game's set frame-rate in frames-per-second
      * 
      * @return frame-rate
@@ -106,16 +116,6 @@ public class Config {
     public int getFrameTime() {
         return frameTime;
     }
-    
-    /**
-     * Height of the swarm in units of alien
-     */
-    private int swarmHeight;
-    
-    /**
-     * Width of the swarm in units of alien
-     */
-    private int swarmWidth;
     
     /**
      * Gets the height of the swarm in alien
