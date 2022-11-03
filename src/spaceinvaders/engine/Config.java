@@ -19,8 +19,8 @@ public class Config {
      *  </ul> 
      */
     public Config() {
-        swarmHeight = 4;
-        swarmWidth = 5;
+        swarmHeight = 5;
+        swarmWidth = 9;
         frameRate = 60;
         frameTime = 1000 / frameRate;
     }

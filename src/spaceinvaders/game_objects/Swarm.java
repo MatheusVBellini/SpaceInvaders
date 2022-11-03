@@ -35,13 +35,13 @@ public class Swarm {
         numOfAliens = rAliens * cAliens;
         swarm = new LinkedList<>();
         
-        int initX = (GameObject.getHitboxWidth() / 2) + (Scene.getWidth() / cAliens);
+        int initX = Scene.getCenterX() - cAliens * (GameObject.getHitboxWidth());
         int initY = GameObject.getHitboxHeight() + 1;
         
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {
                 swarm.add(new Alien(
-                        initX + j * (GameObject.getHitboxWidth() + 2), 
+                        initX + j * (GameObject.getHitboxWidth() + 1), 
                         initY + i * (GameObject.getHitboxHeight() + 1)
                 ));
             }
