@@ -1,5 +1,6 @@
 package spaceinvaders.game_objects;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -7,9 +8,34 @@ import java.util.LinkedList;
  */
 public class GameObjectCollection {
     /**
-     * List of non-enemies (Cannon, Spaceship, Barricade, Projectile)
+     * HashMap containing all collection attributes
      */
-    private LinkedList<GameObject> allies;
+    private HashMap<String,? extends Updatable> gameObjectMap;
+    
+    /**
+     * Cannon that the player controls
+     */
+    private Cannon cannon;
+    
+    /**
+     * Special space ship in the game
+     */
+    private SpaceShip spaceShip;
+    
+    /**
+     * Game barricades
+     */
+    private LinkedList<BarricadeBlock> barricadeBlocks;
+    
+    /**
+     * Projectiles shot by the cannon
+     */
+    private LinkedList<ProjectileAlly> cannonShots;
+    
+    /**
+     * Projectiles shot by the aliens
+     */
+    private LinkedList<ProjectileEnemy> alienShots;
     
     /**
      * Collection of enemies defined within the Swarm class
@@ -24,26 +50,55 @@ public class GameObjectCollection {
      * @param swarmWidth width of the swarm of aliens of the game
      */
     public GameObjectCollection(int swarmHeight, int swarmWidth) {
-        allies = new LinkedList<>();
+        barricadeBlocks = new LinkedList<>();
+        cannonShots = new LinkedList<>();
+        alienShots = new LinkedList<>();
         aliens = new Swarm(swarmHeight,swarmWidth);
     }
     
     /**
-     * General method for adding objects to collections
+     * Instantiates a cannon in the collection
      * 
-     * @param gameObject object to be added
+     * @param cannon 
      */
-    public void add(GameObject gameObject) {
-        allies.add(gameObject);
+    public void add(Cannon cannon) {
+        this.cannon = cannon;
     }
     
     /**
-     * Get the list of non-enemy game objects
+     * Instantiates a space ship in the collection
      * 
-     * @return list of non-enemy game objects
+     * @param spaceShip
      */
-    public LinkedList<GameObject> getAllies() {
-        return allies;
+    public void add(SpaceShip spaceShip) {
+        this.spaceShip = spaceShip;
+    }
+    
+    /**
+     * Instantiates a barricade block in the collection
+     * 
+     * @param barricadeBlock
+     */
+    public void add(BarricadeBlock barricadeBlock) {
+        barricadeBlocks.add(barricadeBlock);
+    }
+    
+    /**
+     * Instantiates an enemy projectile in the collection
+     * 
+     * @param projectile
+     */
+    public void add(ProjectileEnemy projectile) {
+        alienShots.add(projectile);
+    }
+    
+    /**
+     * Instantiates an ally projectile in the collection
+     * 
+     * @param projectile
+     */
+    public void add(ProjectileAlly projectile) {
+        cannonShots.add(projectile);
     }
     
     /**
@@ -62,12 +117,6 @@ public class GameObjectCollection {
      * if it does not exist
      */
     public GameObject getSpaceShip() {
-        for (GameObject gameObject : this.allies) {
-            if (gameObject instanceof SpaceShip) {
-                return gameObject;
-            }
-        }
-        
-        return null;
+        return spaceShip;
     }
 }
