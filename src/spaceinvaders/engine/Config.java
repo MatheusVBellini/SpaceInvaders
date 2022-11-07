@@ -52,7 +52,7 @@ public class Config {
      * @param frameRate game running frame-rate 
      * @return this
      */
-    public Config setFrameRate(int frameRate) {
+    public Config setFrameRate(int frameRate) throws IllegalArgumentException {
         if (frameRate < 1) {
             throw new IllegalArgumentException("Framerate must be a positive integer value.");
         }
@@ -83,17 +83,7 @@ public class Config {
      * @return this
      * @throws IllegalArgumentException game objects don't fit in specified resolution
      */
-    public Config setResolution(int height, int width) {
-        int minResBySwarm = swarmWidth + 2 * (swarmWidth - 1) + 3;
-        if (width < minResBySwarm) {
-            if (minResBySwarm < 16) {
-                throw new IllegalArgumentException("Unable to render UI, please enter a resolution width greater than 15.");
-            }
-            throw new IllegalArgumentException("Swarm not able to render, please enter a resolution width greater than " + (minResBySwarm-1) + ".");
-        } else if (width < 16) {
-            throw new IllegalArgumentException("Unable to render UI, please enter a resolution width greater than 15.");
-        } 
-        
+    public Config setResolution(int height, int width) {  
         Scene.setHeight(height);
         Scene.setWidth(width);
         return this;

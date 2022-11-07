@@ -32,9 +32,10 @@ public class Cannon extends GameObject {
      * 
      * @param x how much the cannon is to be moved in the x-axis
      */
-    private void move(int x) {
+    public void move(int x) {
         int newPivotX = getPivotX() + x;
-        if (newPivotX >= 0 || newPivotX < Scene.getWidth()) {
+        if (newPivotX >= 0 && newPivotX < Scene.getWidth()) {
+            System.out.println(newPivotX);
             setPivotX(newPivotX);
         }
     }
@@ -46,13 +47,7 @@ public class Cannon extends GameObject {
     public void update() {
         move();
     }
-    
-    /**
-     * To be implemented when InputHandler is available in spaceinvaders.engine
-     * @param input parsed keyboard input
-     */
-    public void update(int input) {}
-    
+        
     /**
      * Returns a copy of the original object
      * 

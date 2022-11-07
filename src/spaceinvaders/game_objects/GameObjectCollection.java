@@ -7,9 +7,14 @@ import java.util.LinkedList;
  */
 public class GameObjectCollection {
     /**
-     * List of non-enemies (Cannon, Spaceship, Barricade, Projectile)
+     * List of non-enemies (Cannon, Spaceship, Barricade)
      */
     private LinkedList<GameObject> allies;
+    
+    /**
+     * List of all projectiles
+     */
+    private LinkedList<Projectile> projectiles;
     
     /**
      * Collection of enemies defined within the Swarm class
@@ -25,6 +30,7 @@ public class GameObjectCollection {
      */
     public GameObjectCollection(int swarmHeight, int swarmWidth) {
         allies = new LinkedList<>();
+        projectiles = new LinkedList<>();
         aliens = new Swarm(swarmHeight,swarmWidth);
     }
     
@@ -38,12 +44,30 @@ public class GameObjectCollection {
     }
     
     /**
+     * Adds projectile to the projectile linked list
+     * 
+     * @param projectile projectile to be added
+     */
+    public void add(Projectile projectile) {
+        projectiles.add(projectile);
+    }
+    
+    /**
      * Get the list of non-enemy game objects
      * 
      * @return list of non-enemy game objects
      */
     public LinkedList<GameObject> getAllies() {
         return allies;
+    }
+    
+    /**
+     * Get the list of projectiles
+     * 
+     * @return list of projectiles
+     */
+    public LinkedList<Projectile> getProjectiles() {
+        return projectiles;
     }
     
     /**

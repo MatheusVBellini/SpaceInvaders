@@ -51,9 +51,9 @@ public class StateHandler {
         // ensures that gameObjects are updated (speed) times per second
         if (dt == gameObjectsUpdateRate * gameObjectsUpdateCounter) {
             gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());
+            gameObjectCollection.getProjectiles().forEach(projectile -> projectile.update());
             gameObjectsUpdateCounter = (gameObjectsUpdateCounter + 1) % GameObject.getSpeed();
         }
-        
         
         // ensures that aliens are updated (speed) times per second
         if (dt == alienUpdateRate * alienUpdateCounter) {

@@ -46,6 +46,8 @@ public class Scene {
         pixels[0][4] = 'E';
         pixels[0][5] = ':';
         pixels[0][6] = '0';
+        pixels[0][7] = '0';
+        pixels[0][8] = '0';
         
         // lives
         pixels[0][width-1] = '\u2661';
@@ -172,6 +174,7 @@ public class Scene {
     private void draw(GameObjectCollection gameObjectCollection) {
         gameObjectCollection.getAliens().getListOfAliens().forEach(gameObject -> draw(gameObject));
         gameObjectCollection.getAllies().forEach(gameObject -> draw(gameObject));
+        gameObjectCollection.getProjectiles().forEach(projectile -> draw(projectile));
     }
 
     /**
@@ -206,6 +209,7 @@ public class Scene {
     private void clean(GameObjectCollection gameObjectCollection) {
         gameObjectCollection.getAliens().getListOfAliens().forEach(gameObject -> clean(gameObject));
         gameObjectCollection.getAllies().forEach(gameObject -> clean(gameObject));
+        gameObjectCollection.getProjectiles().forEach(projectile -> clean(projectile));
     }
     
     /**
