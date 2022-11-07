@@ -33,8 +33,8 @@ public class SpaceInvaders {
         // configuring game
         gameEngine.settings()
                 .setFrameRate(60)
-                .setSwarmSize(5,9)
-                .setResolution(26, 30);
+                .setSwarmSize(5,11)
+                .setResolution(26, 35);
         
         
         gameEngine.initGame();
