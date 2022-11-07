@@ -7,7 +7,7 @@ import spaceinvaders.graphics.Scene;
 /**
  * Collection of aliens that move together
  */
-public class Swarm implements Updatable {
+public class Swarm {
     /**
      * Number of aliens in the swarm
      */

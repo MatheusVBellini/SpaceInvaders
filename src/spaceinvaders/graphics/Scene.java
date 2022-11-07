@@ -143,11 +143,6 @@ public class Scene {
      * @param gameObject gameObject to be drawn
      */
     private void draw(GameObject gameObject) {
-        // if gameObject is null, it is dead, so it will not be drawn
-        if (gameObject == null) {
-            return;
-        }
-        
         int x = gameObject.getX();
         int y = gameObject.getY();
         int objectHeight = GameObject.getHitboxHeight();

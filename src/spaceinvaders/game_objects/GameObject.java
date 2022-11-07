@@ -6,7 +6,7 @@ import spaceinvaders.graphics.sprite.Sprite;
  *  Abstract class for defining game objects
  * 
  */
-public abstract class GameObject implements Updatable {
+public abstract class GameObject {
     /**
      * Height of the collision susceptible box which the object is contained within
      */
