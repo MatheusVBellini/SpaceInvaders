@@ -161,4 +161,20 @@ public abstract class GameObject {
      * @return copy of the original object
      */
     public abstract GameObject copy();
+    
+    /**
+     * Decreases 1 unit of life of the GameObject
+     */
+    public void takeDamage() {
+        health -= 1;
+    }
+    
+    /**
+     * Checks if GameObject is dead
+     * 
+     * @return boolean, true if object is dead, false if it's not
+     */
+    public boolean isDead() {
+        return health == 0;
+    }
 }

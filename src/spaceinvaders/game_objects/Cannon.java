@@ -18,6 +18,36 @@ public class Cannon extends GameObject {
         super(x,y);
         sprite = new CannonSprite();
         health = 3;
+        shot = false;
+    }
+    
+    /**
+     * Flag for engine to know whether Cannon has shot
+     */
+    private boolean shot;
+    
+    /**
+     * Get the boolean value of the shot flag
+     * 
+     * @return boolean that is true when the cannon has shot 
+     * and false when it hasn't
+     */
+    public boolean hasShot() {
+        return shot;
+    }
+    
+    /**
+     * turn off shot flag
+     */
+    public void reload() {
+        shot = false;
+    }
+    
+    /**
+     * shoot command, actives the shot flag
+     */
+    public void shoot() {
+        shot = true;
     }
     
     /**

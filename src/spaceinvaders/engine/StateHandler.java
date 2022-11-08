@@ -1,5 +1,6 @@
 package spaceinvaders.engine;
 
+import java.util.LinkedList;
 import spaceinvaders.game_objects.*;
 import spaceinvaders.graphics.Scene;
 
@@ -70,16 +71,69 @@ public class StateHandler {
      */
     public void checkHazards(GameObjectCollection gameObjectCollection) {
         spaceShipCourseComplete(gameObjectCollection);
+        cannonShoot(gameObjectCollection);
+        kills(gameObjectCollection);
     }
     
     /**
      * Collision between spaceship and end of the screen
      */
     private void spaceShipCourseComplete(GameObjectCollection gameObjectCollection) {
-        SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getSpaceShip();
+        SpaceShip tmp = new SpaceShip(0,0);
+        SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(tmp.getClass());
         
         if (spaceShip != null && spaceShip.getPivotX() + (GameObject.getHitboxWidth() / 2) == Scene.getWidth()) {
-            gameObjectCollection.getAllies().remove(spaceShip);
+            spaceShip.takeDamage();
+        }
+    }
+    
+    /**
+     * Checks if shoot flag is activated in the cannon, if so, instantiates 
+     * an ally projectile and turn the flag off
+     * 
+     * @param gameObjectCollection
+     */
+    private void cannonShoot(GameObjectCollection gameObjectCollection) {
+        Cannon tmp = new Cannon(0,0);
+        Cannon cannon = (Cannon)gameObjectCollection.getGameObject(tmp.getClass());
+        if (cannon.hasShot()) {
+            gameObjectCollection.add(
+                    new ProjectileAlly(
+                            cannon.getPivotX(), 
+                            cannon.getPivotY() - GameObject.getHitboxHeight()
+                    ));
+            cannon.reload();
+        }
+    }
+    
+    /**
+     * Check if any alien, projectile, barricade or spaceship is dead
+     * 
+     * @param gameObjectCollection
+     */
+    private void kills(GameObjectCollection gameObjectCollection) {
+        // check if any aliens are dead
+        LinkedList<GameObject> list = gameObjectCollection.getAliens().getListOfAliens();
+        for (GameObject alien : list) {
+            if (alien.isDead()) {
+                list.remove(alien);
+            }
+        }
+        
+        // check for dead spaceship and barricades
+        list = gameObjectCollection.getAllies();
+        for (GameObject ally : list) {
+            if (ally.isDead()) {
+                list.remove(ally);
+            }
+        }
+        
+        // check for collided projectiles
+        list = gameObjectCollection.getProjectiles();
+        for (GameObject projectile : list) {
+            if (projectile.isDead()) {
+                list.remove(projectile);
+            }
         }
     }
     
@@ -135,10 +189,6 @@ public class StateHandler {
     private boolean swarmCourseComplete(Swarm swarm) {
         int y = Scene.getHeight() - GameObject.getHitboxHeight() - 3;
         
-        if (swarm.getListOfAliens().getLast().getY() + GameObject.getHitboxHeight() - 1 == y) {
-            return true;
-        }
-        
-        return false;
+        return swarm.getListOfAliens().getLast().getY() + GameObject.getHitboxHeight() - 1 == y;
     }
 }

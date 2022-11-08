@@ -28,6 +28,8 @@ public class Controller {
     
     /**
      * Sets the command set being used
+     * 
+     * @param commandSet
      */
     public void setCommandSet(CommandSet commandSet) {
         this.commandSet = commandSet;

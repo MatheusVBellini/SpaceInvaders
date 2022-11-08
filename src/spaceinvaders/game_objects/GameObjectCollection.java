@@ -14,7 +14,7 @@ public class GameObjectCollection {
     /**
      * List of all projectiles
      */
-    private LinkedList<Projectile> projectiles;
+    private LinkedList<GameObject> projectiles;
     
     /**
      * Collection of enemies defined within the Swarm class
@@ -66,7 +66,7 @@ public class GameObjectCollection {
      * 
      * @return list of projectiles
      */
-    public LinkedList<Projectile> getProjectiles() {
+    public LinkedList<GameObject> getProjectiles() {
         return projectiles;
     }
     
@@ -80,14 +80,14 @@ public class GameObjectCollection {
     }
     
     /**
-     * Get the space ship in the gameObjectCollection
+     * Get a specific GameObject in the gameObjectCollection
      * 
-     * @return space ship in gameObjectCollection or null pointer 
+     * @return GameObject in gameObjectCollection or null pointer 
      * if it does not exist
      */
-    public GameObject getSpaceShip() {
+    public GameObject getGameObject(Class c) {
         for (GameObject gameObject : this.allies) {
-            if (gameObject instanceof SpaceShip) {
+            if (gameObject.getClass().equals(c)) {
                 return gameObject;
             }
         }

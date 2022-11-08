@@ -75,13 +75,13 @@ public class GameEngine {
         gameObjectCollection.add(new Barricade(Scene.getCenterX(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         gameObjectCollection.add(new Barricade(Scene.getCenterX() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 6 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 6 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
         
         gameObjectCollection.add(new SpaceShip(0, 1));
     }
@@ -104,7 +104,7 @@ public class GameEngine {
             long start = System.currentTimeMillis();
 
             // process input
-            controller.listen();
+            //controller.listen();
             
             // render
             gameScene.render(gameObjectCollection);

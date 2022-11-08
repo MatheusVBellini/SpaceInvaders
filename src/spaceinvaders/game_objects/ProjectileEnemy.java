@@ -12,7 +12,7 @@ public class ProjectileEnemy extends Projectile {
      * @param x x-axis coordinate
      * @param y y-axis coordinate
      */
-    ProjectileEnemy(int x, int y) {
+    public ProjectileEnemy(int x, int y) {
         super(x,y);
         sprite = new ProjectileEnemySprite();
     }
