@@ -28,15 +28,15 @@ public class GameCommandSet extends CommandSet {
         switch (key) {
             case 'z':
             case 'Z':
-                player.shoot();
+                player.shoot(); // shoot
                 break;
             case 'm':
             case 'M':
-                player.move(1);
+                player.move(1); // move right
                 break;
             case 'n':
             case 'N':
-                player.move(-1);
+                player.move(-1); // move left
                 break;
         }
     }
