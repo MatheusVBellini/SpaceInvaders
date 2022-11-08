@@ -104,7 +104,7 @@ public class GameEngine {
             long start = System.currentTimeMillis();
 
             // process input
-            //controller.listen();
+            controller.listen();
             
             // render
             gameScene.render(gameObjectCollection);
@@ -117,7 +117,8 @@ public class GameEngine {
             
             // fatal hazards check
             switch (stateHandler.checkFatalHazards(gameObjectCollection)) {
-                case 1 -> breakLoop = true;
+                case 1:
+                    breakLoop = true;
             }
             
             // reset dt after 1 second

@@ -175,6 +175,6 @@ public abstract class GameObject {
      * @return boolean, true if object is dead, false if it's not
      */
     public boolean isDead() {
-        return health == 0;
+        return health <= 0;
     }
 }

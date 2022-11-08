@@ -21,7 +21,7 @@ public class Swarm {
     /**
      * List of aliens that compose the swarm
      */
-    private LinkedList<Alien> swarm;
+    private LinkedList<GameObject> swarm;
     
     /**
      * Instantiates the swarm with a specified height and 
@@ -54,7 +54,7 @@ public class Swarm {
      */
     public void update() {
         boolean switch_warning = false;
-        for (Alien alien : swarm) {
+        for (GameObject alien : swarm) {
             alien.update();
             if (alien.getX() < 0 || alien.getX() > Scene.getWidth() - GameObject.getHitboxWidth()) {
                 switch_warning = true;
@@ -62,8 +62,8 @@ public class Swarm {
         }
         
         if (switch_warning) {
-            for (Alien alien : swarm) {
-                alien.update(switch_warning);
+            for (GameObject alien : swarm) {
+                ((Alien)alien).update(switch_warning);
             }
         }
     }
@@ -74,7 +74,7 @@ public class Swarm {
      * @return  list of aliens
      */
     public LinkedList<GameObject> getListOfAliens() {
-        return new LinkedList<>(swarm);
+        return swarm;
     }
     
     /**

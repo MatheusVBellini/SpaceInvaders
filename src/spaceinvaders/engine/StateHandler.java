@@ -1,6 +1,7 @@
 package spaceinvaders.engine;
 
 import java.util.LinkedList;
+import java.util.Stack;
 import spaceinvaders.game_objects.*;
 import spaceinvaders.graphics.Scene;
 
@@ -70,9 +71,12 @@ public class StateHandler {
      * @param gameObjectCollection all instantiated game objects
      */
     public void checkHazards(GameObjectCollection gameObjectCollection) {
-        spaceShipCourseComplete(gameObjectCollection);
-        cannonShoot(gameObjectCollection);
-        kills(gameObjectCollection);
+        cannonShoot(gameObjectCollection); // checks if cannon has requested to shoot
+        // checks if any alien has requested to shoot
+        projectileCollisions(gameObjectCollection); // Check if a projectile has hit a GameObject
+        spaceShipCourseComplete(gameObjectCollection); // check spaceship course completion
+        projectileCourseComplete(gameObjectCollection); // check projectiles course completion
+        collectCorpses(gameObjectCollection); // removes dead GameObjects
     }
     
     /**
@@ -107,33 +111,97 @@ public class StateHandler {
     }
     
     /**
+     * Check collisions between GameObjects and Projectiles
+     */
+    private void projectileCollisions(GameObjectCollection gameObjectCollection) {
+        LinkedList<GameObject> aliens = gameObjectCollection.getAliens().getListOfAliens();
+        LinkedList<GameObject> allies = gameObjectCollection.getAllies();
+        LinkedList<GameObject> projectiles = gameObjectCollection.getProjectiles();
+        
+        for (GameObject projectile : projectiles) {
+            // if pointer is null, proceed to next component of the list
+            if (projectile == null) {
+                continue;
+            }
+            
+            if (projectile instanceof ProjectileAlly) {
+                // collision with aliens
+                for (GameObject alien : aliens) {
+                    if ((projectile.getPivotX() == alien.getPivotX()) && (projectile.getPivotY() == alien.getPivotY())) {
+                        alien.takeDamage();
+                        projectile.takeDamage();
+                    }
+                }      
+            }
+            
+            // rest of the possible collisions
+            for (GameObject ally : allies) {
+                if ((projectile.getPivotX() == ally.getPivotX()) && (projectile.getPivotY() == ally.getPivotY())) {
+                    ally.takeDamage();
+                    projectile.takeDamage();
+                }
+            }
+            
+        }
+    }
+    
+    /**
+     * Check if projectiles hit screen boundries
+     */
+    private void projectileCourseComplete(GameObjectCollection gameObjectCollection) {
+        LinkedList<GameObject> projectiles = gameObjectCollection.getProjectiles();
+        for (GameObject projectile : projectiles) {
+            if (projectile instanceof ProjectileAlly && projectile.getPivotY() - Projectile.getHitboxHeight() < 0) {
+                projectile.takeDamage();
+            } 
+            if (projectile instanceof ProjectileEnemy && projectile.getPivotY() >= Scene.getHeight()) {
+                projectile.takeDamage();
+            }
+        }
+    }
+    
+    /**
      * Check if any alien, projectile, barricade or spaceship is dead
      * 
      * @param gameObjectCollection
      */
-    private void kills(GameObjectCollection gameObjectCollection) {
+    private void collectCorpses(GameObjectCollection gameObjectCollection) {
+        Stack<GameObject> corpses = new Stack<>();
+        
         // check if any aliens are dead
         LinkedList<GameObject> list = gameObjectCollection.getAliens().getListOfAliens();
         for (GameObject alien : list) {
             if (alien.isDead()) {
-                list.remove(alien);
+                corpses.push(alien);
             }
+        }
+        
+        while (!corpses.empty()) {
+            list.remove(corpses.pop());
         }
         
         // check for dead spaceship and barricades
         list = gameObjectCollection.getAllies();
         for (GameObject ally : list) {
             if (ally.isDead()) {
-                list.remove(ally);
+                corpses.push(ally);
             }
+        }
+        
+        while (!corpses.empty()) {
+            list.remove(corpses.pop());
         }
         
         // check for collided projectiles
         list = gameObjectCollection.getProjectiles();
         for (GameObject projectile : list) {
             if (projectile.isDead()) {
-                list.remove(projectile);
+                corpses.push(projectile);
             }
+        }
+        
+        while (!corpses.empty()) {
+            list.remove(corpses.pop());
         }
     }
     
