@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: black;" stylesheets="@TitleScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceinvaders.engine.controller.TitleScreenController">
+    <children>
+        <Label fx:id="label" layoutX="78.0" layoutY="87.0" minHeight="16" minWidth="69" text="Space Invaders" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="31.0" />
+         </font>
+      </Label>
+      <Label id="startGameText" fx:id="startGameText" layoutX="141.0" layoutY="250.0" minHeight="16" minWidth="69" stylesheets="@TitleScreen.css" text="Start Game" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="21.0" />
+         </font>
+      </Label>
+      <Label id="quitText" fx:id="quitText" layoutX="176.0" layoutY="288.0" minHeight="16" minWidth="48.0" prefHeight="25.0" prefWidth="48.0" stylesheets="@TitleScreen.css" text="Quit" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="label12" layoutX="144.0" layoutY="410.0" minHeight="16" minWidth="69" text="Hi-Score" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="label121" layoutX="176.0" layoutY="440.0" minHeight="16" minWidth="48.0" prefHeight="30.0" prefWidth="48.0" text="000" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="25.0" />
+         </font>
+      </Label>
+      <Button id="startGameBtn" fx:id="startGameBtn" layoutX="127.0" layoutY="250.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="146.0" stylesheets="@TitleScreen.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="quitBtn" fx:id="quitBtn" layoutX="134.0" layoutY="287.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="133.0" stylesheets="@TitleScreen.css" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+    </children>
+</AnchorPane>

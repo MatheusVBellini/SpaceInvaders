@@ -1,7 +1,6 @@
 package spaceinvaders.engine;
 
 // internal imports
-import spaceinvaders.engine.controller.*;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.graphics.SceneTemp;
 import spaceinvaders.game_objects.*;
@@ -26,11 +25,6 @@ public class GameEngine {
     private SceneTemp gameScene;
     
     /**
-     * Controller to manipulate the game
-     */
-    private Controller controller;
-    
-    /**
      * GameObjectCollection for creating and removing GameObjects from the game
      */
     private GameObjectCollection gameObjectCollection;
@@ -40,7 +34,6 @@ public class GameEngine {
      */
     public GameEngine() {
         config = new Config();
-        controller = new Controller();
     }
     
     /**
@@ -66,7 +59,6 @@ public class GameEngine {
         stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
         
         Cannon player = new Cannon(SceneTemp.getCenterX() , SceneTemp.getHeight() - 1);
-        controller.setCommandSet(new GameCommandSet(player));
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(player);
@@ -104,7 +96,7 @@ public class GameEngine {
             long start = System.currentTimeMillis();
 
             // process input
-            controller.listen();
+            
             
             // render
             gameScene.render(gameObjectCollection);

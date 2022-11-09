@@ -1,11 +1,15 @@
 package spaceinvaders;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.engine.controller.TitleScreenController;
+import spaceinvaders.graphics.GameScene;
+import spaceinvaders.graphics.TitleScreen;
 
 /**
  * <strong>Space Invaders Game</strong>
@@ -37,10 +41,11 @@ public class SpaceInvaders extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
-        Scene scene = new Scene(root);
-        
+        // initializing scene components
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("./graphics/TitleScreen.fxml"));
+        GameScene scene = new TitleScreen(fxmlLoader);
+
+        // show scene
         stage.setScene(scene);
         stage.show();
     }
