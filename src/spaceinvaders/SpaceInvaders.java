@@ -55,7 +55,7 @@ public class SpaceInvaders extends Application {
         gameEngine.settings()
                 .setFrameRate(60)
                 .setSwarmSize(5,11)
-                .setResolution(26, 35);
+                .setResolution(26,35);
         
         // launch game
         launch(args);

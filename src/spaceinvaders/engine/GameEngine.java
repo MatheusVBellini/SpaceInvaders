@@ -31,12 +31,24 @@ public class GameEngine {
      * GameObjectCollection for creating and removing GameObjects from the game
      */
     private GameObjectCollection gameObjectCollection;
+    
+    /**
+     * Title screen FXMLoader
+     */
+    FXMLLoader titleScreenLoader;
+    
+    /**
+     * Main game screen FXMLLoader
+     */
+    FXMLLoader gameScreenLoader;
 
     /**
      * Constructor that instantiates Config class attribute
      */
     public GameEngine() {
         config = new Config();
+        titleScreenLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
+        gameScreenLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
     }
     
     /**
@@ -153,8 +165,7 @@ public class GameEngine {
      */
     public TitleScreen startGUI() throws IOException {
         // initializing scene components
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
-        TitleScreen scene = new TitleScreen(fxmlLoader);
+        TitleScreen scene = new TitleScreen(titleScreenLoader);
 
         // listens to keyboard commands
         scene.listenToKey();

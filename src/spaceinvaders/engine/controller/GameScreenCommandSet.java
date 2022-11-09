@@ -6,19 +6,17 @@ import spaceinvaders.game_objects.Cannon;
 /**
  *  Command set used during the main game
  */
-public class GameCommandSet extends CommandSet {
+public class GameScreenCommandSet extends CommandSet {
     /**
      * Player to be controlled
      */
     Cannon player;
     
     /**
-     * Must receive the player to control
      * 
-     * @param player
      */
-    public GameCommandSet(Cannon player) {
-        this.player = player;
+    public GameScreenCommandSet() {
+        
     }
     
     /**
