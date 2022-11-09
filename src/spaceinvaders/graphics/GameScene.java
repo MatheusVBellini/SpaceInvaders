@@ -23,4 +23,6 @@ public abstract class GameScene extends Scene {
     protected void listenToKey(KeyCode key) {
         commandSet.processInput(key);
     }
+    
+    public abstract void listenToKey();
 }

@@ -41,15 +41,7 @@ public class SpaceInvaders extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        // initializing scene components
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("./graphics/TitleScreen.fxml"));
-        TitleScreen scene = new TitleScreen(fxmlLoader);
-
-        // listens to keyboard commands
-        scene.listenToKey();
-        
-        // show scene
-        stage.setScene(scene);
+        stage.setScene(gameEngine.startGUI());
         stage.show();
     }
 
@@ -59,16 +51,14 @@ public class SpaceInvaders extends Application {
      * @param args
      */
     public static void main(String[] args) {
-        launch(args);
-        
         // configuring game
         gameEngine.settings()
                 .setFrameRate(60)
                 .setSwarmSize(5,11)
                 .setResolution(26, 35);
         
-        
-        gameEngine.initGame();
+        // launch game
+        launch(args);
     }
     
 }

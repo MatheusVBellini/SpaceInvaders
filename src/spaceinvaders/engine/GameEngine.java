@@ -1,9 +1,12 @@
 package spaceinvaders.engine;
 
 // internal imports
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.graphics.SceneTemp;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.graphics.TitleScreen;
 
 /**
  *  Class that contains all the event handling necessary for the game
@@ -134,9 +137,28 @@ public class GameEngine {
      * <p>
      *  Guarantees that the loadGame method is called before the gameLoop method
      * </p>
+     * 
+     * @deprecated 
      */
     public void initGame() {
         loadGame();
         gameLoop();
+    }
+    
+    /**
+     * Used to initiate the game in the title screen
+     * 
+     * @throws IOException
+     * @return title screen scene to be staged
+     */
+    public TitleScreen startGUI() throws IOException {
+        // initializing scene components
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
+        TitleScreen scene = new TitleScreen(fxmlLoader);
+
+        // listens to keyboard commands
+        scene.listenToKey();
+        
+        return scene;
     }
 }
