@@ -43,8 +43,11 @@ public class SpaceInvaders extends Application {
     public void start(Stage stage) throws Exception {
         // initializing scene components
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("./graphics/TitleScreen.fxml"));
-        GameScene scene = new TitleScreen(fxmlLoader);
+        TitleScreen scene = new TitleScreen(fxmlLoader);
 
+        // listens to keyboard commands
+        scene.listenToKey();
+        
         // show scene
         stage.setScene(scene);
         stage.show();

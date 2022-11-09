@@ -4,7 +4,7 @@ import java.io.IOException;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyEvent;
-import spaceinvaders.engine.controller.MenuCommandSet;
+import spaceinvaders.engine.controller.TitleScreenCommandSet;
 
 /**
  *
@@ -13,7 +13,7 @@ import spaceinvaders.engine.controller.MenuCommandSet;
 public class TitleScreen extends GameScene {
     public TitleScreen(FXMLLoader loader) throws IOException {
         super(loader);
-        setCommandSet(new MenuCommandSet());
+        setCommandSet(new TitleScreenCommandSet(loader));
     }
     
     public void listenToKey() {

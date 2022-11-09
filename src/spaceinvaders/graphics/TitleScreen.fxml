@@ -35,12 +35,12 @@
       </Label>
       <Button id="startGameBtn" fx:id="startGameBtn" layoutX="127.0" layoutY="250.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="146.0" stylesheets="@TitleScreen.css">
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
       <Button id="quitBtn" fx:id="quitBtn" layoutX="134.0" layoutY="287.0" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="133.0" stylesheets="@TitleScreen.css" textAlignment="CENTER">
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
     </children>
