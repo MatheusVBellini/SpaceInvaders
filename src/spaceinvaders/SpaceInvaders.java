@@ -29,6 +29,12 @@ public class SpaceInvaders extends Application {
      */
     private static GameEngine gameEngine = new GameEngine();
     
+    /**
+     * GUI default initializer
+     * 
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
