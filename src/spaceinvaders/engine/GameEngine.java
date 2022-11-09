@@ -3,6 +3,7 @@ package spaceinvaders.engine;
 // internal imports
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.graphics.SceneTemp;
 import spaceinvaders.game_objects.*;
@@ -163,13 +164,14 @@ public class GameEngine {
      * @throws IOException
      * @return title screen scene to be staged
      */
-    public TitleScreen startGUI() throws IOException {
+    public void startGUI(Stage stage) throws IOException {
         // initializing scene components
         TitleScreen scene = new TitleScreen(titleScreenLoader);
 
         // listens to keyboard commands
         scene.listenToKey();
         
-        return scene;
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -1,15 +1,8 @@
 package spaceinvaders;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
-import spaceinvaders.engine.controller.TitleScreenController;
-import spaceinvaders.graphics.GameScene;
-import spaceinvaders.graphics.TitleScreen;
 
 /**
  * <strong>Space Invaders Game</strong>
@@ -41,8 +34,7 @@ public class SpaceInvaders extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(gameEngine.startGUI());
-        stage.show();
+        gameEngine.startGUI(stage);
     }
 
     /**
@@ -55,7 +47,7 @@ public class SpaceInvaders extends Application {
         gameEngine.settings()
                 .setFrameRate(60)
                 .setSwarmSize(5,11)
-                .setResolution(26,35);
+                .setResolution(400,600);
         
         // launch game
         launch(args);
