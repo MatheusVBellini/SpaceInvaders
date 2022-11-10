@@ -2,6 +2,8 @@ package spaceinvaders.graphics;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import spaceinvaders.engine.controller.GameScreenCommandSet;
+import spaceinvaders.engine.controller.GameScreenController;
 
 /**
  *
@@ -11,11 +13,10 @@ public class GameScreen extends GameScene {
     
     public GameScreen(FXMLLoader loader) throws IOException {
         super(loader);
-    }
-    
-    @Override
-    public void listenToKey() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        setCommandSet(new GameScreenCommandSet(loader));
+        
+        GameScreenController controller = loader.getController();
+        controller.applySettings();
     }
 
 }

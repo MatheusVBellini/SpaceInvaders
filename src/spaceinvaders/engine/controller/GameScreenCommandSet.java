@@ -1,5 +1,6 @@
 package spaceinvaders.engine.controller;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import spaceinvaders.game_objects.Cannon;
 
@@ -12,11 +13,10 @@ public class GameScreenCommandSet extends CommandSet {
      */
     Cannon player;
     
-    /**
-     * 
-     */
-    public GameScreenCommandSet() {
-        
+    private GameScreenController controller;
+    
+    public GameScreenCommandSet(FXMLLoader loader) {
+        controller = loader.getController();
     }
     
     /**

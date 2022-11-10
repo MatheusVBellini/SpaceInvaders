@@ -1,9 +1,11 @@
 package spaceinvaders.graphics;
 
 import java.io.IOException;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import spaceinvaders.engine.controller.CommandSet;
 
 /**
@@ -24,5 +26,12 @@ public abstract class GameScene extends Scene {
         commandSet.processInput(key);
     }
     
-    public abstract void listenToKey();
+    public void listenToKey() {
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                listenToKey(event.getCode());
+            }
+        });
+    }
 }

@@ -16,40 +16,78 @@ public class GameEngine {
     /**
      * Configuration class composed into the GameEngine
      */
-    private final Config config;
+    private static Config config = new Config();
     
     /**
      * StateHandler class composed into the GameEngine
      */
-    private StateHandler stateHandler;
+    private static StateHandler stateHandler;
     
     /**
      * SceneTemp class for printing the game UI
      */
-    private SceneTemp gameScene;
+    private static SceneTemp gameScene;
     
     /**
      * GameObjectCollection for creating and removing GameObjects from the game
      */
-    private GameObjectCollection gameObjectCollection;
+    private static GameObjectCollection gameObjectCollection;
+    
+    /**
+     * Stage where every graphical object appears
+     */
+    private static Stage stage;
     
     /**
      * Title screen FXMLoader
      */
-    FXMLLoader titleScreenLoader;
+    private static FXMLLoader titleScreenLoader;
     
     /**
      * Main game screen FXMLLoader
      */
-    FXMLLoader gameScreenLoader;
+    private static FXMLLoader gameScreenLoader;
 
     /**
-     * Constructor that instantiates Config class attribute
+     * Instantiates titleScreenLoader
      */
-    public GameEngine() {
-        config = new Config();
-        titleScreenLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
-        gameScreenLoader = new FXMLLoader(getClass().getResource("../graphics/TitleScreen.fxml"));
+    public static void setTitleScreenLoader(FXMLLoader titleScreenLoader) {
+        GameEngine.titleScreenLoader = titleScreenLoader;
+    }
+    
+    /**
+     * Instantiates gameScreenLoader
+     */
+    public static void setGameScreenLoader(FXMLLoader gameScreenLoader) {
+        GameEngine.gameScreenLoader = gameScreenLoader;
+    }
+    
+    /**
+     * Saves stage for fast switch scene usage
+     */
+    public static void setStage(Stage stage) {
+        GameEngine.stage = stage;
+    }
+    
+    /**
+     * Get StateHandler
+     */
+    public static StateHandler getStateHandler() {
+        return stateHandler;
+    }
+    
+    /**
+     * Get GameObjectCollection
+     */
+    public static GameObjectCollection getGameObjectCollection() {
+        return gameObjectCollection;
+    }
+    
+    /**
+     * Gets the stage in use for fast switch scene usage
+     */
+    public static Stage getStage() {
+        return stage;
     }
     
     /**
@@ -58,8 +96,26 @@ public class GameEngine {
      * 
      * @return Config class attribute
      */
-    public Config settings() {
+    public static Config settings() {
         return config;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the main game
+     * 
+     * @return main game FXMLoader
+     */
+    public static FXMLLoader getGameScreenLoader() {
+        return gameScreenLoader;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the title screen
+     * 
+     * @return title screen FXMLoader
+     */
+    public static FXMLLoader getTitleScreenLoader() {
+        return titleScreenLoader;
     }
     
     /**
@@ -69,7 +125,7 @@ public class GameEngine {
      * Also fills GameObjectCollection with a Cannon and Barricades
      * </p>
      */
-    private void loadGame() {
+    public static void loadGame() {
         gameScene = new SceneTemp();
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
         stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
@@ -104,7 +160,7 @@ public class GameEngine {
      * 
      * @throws InterruptedException thread was interrupted
      */
-    private void gameLoop() {
+    public static void gameLoop() {
         boolean breakLoop = false;
         int dt = 0;
         while (!breakLoop) {
@@ -143,31 +199,17 @@ public class GameEngine {
             }
         }
     }
-    
-    /**
-     * Used to initiate the main game
-     * 
-     * <p>
-     *  Guarantees that the loadGame method is called before the gameLoop method
-     * </p>
-     * 
-     * @deprecated 
-     */
-    public void initGame() {
-        loadGame();
-        gameLoop();
-    }
-    
+        
     /**
      * Used to initiate the game in the title screen
      * 
+     * @param stage
      * @throws IOException
-     * @return title screen scene to be staged
      */
-    public void startGUI(Stage stage) throws IOException {
+    public static void startGUI() throws IOException {
         // initializing scene components
         TitleScreen scene = new TitleScreen(titleScreenLoader);
-
+        
         // listens to keyboard commands
         scene.listenToKey();
         

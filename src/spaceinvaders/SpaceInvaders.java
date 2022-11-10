@@ -1,6 +1,8 @@
 package spaceinvaders;
 
+import java.io.IOException;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
 
@@ -20,21 +22,26 @@ import spaceinvaders.engine.GameEngine;
  * @author Matheus Violaro Bellini
  */
 public class SpaceInvaders extends Application {
-    /**
-     * Static declaration of a GameEngine object responsible 
-     * for commanding the game settings and succession of events
-     */
-    private static GameEngine gameEngine = new GameEngine();
     
     /**
      * GUI default initializer
      * 
      * @param stage
-     * @throws Exception 
+     * @throws IOException 
      */
     @Override
-    public void start(Stage stage) throws Exception {
-        gameEngine.startGUI(stage);
+    public void start(Stage stage) throws IOException {
+        // configuring game
+        GameEngine.settings()
+                .setFrameRate(60)
+                .setSwarmSize(5,11)
+                .setResolution(600,600);
+        
+        // JavaFX information
+        GameEngine.setStage(stage);
+        GameEngine.setTitleScreenLoader(new FXMLLoader(getClass().getResource("./graphics/TitleScreen.fxml")));
+        GameEngine.setGameScreenLoader(new FXMLLoader(getClass().getResource("./graphics/GameScreen.fxml")));
+        GameEngine.startGUI();
     }
 
     /**
@@ -43,13 +50,6 @@ public class SpaceInvaders extends Application {
      * @param args
      */
     public static void main(String[] args) {
-        // configuring game
-        gameEngine.settings()
-                .setFrameRate(60)
-                .setSwarmSize(5,11)
-                .setResolution(400,600);
-        
-        // launch game
         launch(args);
     }
     

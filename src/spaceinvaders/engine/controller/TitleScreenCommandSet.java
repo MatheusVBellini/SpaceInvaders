@@ -1,5 +1,8 @@
 package spaceinvaders.engine.controller;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 
@@ -20,7 +23,13 @@ public class TitleScreenCommandSet extends CommandSet {
         switch (key) {
             case UP: controller.buttonUp(); break;
             case DOWN: controller.buttonDown(); break;
-            case ENTER: controller.quit(); break;
+            case ENTER: controller.quit(); {
+                    try {
+                        controller.startGame();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TitleScreenCommandSet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } break;
         }
     }
 }

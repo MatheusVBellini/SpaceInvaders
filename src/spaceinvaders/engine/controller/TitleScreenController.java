@@ -12,7 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import spaceinvaders.engine.GameEngine;
+import spaceinvaders.graphics.GameScreen;
 
 /**
  *
@@ -30,6 +34,12 @@ public class TitleScreenController implements Initializable {
      *  1 - Quit
      */
     private int selectedButton = -1;
+    
+    /**
+     * Screen itself
+     */
+    @FXML
+    private AnchorPane titleScreen;
     
     /**
      * Text under start game button
@@ -68,6 +78,14 @@ public class TitleScreenController implements Initializable {
     }
     
     /**
+     * Sets the values defined by the settings component of the game engine
+     */
+    public void applySettings() {
+        titleScreen.setPrefHeight(GameEngine.settings().getResHeight());
+        titleScreen.setPrefWidth(GameEngine.settings().getResWidth());
+    }
+    
+    /**
      * Read and set player's latest hi-score
      * 
      */
@@ -99,6 +117,25 @@ public class TitleScreenController implements Initializable {
         }
 
     }
+    
+    /**
+     * Starts the game
+     */
+    public void startGame() throws IOException {
+        if (selectedButton != 0) {
+            return;
+        }
+        
+        // create new main game scene
+        GameScreen scene = new GameScreen(GameEngine.getGameScreenLoader());
+        Stage stage = GameEngine.getStage();
+        
+        scene.listenToKey();
+        
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     
     /**
      * Quits the game

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: black;" stylesheets="@TitleScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceinvaders.engine.controller.TitleScreenController">
+<AnchorPane id="AnchorPane" fx:id="titleScreen" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: black;" stylesheets="@TitleScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceinvaders.engine.controller.TitleScreenController">
     <children>
         <Label fx:id="label" layoutX="78.0" layoutY="87.0" minHeight="16" minWidth="69" text="Space Invaders" textAlignment="CENTER" textFill="WHITE">
          <font>
