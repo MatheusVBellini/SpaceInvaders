@@ -37,4 +37,9 @@ public class GameScreenController implements Initializable {
         grid.setPrefWidth(GameEngine.settings().getResWidth());
     }
     
+    /**
+     * Draws characters on screen
+     */
+    
+    
 }

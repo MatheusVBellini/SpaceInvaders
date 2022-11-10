@@ -15,7 +15,7 @@ public class Alien extends GameObject {
      */
     public Alien(int x, int y) {
         super(x,y);
-        sprite = new AlienSprite();
+        sprite = new AlienSprite(x,y);
         health = 1;
     }
     
@@ -35,21 +35,21 @@ public class Alien extends GameObject {
      * Define the rightward movement of the alien
      */
     private void moveRight() {
-        setPivotX(getPivotX() + 1);
+        setX(getPivotX() + 1);
     }
 
     /**
      *  Define the leftward movement of the alien
      */
     private void moveLeft() {
-        setPivotX(getPivotX() - 1);
+        setX(getPivotX() - 1);
     }
 
     /**
      * Define the downward movement of the alien
      */
     private void moveDown() {
-        setPivotY(getPivotY() + 1);
+        setY(getPivotY() + 1);
     }
 
     /**

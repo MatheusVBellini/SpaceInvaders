@@ -16,7 +16,7 @@ public class Cannon extends GameObject {
      */
     public Cannon(int x, int y) {
         super(x,y);
-        sprite = new CannonSprite();
+        sprite = new CannonSprite(x,y);
         health = 3;
         shot = false;
     }
@@ -66,7 +66,7 @@ public class Cannon extends GameObject {
         int newPivotX = getPivotX() + x;
         if (newPivotX >= 0 && newPivotX < SceneTemp.getWidth()) {
             System.out.println(newPivotX);
-            setPivotX(newPivotX);
+            setX(newPivotX);
         }
     }
     

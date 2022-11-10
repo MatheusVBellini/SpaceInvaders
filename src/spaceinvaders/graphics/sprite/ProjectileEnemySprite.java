@@ -6,7 +6,7 @@ import spaceinvaders.game_objects.Projectile;
  * ProjectileEnemy GameObject graphical representation
  */
 public class ProjectileEnemySprite extends Sprite {
-    public ProjectileEnemySprite() {
-        
+    public ProjectileEnemySprite(int x, int y) {
+        super(x,y);
     }
 }

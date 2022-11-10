@@ -52,6 +52,8 @@ public abstract class GameObject {
     protected GameObject(int x, int y) {
         this.x = x - (hitboxWidth / 2);
         this.y = y - (hitboxHeight - 1);
+        sprite.setX(x);
+        sprite.setY(y);
     }
 
     // setters
@@ -61,9 +63,8 @@ public abstract class GameObject {
      * 
      * @param x new pivot position in the x-axis
      */
-    public void setPivotX(int x) {
-        int coordinate = x - (hitboxWidth / 2);
-        this.x = coordinate;
+    public void setX(int x) {
+        sprite.setX(x);
     }
 
     /**
@@ -71,9 +72,8 @@ public abstract class GameObject {
      * 
      * @param y new pivot position in the y-axis
      */
-    public void setPivotY(int y) {
-        int coordinate = y - (hitboxHeight - 1);
-        this.y = coordinate;
+    public void setY(int y) {
+        sprite.setY(y);
     }
     
     // getters
@@ -102,7 +102,7 @@ public abstract class GameObject {
      * @return x-axis coordinate of the top-left-most pixel of the game object
      */
     public int getX() {
-        return x;
+        return (int)sprite.getX();
     }
 
     /**
@@ -111,7 +111,7 @@ public abstract class GameObject {
      * @return y-axis coordinate of the top-left-most pixel of the game object
      */
     public int getY() {
-        return y;
+        return (int)sprite.getY();
     }
 
     /**

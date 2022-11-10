@@ -14,7 +14,7 @@ public class ProjectileEnemy extends Projectile {
      */
     public ProjectileEnemy(int x, int y) {
         super(x,y);
-        sprite = new ProjectileEnemySprite();
+        sprite = new ProjectileEnemySprite(x,y);
     }
     
     /**
@@ -22,7 +22,7 @@ public class ProjectileEnemy extends Projectile {
      */
     @Override
     protected void move() {
-        setPivotY(getPivotY() + 1);
+        setY(getPivotY() + 1);
     }
     
     /**

@@ -15,7 +15,7 @@ public class SpaceShip extends GameObject {
      */
     public SpaceShip(int x, int y) {
         super(x,y);
-        sprite = new SpaceShipSprite();
+        sprite = new SpaceShipSprite(x,y);
         health = 1;
     }
     
@@ -23,7 +23,7 @@ public class SpaceShip extends GameObject {
      * Move the ship one pixel rightwards
      */
     private void move() {
-        setPivotX(getPivotX() + 1);
+        setX(getPivotX() + 1);
     }
     
     /**
