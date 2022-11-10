@@ -7,7 +7,6 @@ import spaceinvaders.game_objects.Projectile;
  */
 public class ProjectileEnemySprite extends Sprite {
     public ProjectileEnemySprite() {
-        pixels = new char[Projectile.getHitboxHeight()][Projectile.getHitboxWidth()];
-        pixels[0][0] = '\u29BF';
+        
     }
 }

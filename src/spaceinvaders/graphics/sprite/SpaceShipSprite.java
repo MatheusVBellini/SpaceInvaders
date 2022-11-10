@@ -6,6 +6,6 @@ package spaceinvaders.graphics.sprite;
 public class SpaceShipSprite extends Sprite {
     public SpaceShipSprite() {
         super();
-        pixels[0][0] = '\u21E8';
+        
     }
 }

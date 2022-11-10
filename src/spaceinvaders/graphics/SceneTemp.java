@@ -145,25 +145,7 @@ public class SceneTemp {
      * @param gameObject gameObject to be drawn
      */
     private void draw(GameObject gameObject) {
-        int x = gameObject.getX();
-        int y = gameObject.getY();
-        int objectHeight = GameObject.getHitboxHeight();
-        int objectWidth = GameObject.getHitboxWidth();
-        
-        if (gameObject instanceof Projectile) {
-            objectHeight = Projectile.getHitboxHeight();
-            objectWidth = Projectile.getHitboxWidth();
-        }
-        
-        Sprite sprite = gameObject.getSprite();
-        char spritePixels[][] = sprite.getPixels();
 
-        // substitutes pixels in the pixel array
-        for (int i = 0; i < objectHeight; i++) {
-            for (int j = 0; j < objectWidth; j++) {
-                pixels[y + i][x + j] = spritePixels[i][j];
-            }
-        }
     }
 
     /**
