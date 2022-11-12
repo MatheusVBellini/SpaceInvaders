@@ -44,4 +44,7 @@
          </cursor>
       </Button>
     </children>
+   <cursor>
+      <Cursor fx:constant="NONE" />
+   </cursor>
 </AnchorPane>

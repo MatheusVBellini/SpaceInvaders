@@ -7,7 +7,7 @@ import spaceinvaders.game_objects.*;
  * Graphical information game objects
  */
 public abstract class Sprite extends Rectangle {
-    public Sprite(int x, int y) {
+    protected Sprite(int x, int y) {
         super();
         setX(x);
         setY(y);

@@ -257,6 +257,6 @@ public class StateHandler {
     private boolean swarmCourseComplete(Swarm swarm) {
         int y = SceneTemp.getHeight() - GameObject.getHitboxHeight() - 3;
         
-        return swarm.getListOfAliens().getLast().getY() + GameObject.getHitboxHeight() - 1 == y;
+        return swarm.getListOfAliens().getLast().getY() == y;
     }
 }

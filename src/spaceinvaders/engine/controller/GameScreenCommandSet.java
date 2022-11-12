@@ -11,7 +11,7 @@ public class GameScreenCommandSet extends CommandSet {
     /**
      * Player to be controlled
      */
-    Cannon player;
+    private Cannon player;
     
     private GameScreenController controller;
     

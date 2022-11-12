@@ -24,11 +24,6 @@ public class GameEngine {
     private static StateHandler stateHandler;
     
     /**
-     * SceneTemp class for printing the game UI
-     */
-    private static SceneTemp gameScene;
-    
-    /**
      * GameObjectCollection for creating and removing GameObjects from the game
      */
     private static GameObjectCollection gameObjectCollection;
@@ -50,6 +45,7 @@ public class GameEngine {
 
     /**
      * Instantiates titleScreenLoader
+     * @param titleScreenLoader
      */
     public static void setTitleScreenLoader(FXMLLoader titleScreenLoader) {
         GameEngine.titleScreenLoader = titleScreenLoader;
@@ -57,6 +53,7 @@ public class GameEngine {
     
     /**
      * Instantiates gameScreenLoader
+     * @param gameScreenLoader
      */
     public static void setGameScreenLoader(FXMLLoader gameScreenLoader) {
         GameEngine.gameScreenLoader = gameScreenLoader;
@@ -64,6 +61,7 @@ public class GameEngine {
     
     /**
      * Saves stage for fast switch scene usage
+     * @param stage
      */
     public static void setStage(Stage stage) {
         GameEngine.stage = stage;
@@ -126,7 +124,6 @@ public class GameEngine {
      * </p>
      */
     public static void loadGame() {
-        gameScene = new SceneTemp();
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
         stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
         
@@ -158,7 +155,6 @@ public class GameEngine {
      *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
      * </p>
      * 
-     * @throws InterruptedException thread was interrupted
      */
     public static void gameLoop() {
         boolean breakLoop = false;
@@ -171,7 +167,7 @@ public class GameEngine {
             
             
             // render
-            gameScene.render(gameObjectCollection);
+            //gameScene.render(gameObjectCollection);
             
             // update
             stateHandler.updateCollection(gameObjectCollection, dt);
@@ -203,7 +199,6 @@ public class GameEngine {
     /**
      * Used to initiate the game in the title screen
      * 
-     * @param stage
      * @throws IOException
      */
     public static void startGUI() throws IOException {
