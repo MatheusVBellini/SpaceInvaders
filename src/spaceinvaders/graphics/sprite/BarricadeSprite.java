@@ -6,7 +6,7 @@ import java.net.MalformedURLException;
  * Barricade GameObject graphical representation
  */
 public class BarricadeSprite extends Sprite {
-    public BarricadeSprite() throws MalformedURLException {
+    public BarricadeSprite() {
         super("Barricade.png");
     }
 }

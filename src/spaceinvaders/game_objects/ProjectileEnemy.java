@@ -14,7 +14,7 @@ public class ProjectileEnemy extends Projectile {
      */
     public ProjectileEnemy(int x, int y) {
         super(x,y);
-        sprite = new ProjectileEnemySprite(x,y);
+        sprite = new ProjectileEnemySprite();
     }
     
     /**

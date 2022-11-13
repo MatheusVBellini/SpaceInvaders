@@ -15,7 +15,7 @@ public class Alien extends GameObject {
      */
     public Alien(int x, int y) {
         super(x,y);
-        sprite = new AlienSprite(x,y);
+        sprite = new AlienSprite();
         health = 1;
     }
     

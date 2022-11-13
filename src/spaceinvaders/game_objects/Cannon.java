@@ -16,7 +16,7 @@ public class Cannon extends GameObject {
      */
     public Cannon(int x, int y) {
         super(x,y);
-        sprite = new CannonSprite(x,y);
+        sprite = new CannonSprite();
         health = 3;
         shot = false;
     }

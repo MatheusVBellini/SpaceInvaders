@@ -10,9 +10,9 @@ import spaceinvaders.engine.GameEngine;
  * Graphical information game objects
  */
 public abstract class Sprite extends Image {
-    protected Sprite(String spriteFilePath) throws MalformedURLException {
+    protected Sprite(String spriteFilePath) {
         super(
-                new File(spriteFilePath).toURI().toURL().toExternalForm(),      // path to file
+                spriteFilePath,                                                 // path to file
                 GameEngine.settings().getResWidth()/10,                         // image width
                 GameEngine.settings().getResHeight()/20,                        // image height
                 true,                                                           // preserve ratio

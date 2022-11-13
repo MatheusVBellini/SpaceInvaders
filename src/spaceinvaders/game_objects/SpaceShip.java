@@ -15,7 +15,7 @@ public class SpaceShip extends GameObject {
      */
     public SpaceShip(int x, int y) {
         super(x,y);
-        sprite = new SpaceShipSprite(x,y);
+        sprite = new SpaceShipSprite();
         health = 1;
     }
     

@@ -4,9 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
  * Controller for the main game screen
@@ -25,7 +28,11 @@ public class GameScreenController implements Initializable {
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-    
+        // test
+        Image cannon = new CannonSprite();
+        ImageView iv = new ImageView(cannon);
+        grid.add(iv,1,1);
+        
     }
     
     /**

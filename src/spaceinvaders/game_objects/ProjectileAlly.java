@@ -14,7 +14,7 @@ public class ProjectileAlly extends Projectile {
      */
     public ProjectileAlly(int x, int y) {
         super(x,y);
-        sprite = new ProjectileAllySprite(x,y);
+        sprite = new ProjectileAllySprite();
     }
     
     /**

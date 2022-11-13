@@ -6,7 +6,7 @@ import java.net.MalformedURLException;
  * Cannon GameObject graphical representation
  */
 public class CannonSprite extends Sprite {
-    public CannonSprite() throws MalformedURLException {
-        super("vibe-city-1920x1080.jpg");
+    public CannonSprite() {
+        super("file:vibe-city-1920x1080.jpg");
     }
 }

@@ -15,7 +15,7 @@ public class Barricade extends GameObject {
      */
     public Barricade(int x, int y) {
         super(x,y);
-        sprite = new BarricadeSprite(x,y);
+        sprite = new BarricadeSprite();
         health = 1;
     }
     
