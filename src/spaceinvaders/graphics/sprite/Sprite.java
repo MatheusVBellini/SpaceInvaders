@@ -11,6 +11,7 @@ public abstract class Sprite {
     Image img;
     
     protected Sprite(String spriteFilePath) {
+        getClass();
         img = new Image(
                 getClass().getResource(spriteFilePath).toExternalForm(),        // image source file
                 GameEngine.settings().getResWidth()/10,                         // image width

@@ -46,16 +46,6 @@ public class GameEngine {
      * Main game screen FXMLLoader
      */
     private static FXMLLoader gameScreenLoader;
-    
-    public static String processFilePath(String filePath) {
-        try {
-            return (new File(filePath).toURI().toURL().toExternalForm());
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return "";
-    }
 
     /**
      * Instantiates titleScreenLoader

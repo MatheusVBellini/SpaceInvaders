@@ -16,6 +16,8 @@ import spaceinvaders.graphics.sprite.CannonSprite;
  * Controller for the main game screen
  */
 public class GameScreenController implements Initializable {
+    private final int ROW_NUM = 25;
+    private final int COL_NUM = 20;
     
     @FXML
     private AnchorPane gameScreen;
@@ -30,12 +32,8 @@ public class GameScreenController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
         // test
-        Image cannon = new CannonSprite();
-        if (cannon.isError()) {
-            exit(2);
-        }
-        ImageView iv = new ImageView(cannon);
-        grid.add(iv,1,1);
+        ImageView iv = new ImageView(new CannonSprite().getImage());
+        grid.add(iv,COL_NUM/2,ROW_NUM - 1);
         
     }
     
