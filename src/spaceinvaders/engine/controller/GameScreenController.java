@@ -1,5 +1,6 @@
 package spaceinvaders.engine.controller;
 
+import static java.lang.System.exit;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -30,6 +31,9 @@ public class GameScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // test
         Image cannon = new CannonSprite();
+        if (cannon.isError()) {
+            exit(2);
+        }
         ImageView iv = new ImageView(cannon);
         grid.add(iv,1,1);
         

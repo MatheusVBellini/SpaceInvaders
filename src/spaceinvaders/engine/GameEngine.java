@@ -1,7 +1,11 @@
 package spaceinvaders.engine;
 
 // internal imports
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
@@ -42,6 +46,16 @@ public class GameEngine {
      * Main game screen FXMLLoader
      */
     private static FXMLLoader gameScreenLoader;
+    
+    public static String processFilePath(String filePath) {
+        try {
+            return (new File(filePath).toURI().toURL().toExternalForm());
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "";
+    }
 
     /**
      * Instantiates titleScreenLoader
