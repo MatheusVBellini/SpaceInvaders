@@ -131,24 +131,24 @@ public class GameEngine {
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
         stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
         
-        Cannon player = new Cannon(SceneTemp.getCenterX() , SceneTemp.getHeight() - 1);
+        Cannon player = new Cannon(config.getGameGridWidth() / 2 , config.getGameGridHeight() - 1);
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(player);
         
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() - 1, SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX(), SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() + 1, SceneTemp.getHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 1, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 1, config.getGameGridHeight() - 4));
         
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() - 10, SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() - 9, SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() - 8, SceneTemp.getHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 10, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 9, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 8, config.getGameGridHeight() - 4));
         
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() + 8, SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() + 9, SceneTemp.getHeight() - 4));
-        gameObjectCollection.add(new Barricade(SceneTemp.getCenterX() + 10, SceneTemp.getHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 8, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 9, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 10, config.getGameGridHeight() - 4));
         
-        gameObjectCollection.add(new SpaceShip(0, 1));
+        gameObjectCollection.add(new SpaceShip(0, 4));
     }
     
     /**

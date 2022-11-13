@@ -1,6 +1,7 @@
 package spaceinvaders.game_objects;
 
 import java.util.LinkedList;
+import spaceinvaders.engine.GameEngine;
 
 import spaceinvaders.graphics.SceneTemp;
 
@@ -35,8 +36,8 @@ public class Swarm {
         numOfAliens = rAliens * cAliens;
         swarm = new LinkedList<>();
         
-        int initX = SceneTemp.getCenterX() - cAliens;
-        int initY = 1;
+        int initX = GameEngine.settings().getGameGridWidth() / 2 - cAliens;
+        int initY = 6;
         
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {

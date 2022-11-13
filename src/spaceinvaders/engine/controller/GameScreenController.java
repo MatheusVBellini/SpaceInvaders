@@ -21,9 +21,6 @@ public class GameScreenController implements Initializable {
     @FXML
     private AnchorPane gameScreen;
     
-    @FXML
-    private GridPane grid;
-    
     private final GridPane gridPane = new GameGrid();
     
     /**
@@ -32,10 +29,9 @@ public class GameScreenController implements Initializable {
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        // initializing settings
-        applySettings();
-        
-        // adding dynamic components to AnchorPane
+        // initializing variables
+        applySettings();                                                        // initializes graphic variables
+        GameEngine.loadGame();                                                  // initilizazes game variables
         gameScreen.getChildren().add(gridPane);
 
         // test
