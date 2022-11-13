@@ -7,6 +7,6 @@ import java.net.MalformedURLException;
  */
 public class CannonSprite extends Sprite {
     public CannonSprite() {
-        super("vibe-city-1920x1080.jpg");
+        super("Cannon.png");
     }
 }

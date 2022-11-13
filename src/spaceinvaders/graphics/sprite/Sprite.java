@@ -7,14 +7,20 @@ import spaceinvaders.engine.GameEngine;
 /**
  * Graphical information game objects
  */
-public abstract class Sprite extends Image {
+public abstract class Sprite {
+    Image img;
+    
     protected Sprite(String spriteFilePath) {
-        super(
-                GameEngine.processFilePath(spriteFilePath),                                                 // path to file
+        img = new Image(
+                getClass().getResource(spriteFilePath).toExternalForm(),        // image source file
                 GameEngine.settings().getResWidth()/10,                         // image width
                 GameEngine.settings().getResHeight()/20,                        // image height
                 true,                                                           // preserve ratio
                 true                                                            // smooth
         );
+    }
+    
+    public Image getImage() {
+        return img;
     }
 }
