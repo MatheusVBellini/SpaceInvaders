@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.graphics.GameGrid;
 import spaceinvaders.graphics.TitleScreen;
 
 /**
@@ -159,7 +160,7 @@ public class GameEngine {
      * </p>
      * 
      */
-    public static void gameLoop() {
+    public static void gameLoop(GameGrid grid) {
         boolean breakLoop = false;
         int dt = 0;
         while (!breakLoop) {
@@ -170,7 +171,7 @@ public class GameEngine {
             
             
             // render
-            //gameScene.render(gameObjectCollection);
+            grid.render(gameObjectCollection);
             
             // update
             stateHandler.updateCollection(gameObjectCollection, dt);

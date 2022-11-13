@@ -22,7 +22,7 @@ public class GameScreenController implements Initializable {
     @FXML
     private AnchorPane gameScreen;
     
-    private final GridPane gridPane = new GameGrid();
+    private final GameGrid gridPane = new GameGrid();
     
     /**
      * Initializes the controller class.
@@ -33,11 +33,7 @@ public class GameScreenController implements Initializable {
         // initializing variables
         applySettings();                                                        // initializes graphic variables
         GameEngine.loadGame();                                                  // initilizazes game variables
-        gameScreen.getChildren().add(gridPane);                                 // add GridPane to screen
-        GameObjectCollection objectCol = GameEngine.getGameObjectCollection();  // fetch GameObjectCollection
-        
-        // game loop
-        
+        gameScreen.getChildren().add(gridPane);                                 // add GridPane to AnchorPane
         
         // draw test
         draw(GameEngine.getGameObjectCollection());
@@ -55,6 +51,8 @@ public class GameScreenController implements Initializable {
     
     /**
      * Draw GameObjectCollection
+     * 
+     * @deprecated 
      */
     public void draw(GameObjectCollection gameObjectCollection) {
         // draw allies
