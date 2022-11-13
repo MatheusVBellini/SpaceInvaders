@@ -13,9 +13,6 @@ public class TitleScreen extends GameScene {
     public TitleScreen(FXMLLoader loader) throws IOException {
         super(loader);
         setCommandSet(new TitleScreenCommandSet(loader));
-        
-        TitleScreenController controller = loader.getController();
-        controller.applySettings();
     }
     
 }

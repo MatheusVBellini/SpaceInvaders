@@ -14,8 +14,8 @@ public abstract class Sprite {
         getClass();
         img = new Image(
                 getClass().getResource(spriteFilePath).toExternalForm(),        // image source file
-                GameEngine.settings().getResWidth()/10,                         // image width
-                GameEngine.settings().getResHeight()/20,                        // image height
+                GameEngine.settings().getResWidth()/20,                         // image width
+                GameEngine.settings().getResHeight()/30,                        // image height
                 true,                                                           // preserve ratio
                 true                                                            // smooth
         );

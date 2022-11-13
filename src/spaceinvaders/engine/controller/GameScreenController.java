@@ -10,14 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.graphics.GameGrid;
 import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
  * Controller for the main game screen
  */
 public class GameScreenController implements Initializable {
-    private final int ROW_NUM = 25;
-    private final int COL_NUM = 20;
     
     @FXML
     private AnchorPane gameScreen;
@@ -25,15 +24,23 @@ public class GameScreenController implements Initializable {
     @FXML
     private GridPane grid;
     
+    private final GridPane gridPane = new GameGrid();
+    
     /**
      * Initializes the controller class.
      */
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+        // initializing settings
+        applySettings();
+        
+        // adding dynamic components to AnchorPane
+        gameScreen.getChildren().add(gridPane);
+
         // test
         ImageView iv = new ImageView(new CannonSprite().getImage());
-        grid.add(iv,COL_NUM/2,ROW_NUM - 1);
+        gridPane.add(iv,GameEngine.settings().getGameGridWidth()/2,GameEngine.settings().getGameGridHeight() - 1);
         
     }
     
@@ -43,13 +50,8 @@ public class GameScreenController implements Initializable {
     public void applySettings() {
         gameScreen.setPrefHeight(GameEngine.settings().getResHeight());
         gameScreen.setPrefWidth(GameEngine.settings().getResWidth());
-        grid.setPrefHeight(GameEngine.settings().getResHeight());
-        grid.setPrefWidth(GameEngine.settings().getResWidth());
+        gridPane.setPrefHeight(GameEngine.settings().getResHeight());
+        gridPane.setPrefWidth(GameEngine.settings().getResWidth());
     }
-    
-    /**
-     * Draws characters on screen
-     */
-    
     
 }

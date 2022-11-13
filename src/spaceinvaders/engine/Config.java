@@ -38,6 +38,16 @@ public class Config {
     private int resWidth;
     
     /**
+     * Height of game grid
+     */
+    private int gameGridHeight;
+    
+    /**
+     * Width of game grid
+     */
+    private int gameGridWidth;
+    
+    /**
      * Constructor that instantiate variables with default values
      * 
      * <p><strong>Default values:</strong></p>
@@ -55,6 +65,8 @@ public class Config {
         frameTime = 1000 / frameRate;
         resHeight = 600;
         resWidth = 400;
+        gameGridHeight = 25;
+        gameGridWidth = 20;
     }
     
     /**
@@ -153,5 +165,23 @@ public class Config {
      */
     public int getResWidth() {
         return resWidth;
+    }
+    
+    /**
+     * Gets the height of the game grid
+     * 
+     * @return game grid height
+     */
+    public int getGameGridHeight() {
+        return gameGridHeight;
+    }
+    
+    /**
+     * Gets the width of the game grid
+     * 
+     * @return game grid width
+     */
+    public int getGameGridWidth() {
+        return gameGridWidth;
     }
 }
