@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.SceneTemp;
+import spaceinvaders.engine.GameEngine;
 import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
@@ -64,7 +64,7 @@ public class Cannon extends GameObject {
      */
     public void move(int x) {
         int newPivotX = getX() + x;
-        if (newPivotX >= 0 && newPivotX < SceneTemp.getWidth()) {
+        if (newPivotX >= 0 && newPivotX < GameEngine.settings().getGameGridWidth()) {
             System.out.println(newPivotX);
             setX(newPivotX);
         }

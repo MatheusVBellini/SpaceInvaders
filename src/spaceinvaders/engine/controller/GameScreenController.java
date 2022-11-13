@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.game_objects.GameObjectCollection;
 import spaceinvaders.graphics.GameGrid;
 import spaceinvaders.graphics.sprite.CannonSprite;
 
@@ -32,12 +33,14 @@ public class GameScreenController implements Initializable {
         // initializing variables
         applySettings();                                                        // initializes graphic variables
         GameEngine.loadGame();                                                  // initilizazes game variables
-        gameScreen.getChildren().add(gridPane);
-
-        // test
-        ImageView iv = new ImageView(new CannonSprite().getImage());
-        gridPane.add(iv,GameEngine.settings().getGameGridWidth()/2,GameEngine.settings().getGameGridHeight() - 1);
+        gameScreen.getChildren().add(gridPane);                                 // add GridPane to screen
+        GameObjectCollection objectCol = GameEngine.getGameObjectCollection();  // fetch GameObjectCollection
         
+        // game loop
+        
+        
+        // draw test
+        draw(GameEngine.getGameObjectCollection());
     }
     
     /**
@@ -50,4 +53,38 @@ public class GameScreenController implements Initializable {
         gridPane.setPrefWidth(GameEngine.settings().getResWidth());
     }
     
+    /**
+     * Draw GameObjectCollection
+     */
+    public void draw(GameObjectCollection gameObjectCollection) {
+        // draw allies
+        gameObjectCollection.getAllies().forEach(
+               ally -> 
+               gridPane.add(
+                       ally.getSprite().getImage(),
+                       ally.getX(),
+                       ally.getY()
+               )
+       );
+        
+       // draw projectiles
+       gameObjectCollection.getProjectiles().forEach(
+               projectile -> 
+               gridPane.add(
+                       projectile.getSprite().getImage(),
+                       projectile.getX(),
+                       projectile.getY()
+               )
+       );
+       
+       // draw aliens
+       gameObjectCollection.getAliens().getListOfAliens().forEach(
+               alien -> 
+               gridPane.add(
+                       alien.getSprite().getImage(),
+                       alien.getX(),
+                       alien.getY()
+               )
+       );
+    }
 }

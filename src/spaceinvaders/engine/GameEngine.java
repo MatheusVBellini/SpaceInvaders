@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
-import spaceinvaders.graphics.SceneTemp;
 import spaceinvaders.game_objects.*;
 import spaceinvaders.graphics.TitleScreen;
 
@@ -140,13 +139,13 @@ public class GameEngine {
         gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2, config.getGameGridHeight() - 4));
         gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 1, config.getGameGridHeight() - 4));
         
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 10, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 9, config.getGameGridHeight() - 4));
         gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 8, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 7, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 6, config.getGameGridHeight() - 4));
         
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 8, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 9, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 10, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 5, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 6, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 7, config.getGameGridHeight() - 4));
         
         gameObjectCollection.add(new SpaceShip(0, 4));
     }

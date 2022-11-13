@@ -1,6 +1,5 @@
 package spaceinvaders.engine;
 
-import spaceinvaders.graphics.SceneTemp;
 
 /**
  * Class containing default values of in-game and meta-game 

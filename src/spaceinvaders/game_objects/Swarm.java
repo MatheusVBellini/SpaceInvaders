@@ -3,8 +3,6 @@ package spaceinvaders.game_objects;
 import java.util.LinkedList;
 import spaceinvaders.engine.GameEngine;
 
-import spaceinvaders.graphics.SceneTemp;
-
 /**
  * Collection of aliens that move together
  */
@@ -36,7 +34,7 @@ public class Swarm {
         numOfAliens = rAliens * cAliens;
         swarm = new LinkedList<>();
         
-        int initX = GameEngine.settings().getGameGridWidth() / 2 - cAliens;
+        int initX = GameEngine.settings().getGameGridWidth() / 4; //- cAliens;
         int initY = 6;
         
         for (int i = 0; i < rAliens; i++) {
@@ -57,7 +55,7 @@ public class Swarm {
         boolean switch_warning = false;
         for (GameObject alien : swarm) {
             alien.update();
-            if (alien.getX() < 0 || alien.getX() > SceneTemp.getWidth()) {
+            if (alien.getX() < 0 || alien.getX() > GameEngine.settings().getGameGridWidth()) {
                 switch_warning = true;
             }
         }

@@ -3,7 +3,6 @@ package spaceinvaders.engine;
 import java.util.LinkedList;
 import java.util.Stack;
 import spaceinvaders.game_objects.*;
-import spaceinvaders.graphics.SceneTemp;
 
 /**
  * Class responsible for updating and verifying hazards and collision between GameObjects
@@ -86,7 +85,7 @@ public class StateHandler {
         SpaceShip tmp = new SpaceShip(0,0);
         SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(tmp.getClass());
         
-        if (spaceShip != null && spaceShip.getX() == SceneTemp.getWidth()) {
+        if (spaceShip != null && spaceShip.getX() == GameEngine.settings().getGameGridWidth()) {
             spaceShip.takeDamage();
         }
     }
@@ -154,7 +153,7 @@ public class StateHandler {
             if (projectile instanceof ProjectileAlly && projectile.getY() - 1 < 0) {
                 projectile.takeDamage();
             } 
-            if (projectile instanceof ProjectileEnemy && projectile.getY() >= SceneTemp.getHeight()) {
+            if (projectile instanceof ProjectileEnemy && projectile.getY() >= GameEngine.settings().getGameGridHeight()) {
                 projectile.takeDamage();
             }
         }
@@ -255,7 +254,7 @@ public class StateHandler {
      * @return boolean specifying whether the course is complete
      */
     private boolean swarmCourseComplete(Swarm swarm) {
-        int y = SceneTemp.getHeight() - 4;
+        int y = GameEngine.settings().getGameGridHeight() - 4;
         
         return swarm.getListOfAliens().getLast().getY() == y;
     }
