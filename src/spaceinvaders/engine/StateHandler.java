@@ -86,7 +86,7 @@ public class StateHandler {
         SpaceShip tmp = new SpaceShip(0,0);
         SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(tmp.getClass());
         
-        if (spaceShip != null && spaceShip.getPivotX() + (GameObject.getHitboxWidth() / 2) == SceneTemp.getWidth()) {
+        if (spaceShip != null && spaceShip.getX() == SceneTemp.getWidth()) {
             spaceShip.takeDamage();
         }
     }
@@ -103,8 +103,8 @@ public class StateHandler {
         if (cannon.hasShot()) {
             gameObjectCollection.add(
                     new ProjectileAlly(
-                            cannon.getPivotX(), 
-                            cannon.getPivotY() - GameObject.getHitboxHeight()
+                            cannon.getX(), 
+                            cannon.getY() - 1
                     ));
             cannon.reload();
         }
@@ -127,7 +127,7 @@ public class StateHandler {
             if (projectile instanceof ProjectileAlly) {
                 // collision with aliens
                 for (GameObject alien : aliens) {
-                    if ((projectile.getPivotX() == alien.getPivotX()) && (projectile.getPivotY() == alien.getPivotY())) {
+                    if ((projectile.getX() == alien.getX()) && (projectile.getY() == alien.getY())) {
                         alien.takeDamage();
                         projectile.takeDamage();
                     }
@@ -136,7 +136,7 @@ public class StateHandler {
             
             // rest of the possible collisions
             for (GameObject ally : allies) {
-                if ((projectile.getPivotX() == ally.getPivotX()) && (projectile.getPivotY() == ally.getPivotY())) {
+                if ((projectile.getX() == ally.getX()) && (projectile.getY() == ally.getY())) {
                     ally.takeDamage();
                     projectile.takeDamage();
                 }
@@ -151,10 +151,10 @@ public class StateHandler {
     private void projectileCourseComplete(GameObjectCollection gameObjectCollection) {
         LinkedList<GameObject> projectiles = gameObjectCollection.getProjectiles();
         for (GameObject projectile : projectiles) {
-            if (projectile instanceof ProjectileAlly && projectile.getPivotY() - Projectile.getHitboxHeight() < 0) {
+            if (projectile instanceof ProjectileAlly && projectile.getY() - 1 < 0) {
                 projectile.takeDamage();
             } 
-            if (projectile instanceof ProjectileEnemy && projectile.getPivotY() >= SceneTemp.getHeight()) {
+            if (projectile instanceof ProjectileEnemy && projectile.getY() >= SceneTemp.getHeight()) {
                 projectile.takeDamage();
             }
         }
@@ -255,7 +255,7 @@ public class StateHandler {
      * @return boolean specifying whether the course is complete
      */
     private boolean swarmCourseComplete(Swarm swarm) {
-        int y = SceneTemp.getHeight() - GameObject.getHitboxHeight() - 3;
+        int y = SceneTemp.getHeight() - 4;
         
         return swarm.getListOfAliens().getLast().getY() == y;
     }

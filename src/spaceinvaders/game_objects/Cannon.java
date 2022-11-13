@@ -63,7 +63,7 @@ public class Cannon extends GameObject {
      * @param x how much the cannon is to be moved in the x-axis
      */
     public void move(int x) {
-        int newPivotX = getPivotX() + x;
+        int newPivotX = getX() + x;
         if (newPivotX >= 0 && newPivotX < SceneTemp.getWidth()) {
             System.out.println(newPivotX);
             setX(newPivotX);
@@ -85,6 +85,6 @@ public class Cannon extends GameObject {
      */
     @Override
     public Cannon copy() {
-        return new Cannon(getPivotX(), getPivotY());
+        return new Cannon(getX(), getY());
     }
 }

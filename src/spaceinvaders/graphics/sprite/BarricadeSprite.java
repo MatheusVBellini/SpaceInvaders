@@ -1,10 +1,12 @@
 package spaceinvaders.graphics.sprite;
 
+import java.net.MalformedURLException;
+
 /**
  * Barricade GameObject graphical representation
  */
 public class BarricadeSprite extends Sprite {
-    public BarricadeSprite(int x, int y) {
-        super(x,y);
+    public BarricadeSprite() throws MalformedURLException {
+        super("Barricade.png");
     }
 }

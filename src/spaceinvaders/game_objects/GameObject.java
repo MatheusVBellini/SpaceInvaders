@@ -6,17 +6,7 @@ import spaceinvaders.graphics.sprite.Sprite;
  *  Abstract class for defining game objects
  * 
  */
-public abstract class GameObject {
-    /**
-     * Height of the collision susceptible box which the object is contained within
-     */
-    private static final int hitboxHeight = 1;
-    
-    /**
-     * Width of the collision susceptible box which the object is contained within
-     */
-    private static final int hitboxWidth = 1;
-    
+public abstract class GameObject {    
     /**
      * Maximum moving speed of game objects
      */
@@ -50,13 +40,11 @@ public abstract class GameObject {
      * @param y
      */
     protected GameObject(int x, int y) {
-        this.x = x - (hitboxWidth / 2);
-        this.y = y - (hitboxHeight - 1);
+        this.x = x;
+        this.y = y;
         sprite.setX(x);
         sprite.setY(y);
     }
-
-    // setters
     
     /**
      * Changes the x-axis coordinate of the pivot coordinate
@@ -75,26 +63,6 @@ public abstract class GameObject {
     public void setY(int y) {
         sprite.setY(y);
     }
-    
-    // getters
-    
-    /**
-     * Gets the pivot coordinate of the x-axis
-     * 
-     * @return pivot coordinate of the x-axis
-     */
-    public int getPivotX() {
-        return x + (hitboxWidth / 2);
-    }
-
-    /**
-     * Gets the pivot coordinate of the y-axis
-     * 
-     * @return pivot coordinate of the y-axis
-     */
-    public int getPivotY() {
-        return y + (hitboxHeight - 1);
-    }
 
     /**
      * Gets the x-axis coordinate of the top-left-most pixel of the game object
@@ -112,24 +80,6 @@ public abstract class GameObject {
      */
     public int getY() {
         return (int)sprite.getY();
-    }
-
-    /**
-     * Gets the height of the game object's hitbox
-     * 
-     * @return height of the game object's hitbox
-     */
-    public static int getHitboxHeight() {
-        return hitboxHeight;
-    }
-
-    /**
-     * Gets the width of the game object's hitbox
-     * 
-     * @return width of the game object's hitbox
-     */
-    public static int getHitboxWidth() {
-        return hitboxWidth;
     }
 
     /**

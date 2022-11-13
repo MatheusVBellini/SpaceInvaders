@@ -35,21 +35,21 @@ public class Alien extends GameObject {
      * Define the rightward movement of the alien
      */
     private void moveRight() {
-        setX(getPivotX() + 1);
+        setX(getX() + 1);
     }
 
     /**
      *  Define the leftward movement of the alien
      */
     private void moveLeft() {
-        setX(getPivotX() - 1);
+        setX(getX() - 1);
     }
 
     /**
      * Define the downward movement of the alien
      */
     private void moveDown() {
-        setY(getPivotY() + 1);
+        setY(getY() + 1);
     }
 
     /**
@@ -108,6 +108,6 @@ public class Alien extends GameObject {
      */
     @Override
     public Alien copy() {
-        return new Alien(getPivotX(), getPivotY());
+        return new Alien(getX(), getY());
     }
 }

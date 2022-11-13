@@ -167,13 +167,8 @@ public class SceneTemp {
     private void clean(GameObject gameObject) {
         int x = gameObject.getX();
         int y = gameObject.getY();
-        int objectHeight = GameObject.getHitboxHeight();
-        int objectWidth = GameObject.getHitboxWidth();
-        
-        if (gameObject instanceof Projectile) {
-            objectHeight = Projectile.getHitboxHeight();
-            objectWidth = Projectile.getHitboxWidth();
-        }
+        int objectHeight = 1;
+        int objectWidth = 1;
 
         // substitutes pixels in the pixel array
         for (int i = 0; i < objectHeight; i++) {

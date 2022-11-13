@@ -35,14 +35,14 @@ public class Swarm {
         numOfAliens = rAliens * cAliens;
         swarm = new LinkedList<>();
         
-        int initX = SceneTemp.getCenterX() - cAliens * (GameObject.getHitboxWidth());
-        int initY = GameObject.getHitboxHeight() + 1;
+        int initX = SceneTemp.getCenterX() - cAliens;
+        int initY = 1;
         
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {
                 swarm.add(new Alien(
-                        initX + j * (GameObject.getHitboxWidth() + 1), 
-                        initY + i * (GameObject.getHitboxHeight() + 1)
+                        initX + j, 
+                        initY + i
                 ));
             }
         }
@@ -56,7 +56,7 @@ public class Swarm {
         boolean switch_warning = false;
         for (GameObject alien : swarm) {
             alien.update();
-            if (alien.getX() < 0 || alien.getX() > SceneTemp.getWidth() - GameObject.getHitboxWidth()) {
+            if (alien.getX() < 0 || alien.getX() > SceneTemp.getWidth()) {
                 switch_warning = true;
             }
         }
