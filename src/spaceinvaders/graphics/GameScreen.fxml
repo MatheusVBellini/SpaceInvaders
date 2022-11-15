@@ -32,6 +32,11 @@
             <Font name="Modern DOS 9x16" size="81.0" />
          </font>
       </Label>
+      <Label fx:id="stageLabel" layoutX="204.0" layoutY="14.0" text="Stage:&lt;0&gt;" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
    </children>
    <cursor>
       <Cursor fx:constant="NONE" />

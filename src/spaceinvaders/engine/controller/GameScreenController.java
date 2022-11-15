@@ -35,6 +35,11 @@ public class GameScreenController implements Initializable {
     @FXML
     private Label pauseLabel;
     
+    @FXML
+    private Label stageLabel;
+    
+    private int stageCounter;
+    
     /**
      * Initializes the controller class.
      */
@@ -43,7 +48,8 @@ public class GameScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // initializing variables
         applySettings();                                                        // initializes graphic variables
-        GameEngine.loadGame();                                                  // initilizazes game variables                           
+        GameEngine.loadGame();                                                  // initilizes game objects                           
+        stageCounter = 0;
         
         // show objects on the screen
         draw(GameEngine.getGameObjectCollection());
@@ -179,5 +185,8 @@ public class GameScreenController implements Initializable {
             tmp.setTranslateY(alien.getY());
             gameScreen.getChildren().add(tmp);
         }
+        
+        stageCounter++;
+        stageLabel.setText("Stage:<" + stageCounter + ">");
     }
 }
