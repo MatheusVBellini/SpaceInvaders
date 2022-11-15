@@ -31,10 +31,10 @@ public class SpaceShip extends GameObject {
      */
     @Override
     public void update() {
-        for (int i = 0; i < getSpeed(); i++) {
-            move();
-            updateSprite();
-        }
+        
+        move();
+        updateSprite();
+        
     }
     
     /**

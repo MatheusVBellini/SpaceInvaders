@@ -27,6 +27,11 @@ public class Cannon extends GameObject {
     private boolean shot;
     
     /**
+     * Flag to know whether previous bullet is still on the screen
+     */
+    private boolean bulletAlive;
+    
+    /**
      * Get the boolean value of the shot flag
      * 
      * @return boolean that is true when the cannon has shot 
@@ -39,7 +44,7 @@ public class Cannon extends GameObject {
     /**
      * turn off shot flag
      */
-    public void reload() {
+    public void recoil() {
         shot = false;
     }
     
@@ -48,6 +53,21 @@ public class Cannon extends GameObject {
      */
     public void shoot() {
         shot = true;
+        bulletAlive = true;
+    }
+    
+    /**
+     * Guarantees one shot at a time in the game
+     */
+    public boolean canShoot() {
+        return !bulletAlive;
+    }
+    
+    /**
+     * makes bulletAlive false when bullet hit the target
+     */
+    public void hit() {
+        bulletAlive = false;
     }
     
     /**

@@ -11,7 +11,7 @@ public abstract class GameObject {
     /**
      * Maximum moving speed of game objects
      */
-    private static int speed = 1;
+    private static int speed = 3;
     
     /**
      *  x-axis position of object's pivot

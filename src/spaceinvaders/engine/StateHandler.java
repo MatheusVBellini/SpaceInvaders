@@ -174,6 +174,12 @@ public class StateHandler {
         for (GameObject projectile : list) {
             if (projectile.isDead()) {
                 corpses.push(projectile);
+                
+                // player can shoot again
+                if (projectile instanceof ProjectileAlly) {
+                    Cannon player = (Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class);
+                    player.hit();
+                }
             }
         }
         

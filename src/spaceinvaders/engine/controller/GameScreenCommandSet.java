@@ -29,7 +29,9 @@ public class GameScreenCommandSet extends CommandSet {
     public void processInput(KeyCode key) {
         switch (key) {
             case Z:
-                player.shoot(); // shoot
+                if (player.canShoot()) {
+                    player.shoot(); // shoot
+                }
                 break;
             case RIGHT:
                 player.move(1); // move right
