@@ -61,7 +61,7 @@ public class GameEngine {
      * @param upperbound
      * @return next int in the random stream 
      */
-    private static int getNextRandInt(int upperbound) {
+    public static int getNextRandInt(int upperbound) {
         return rand.nextInt(upperbound);
     }
     

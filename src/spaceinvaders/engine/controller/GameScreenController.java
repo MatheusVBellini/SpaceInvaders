@@ -1,19 +1,17 @@
 package spaceinvaders.engine.controller;
 
-import static java.lang.System.exit;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.GameObjectCollection;
-import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
  * Controller for the main game screen
@@ -25,6 +23,9 @@ public class GameScreenController implements Initializable {
     
     @FXML
     private Label scoreLabel;
+    
+    @FXML
+    private Label lifeLabel;
     
     /**
      * Initializes the controller class.
@@ -84,16 +85,16 @@ public class GameScreenController implements Initializable {
     
     // main game loop activator
     AnimationTimer timer = new AnimationTimer() {
-        long dt = 0;
         int score = 0;
+        int life = 3;
         
         @Override
         public void handle(long now) {
             // run game loop
-            dt++;
-            dt = dt % GameEngine.settings().getFrameRate();
-            if (GameEngine.gameLoop(gameScreen.getChildren()) != 0) {
-                stop();
+            switch (GameEngine.gameLoop(gameScreen.getChildren())) {
+                case 0: break;
+                case 1: stop(); break;
+                case 2:
             }
             
             // update score
@@ -109,7 +110,17 @@ public class GameScreenController implements Initializable {
             }
             
             // update player life
-            
+            life = ((Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class)).getHealth();
+            switch (life) {
+                case 3:
+                    lifeLabel.setText("♡♡♡");
+                    break;
+                case 2:
+                    lifeLabel.setText("♡♡");
+                    break;
+                case 1:
+                    lifeLabel.setText("♡");
+            }
         }
     };
     

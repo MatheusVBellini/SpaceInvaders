@@ -19,6 +19,7 @@ public class Alien extends GameObject {
         super(x,y);
         sprite = new AlienSprite1();
         health = 1;
+        shot = false;
     }
     
     /**
@@ -32,6 +33,7 @@ public class Alien extends GameObject {
     public Alien(int x, int y, int sel) {
         super(x,y);
         health = 1;
+        shot = false;
         
         switch(sel) {
             case 1:
@@ -43,6 +45,35 @@ public class Alien extends GameObject {
             case 3:
                 sprite = new AlienSprite3();
         }
+    }
+    
+    /**
+     * Flag for engine to know whether Alien has shot
+     */
+    private boolean shot;
+    
+    /**
+     * Get the boolean value of the shot flag
+     * 
+     * @return boolean that is true when the Alien has shot 
+     * and false when it hasn't
+     */
+    public boolean hasShot() {
+        return shot;
+    }
+    
+    /**
+     * turn off shot flag
+     */
+    public void recoil() {
+        shot = false;
+    }
+    
+    /**
+     * shoot command, actives the shot flag
+     */
+    public void shoot() {
+        shot = true;
     }
     
     /**

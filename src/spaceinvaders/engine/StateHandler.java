@@ -8,7 +8,6 @@ import spaceinvaders.game_objects.*;
 import spaceinvaders.graphics.sprite.AlienSprite1;
 import spaceinvaders.graphics.sprite.AlienSprite2;
 import spaceinvaders.graphics.sprite.AlienSprite3;
-import spaceinvaders.graphics.sprite.Sprite;
 
 /**
  * Class responsible for updating and verifying hazards and collision between GameObjects
@@ -37,7 +36,7 @@ public class StateHandler {
      */
     public void checkHazards(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
         cannonShoot(graphicalObjects, gameObjectCollection); // checks if cannon has requested to shoot
-        // checks if any alien has requested to shoot
+        alienShoot(graphicalObjects, gameObjectCollection); // checks if any alien has requested to shoot
         projectileCollisions(gameObjectCollection); // Check if a projectile has hit a GameObject
         spaceShipCourseComplete(gameObjectCollection); // check spaceship course completion
         projectileCourseComplete(gameObjectCollection); // check projectiles course completion
@@ -59,6 +58,7 @@ public class StateHandler {
      * Checks if shoot flag is activated in the cannon, if so, instantiates 
      * an ally projectile and turn the flag off
      * 
+     * @param graphicalObjects 
      * @param gameObjectCollection
      */
     private void cannonShoot(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
@@ -74,6 +74,37 @@ public class StateHandler {
             gameObjectCollection.add(projectile);
             graphicalObjects.add(projectile.getSprite().getImage());
             cannon.recoil();
+        }
+    }
+    
+    
+    /**
+     * Checks if shoot flag is activated in any of the aliens, if so, instantiates 
+     * an enemy projectile and turn the flag off
+     * 
+     * @param graphicalObjects
+     * @param gameObjectCollection
+     */
+    private void alienShoot(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
+        for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {
+            
+            // radomly shoots
+            if (GameEngine.getNextRandInt(2500) == 1) {
+                ((Alien)alien).shoot();
+            }
+            
+            if (((Alien)alien).hasShot()) {
+                ProjectileEnemy projectile = new ProjectileEnemy(
+                                                    alien.getX() + GameObject.getGameObjectWidth()/2 - 2, 
+                                                    alien.getY() + GameObject.getGameObjectHeight() + 4
+                                            );
+                projectile.getSprite().getImage().setTranslateX(projectile.getX());
+                projectile.getSprite().getImage().setTranslateY(projectile.getY());
+
+                gameObjectCollection.add(projectile);
+                graphicalObjects.add(projectile.getSprite().getImage());
+                ((Alien)alien).recoil();
+            }
         }
     }
     

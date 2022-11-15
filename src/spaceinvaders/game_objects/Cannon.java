@@ -71,6 +71,14 @@ public class Cannon extends GameObject {
     }
     
     /**
+     * get the Player health
+     * @return player's health
+     */
+    public int getHealth() {
+        return health;
+    }
+    
+    /**
      * Cannon relies on user's input, if there's no input, then it does not move
      */
     private void move() {}
