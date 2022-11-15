@@ -100,9 +100,15 @@ public class GameScreenController implements Initializable {
         public void handle(long now) {
             // run game loop
             switch (GameEngine.gameLoop(gameScreen.getChildren())) {
-                case 0: break;
-                case 1: stop(); gameOver(); break;
-                case 2:
+                case 0: 
+                    break;
+                case 1: 
+                    stop(); 
+                    gameOver(); 
+                    break;
+                case 2: 
+                    nextLevel(GameEngine.getGameObjectCollection());
+                    break;
             }
             
             // update score
@@ -158,6 +164,20 @@ public class GameScreenController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(GameScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Go to next level
+     */
+    public void nextLevel(GameObjectCollection gameObjectCollection) {
+        ImageView tmp;
+        GameEngine.replenishSwarm();
+        for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {
+            tmp = alien.getSprite().getImage();
+            tmp.setTranslateX(alien.getX());
+            tmp.setTranslateY(alien.getY());
+            gameScreen.getChildren().add(tmp);
         }
     }
 }

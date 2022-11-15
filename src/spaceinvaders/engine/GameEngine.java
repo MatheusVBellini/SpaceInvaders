@@ -239,6 +239,13 @@ public class GameEngine {
     }
     
     /**
+     * Replenish swarm when going to next level
+     */
+    public static void replenishSwarm() {
+        gameObjectCollection.setAliens(new Swarm(config.getSwarmHeight(), config.getSwarmWidth()));
+    }
+    
+    /**
      * Main game loop
      * 
      * <p>
@@ -250,6 +257,11 @@ public class GameEngine {
      * @return fatal error code
      */
     public static int gameLoop(ObservableList<Node> graphicalObjects) {
+        
+        int hazardReturn = stateHandler.checkFatalHazards(gameObjectCollection);
+        if (hazardReturn != 0) {
+            return hazardReturn;
+        }
         
         // tries to generate a SpaceShip
         if (rand.nextInt(1000) == 100) {
@@ -267,8 +279,7 @@ public class GameEngine {
         // hazards check
         stateHandler.checkHazards(graphicalObjects, gameObjectCollection);
 
-        // fatal hazards check
-        return stateHandler.checkFatalHazards(gameObjectCollection);            
+        return 0;            
         
     }
         

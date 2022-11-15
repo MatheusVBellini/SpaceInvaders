@@ -272,14 +272,20 @@ public class StateHandler {
      *      <td>player lost all its lives</td>
      *      <td>end game</td>
      *  </tr>
+     *  <tr>
+     *      <td>2</td>
+     *      <td>the entire swarm is dead</td>
+     *      <td>go to next level</td>
+     *  </tr>
      * </table>
      * 
      * @param gameObjectCollection instantiated GameObjects that need to be verified 
      * @return hazard codification
     */
     public int checkFatalHazards(GameObjectCollection gameObjectCollection) {
+        if (playerIsDead((Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class))) { return 1; }
+        if (swarmIsDead(gameObjectCollection.getAliens())) { return 2; }
         if (swarmCourseComplete(gameObjectCollection.getAliens())) { return 1; }
-        if (playerIsDead()) { return 1; }
         
         return 0;
     }
@@ -311,8 +317,14 @@ public class StateHandler {
      * 
      * @return boolean specifying whether the player is dead
      */
-    private boolean playerIsDead() {
-        Cannon player = (Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class);
+    private boolean playerIsDead(Cannon player) {
         return player.isDead();
+    }
+    
+    /**
+     * Swarm is dead -- go to next level
+     */
+    private boolean swarmIsDead(Swarm swarm) {
+        return swarm.getListOfAliens().isEmpty();
     }
 }

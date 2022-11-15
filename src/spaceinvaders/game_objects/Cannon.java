@@ -105,6 +105,18 @@ public class Cannon extends GameObject {
         move();
         updateSprite();
     }
+    
+    /**
+     * Cannon gets teleported to the center of the screen
+     */
+    @Override
+    public void takeDamage() {
+        super.takeDamage();
+        setX(GameEngine.settings().getResWidth() / 2);
+        setY(GameEngine.settings().getResHeight() - getGameObjectHeight() + 4);
+        sprite.getImage().setTranslateX(getX());
+        sprite.getImage().setTranslateY(getY());
+    }
         
     /**
      * Returns a copy of the original object
