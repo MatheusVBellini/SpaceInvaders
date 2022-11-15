@@ -1,17 +1,22 @@
 package spaceinvaders.engine.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.GameObjectCollection;
+import spaceinvaders.graphics.GameOverScreen;
 
 /**
  * Controller for the main game screen
@@ -96,7 +101,7 @@ public class GameScreenController implements Initializable {
             // run game loop
             switch (GameEngine.gameLoop(gameScreen.getChildren())) {
                 case 0: break;
-                case 1: stop(); break;
+                case 1: gameOver(); break;
                 case 2:
             }
             
@@ -142,5 +147,17 @@ public class GameScreenController implements Initializable {
     /**
      * Go to Game Over screen
      */
-    public void gameOver() {}
+    public void gameOver() {
+        try {
+            GameOverScreen scene = new GameOverScreen(GameEngine.getGameOverScreenLoader());
+            Stage stage = GameEngine.getStage();
+            
+            scene.listenToKey();
+            
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(GameScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
