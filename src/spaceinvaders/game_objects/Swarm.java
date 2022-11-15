@@ -39,7 +39,7 @@ public class Swarm {
         
         int incX = 0;
         int incY = 0;
-        int sel = 1;
+        int sel = 3;
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {
                 swarm.add(new Alien(
@@ -53,8 +53,8 @@ public class Swarm {
             
             incX = 0;
             incY += GameObject.getGameObjectHeight() + 3;
-            if (i == 0) { sel++; }
-            if (i == 2) { sel++; }
+            if (i == 0) { sel--; }
+            if (i == 2) { sel--; }
         }
     }
     

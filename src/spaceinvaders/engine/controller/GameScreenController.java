@@ -99,8 +99,10 @@ public class GameScreenController implements Initializable {
             // update score
             score = GameEngine.getScore();
             if (score < 10) {
-                scoreLabel.setText("00" + score);
+                scoreLabel.setText("000" + score);
             } else if (score < 100) {
+                scoreLabel.setText("00" + score);
+            } else if (score < 1000) {
                 scoreLabel.setText("0" + score);
             } else {
                 scoreLabel.setText("" + score);

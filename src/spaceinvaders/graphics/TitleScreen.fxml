@@ -28,7 +28,7 @@
             <Font name="Modern DOS 9x16" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="scoreText" layoutX="232.0" layoutY="440.0" minHeight="16" minWidth="48.0" prefHeight="30.0" prefWidth="48.0" text="000" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="scoreText" layoutX="232.0" layoutY="440.0" minHeight="16" minWidth="48.0" prefHeight="30.0" prefWidth="66.0" text="0000" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Modern DOS 9x16" size="25.0" />
          </font>

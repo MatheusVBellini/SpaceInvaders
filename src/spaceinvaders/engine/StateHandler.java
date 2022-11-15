@@ -114,6 +114,11 @@ public class StateHandler {
                         ) {
                     ally.takeDamage();
                     projectile.takeDamage();
+                    
+                    // increases the score for hitting the SpaceShip
+                    if (ally.getClass().equals(SpaceShip.class)) {
+                        GameEngine.increaseScore(50);
+                    }
                 }
             }
             
@@ -159,13 +164,13 @@ public class StateHandler {
             
             // selects the correct score according to the type of alien
             if (tmp.getSprite().getClass().equals(AlienSprite1.class)) {
-                GameEngine.increaseScore(30);
+                GameEngine.increaseScore(10);
             }
             if (tmp.getSprite().getClass().equals(AlienSprite2.class)) {
                 GameEngine.increaseScore(20);
             }
             if (tmp.getSprite().getClass().equals(AlienSprite3.class)) {
-                GameEngine.increaseScore(10);
+                GameEngine.increaseScore(30);
             }
             
         }
@@ -175,9 +180,6 @@ public class StateHandler {
         for (GameObject ally : list) {
             if (ally.isDead() && !(ally instanceof Cannon)) {
                 corpses.push(ally);
-                if (ally.getClass().equals(SpaceShip.class)) {
-                    GameEngine.increaseScore(50);
-                }
             }
         }
         
