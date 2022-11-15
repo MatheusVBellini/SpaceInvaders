@@ -39,11 +39,13 @@ public class Swarm {
         
         int incX = 0;
         int incY = 0;
+        int sel = 1;
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {
                 swarm.add(new Alien(
                         initX + incX, 
-                        initY + incY
+                        initY + incY,
+                        sel
                 ));
                 
                 incX += GameObject.getGameObjectWidth() + 4;
@@ -51,6 +53,8 @@ public class Swarm {
             
             incX = 0;
             incY += GameObject.getGameObjectHeight() + 3;
+            if (i == 0) { sel++; }
+            if (i == 2) { sel++; }
         }
     }
     
@@ -76,6 +80,13 @@ public class Swarm {
                 ((Alien)alien).update(switch_warning);
             }
         }
+        
+        // checks if swarm needs a speed-up
+        if (swarm.size() <= numOfAliens/2) {
+            speed = 2;
+        } if (swarm.size() <= numOfAliens/4) {
+            speed = 3;
+        }
     }
     
     /**
@@ -95,4 +106,5 @@ public class Swarm {
     public int getSpeed() {
         return speed;
     }
+
 }

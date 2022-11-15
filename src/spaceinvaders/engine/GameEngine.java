@@ -4,6 +4,7 @@ package spaceinvaders.engine;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -50,15 +51,31 @@ public class GameEngine {
     private static FXMLLoader gameScreenLoader;
     
     /**
+     * Random stream to coordinate random events
+     */
+    private static Random rand = new Random();
+    
+    /**
+     * get next random int
+     * 
+     * @param upperbound
+     * @return next int in the random stream 
+     */
+    private static int getNextRandInt(int upperbound) {
+        return rand.nextInt(upperbound);
+    }
+    
+    /**
      * Game score
      */
     private static int score = 0;
 
     /**
-     * increase game score by 10
+     * increase game score by x
+     * @param x value which the score will be increased by
      */
-    public static void increaseScore() {
-        score += 10;
+    public static void increaseScore(int x) {
+        score += x;
     }
     
     /**
@@ -196,11 +213,7 @@ public class GameEngine {
                 config.getResWidth() / 2 - GameObject.getGameObjectWidth() - 2, 
                 config.getResHeight() - 3 * GameObject.getGameObjectHeight()
         ));
-        
-        gameObjectCollection.add(new SpaceShip(
-                GameObject.getGameObjectWidth(), 
-                4 * GameObject.getGameObjectHeight()
-        ));
+     
     }
     
     /**
@@ -212,14 +225,23 @@ public class GameEngine {
      * </p>
      * 
      * @param graphicalObjects list containing all screen elements
-     * @param dt action time counter
      * @return fatal error code
      */
     public static int gameLoop(ObservableList<Node> graphicalObjects) {
-  
+        
+        // tries to generate a SpaceShip
+        if (rand.nextInt(1000) == 100) {
+            SpaceShip tmp = new SpaceShip(0, 4 * GameObject.getGameObjectHeight());
+            tmp.getSprite().getImage().setTranslateX(tmp.getX());
+            tmp.getSprite().getImage().setTranslateY(tmp.getY());
+            
+            gameObjectCollection.add(tmp);
+            graphicalObjects.add(tmp.getSprite().getImage());
+        }
+        
         // update
         stateHandler.updateCollection(gameObjectCollection);
-
+        
         // hazards check
         stateHandler.checkHazards(graphicalObjects, gameObjectCollection);
 

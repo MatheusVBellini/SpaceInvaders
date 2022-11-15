@@ -5,6 +5,10 @@ import java.util.Stack;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.graphics.sprite.AlienSprite1;
+import spaceinvaders.graphics.sprite.AlienSprite2;
+import spaceinvaders.graphics.sprite.AlienSprite3;
+import spaceinvaders.graphics.sprite.Sprite;
 
 /**
  * Class responsible for updating and verifying hazards and collision between GameObjects
@@ -152,7 +156,18 @@ public class StateHandler {
             tmp = corpses.pop();
             list.remove(tmp);
             graphicalObjects.remove(tmp.getSprite().getImage());
-            GameEngine.increaseScore();
+            
+            // selects the correct score according to the type of alien
+            if (tmp.getSprite().getClass().equals(AlienSprite1.class)) {
+                GameEngine.increaseScore(30);
+            }
+            if (tmp.getSprite().getClass().equals(AlienSprite2.class)) {
+                GameEngine.increaseScore(20);
+            }
+            if (tmp.getSprite().getClass().equals(AlienSprite3.class)) {
+                GameEngine.increaseScore(10);
+            }
+            
         }
         
         // check for dead spaceship and barricades
@@ -160,6 +175,9 @@ public class StateHandler {
         for (GameObject ally : list) {
             if (ally.isDead() && !(ally instanceof Cannon)) {
                 corpses.push(ally);
+                if (ally.getClass().equals(SpaceShip.class)) {
+                    GameEngine.increaseScore(50);
+                }
             }
         }
         
@@ -217,7 +235,7 @@ public class StateHandler {
      *      <td>end game</td>
      *  </tr>
      *  <tr>
-     *      <td>2</td>
+     *      <td>1</td>
      *      <td>player lost all its lives</td>
      *      <td>end game</td>
      *  </tr>
@@ -227,12 +245,8 @@ public class StateHandler {
      * @return hazard codification
     */
     public int checkFatalHazards(GameObjectCollection gameObjectCollection) {
-        if (swarmCourseComplete(gameObjectCollection.getAliens())) {
-            return 1;
-        }
-        if (playerIsDead()) {
-            return 2;
-        }
+        if (swarmCourseComplete(gameObjectCollection.getAliens())) { return 1; }
+        if (playerIsDead()) { return 1; }
         
         return 0;
     }
@@ -262,8 +276,7 @@ public class StateHandler {
      *  if it did, end game, continue otherwise
      * </p>
      * 
-     * @param swarm Game's current swarm 
-     * @return boolean specifying whether the course is complete
+     * @return boolean specifying whether the player is dead
      */
     private boolean playerIsDead() {
         Cannon player = (Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class);

@@ -1,6 +1,8 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.sprite.AlienSprite;
+import spaceinvaders.graphics.sprite.AlienSprite1;
+import spaceinvaders.graphics.sprite.AlienSprite2;
+import spaceinvaders.graphics.sprite.AlienSprite3;
 
 /**
  * Base enemy class
@@ -15,8 +17,32 @@ public class Alien extends GameObject {
      */
     public Alien(int x, int y) {
         super(x,y);
-        sprite = new AlienSprite();
+        sprite = new AlienSprite1();
         health = 1;
+    }
+    
+    /**
+     * Sets the initial position on screen of the alien, sets its health to 1
+     * and assigns a sprite to the object
+     * 
+     * @param x x-axis alien's pivot position
+     * @param y y-axis alien's pivot position
+     * @param sel sprite selector
+     */
+    public Alien(int x, int y, int sel) {
+        super(x,y);
+        health = 1;
+        
+        switch(sel) {
+            case 1:
+                sprite = new AlienSprite1();
+                break;
+            case 2:
+                sprite = new AlienSprite2();
+                break;
+            case 3:
+                sprite = new AlienSprite3();
+        }
     }
     
     /**

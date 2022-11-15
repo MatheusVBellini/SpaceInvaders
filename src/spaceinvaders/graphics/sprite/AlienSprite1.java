@@ -1,12 +1,11 @@
 package spaceinvaders.graphics.sprite;
 
-import java.net.MalformedURLException;
 
 /**
  * Alien GameObject graphical representation
  */
-public class AlienSprite extends Sprite {
-    public AlienSprite() {
+public class AlienSprite1 extends Sprite {
+    public AlienSprite1() {
         super("Alien1.png");
     }
 }
