@@ -89,7 +89,7 @@ public class StateHandler {
         for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {
             
             // radomly shoots
-            if (GameEngine.getNextRandInt(2500) == 1) {
+            if (GameEngine.getNextRandInt(10000) == 1) {
                 ((Alien)alien).shoot();
             }
             
