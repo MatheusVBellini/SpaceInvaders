@@ -51,6 +51,11 @@ public class GameEngine {
     private static FXMLLoader gameScreenLoader;
     
     /**
+     * Game Over screen FXMLLoader
+     */
+    private static FXMLLoader gameOverScreenLoader;
+    
+    /**
      * Random stream to coordinate random events
      */
     private static Random rand = new Random();
@@ -103,6 +108,14 @@ public class GameEngine {
     }
     
     /**
+     * Instantiates gameOverScreenLoader
+     * @param gameOverScreenLoader
+     */
+    public static void setGameOverScreenLoader(FXMLLoader gameOverScreenLoader) {
+        GameEngine.gameOverScreenLoader = gameOverScreenLoader;
+    }
+    
+    /**
      * Saves stage for fast switch scene usage
      * @param stage
      */
@@ -148,6 +161,15 @@ public class GameEngine {
      */
     public static FXMLLoader getGameScreenLoader() {
         return gameScreenLoader;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the game over
+     * 
+     * @return main game FXMLoader
+     */
+    public static FXMLLoader getGameOverScreenLoader() {
+        return gameOverScreenLoader;
     }
     
     /**

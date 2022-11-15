@@ -15,10 +15,13 @@ public class GameScreenCommandSet extends CommandSet {
     
     private GameScreenController controller;
     
+    private int escFunc;
+    
     public GameScreenCommandSet(FXMLLoader loader, Cannon player) {
         controller = loader.getController();
         this.player = player;
         
+        escFunc = 0;
         controller.startGameLoop();
     }
     
@@ -38,6 +41,14 @@ public class GameScreenCommandSet extends CommandSet {
                 break;
             case LEFT:
                 player.move(-1); // move left
+                break;
+            case ESCAPE:
+                if (escFunc == 0) {
+                    controller.pause();
+                } else {
+                    controller.startGameLoop();
+                }
+                escFunc = (escFunc + 1) % 2;
                 break;
         }
     }

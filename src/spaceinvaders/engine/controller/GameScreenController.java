@@ -27,6 +27,9 @@ public class GameScreenController implements Initializable {
     @FXML
     private Label lifeLabel;
     
+    @FXML
+    private Label pauseLabel;
+    
     /**
      * Initializes the controller class.
      */
@@ -125,6 +128,19 @@ public class GameScreenController implements Initializable {
     };
     
     public void startGameLoop() {
+        pauseLabel.setOpacity(0);
         timer.start();
     }
+    
+    public void pause() {
+       gameScreen.getChildren().remove(pauseLabel);
+       pauseLabel.setOpacity(1);
+       gameScreen.getChildren().add(pauseLabel);
+       timer.stop();
+    }
+    
+    /**
+     * Go to Game Over screen
+     */
+    public void gameOver() {}
 }

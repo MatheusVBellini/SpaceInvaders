@@ -41,6 +41,7 @@ public class SpaceInvaders extends Application {
         GameEngine.setStage(stage);
         GameEngine.setTitleScreenLoader(new FXMLLoader(getClass().getResource("./graphics/TitleScreen.fxml")));
         GameEngine.setGameScreenLoader(new FXMLLoader(getClass().getResource("./graphics/GameScreen.fxml")));
+        GameEngine.setGameOverScreenLoader(new FXMLLoader(getClass().getResource("./graphics/GameOverScreen.fxml")));
         GameEngine.startGUI();
     }
 
