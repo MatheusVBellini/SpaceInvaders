@@ -6,7 +6,6 @@
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/GameScreen.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/ProjectileAllySprite.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/Barricade.java</file>
-            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/log/hiScore.txt</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/AlienSprite.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/ProjectileEnemy.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/Swarm.java</file>
@@ -16,14 +15,17 @@
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/SpaceShipSprite.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/GameObjectCollection.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/Config.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/package-info.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/GameGrid.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/Projectile.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/controller/TitleScreenController.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/SpaceShip.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/controller/GameScreenCommandSet.java</file>
-            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/SceneTemp.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/GameObject.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/ProjectileAlly.png</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/SpaceInvaders.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/controller/CommandSet.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/SpriteSheet.png</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/GameScreen.css</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/TitleScreen.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/TitleScreen.css</file>
@@ -37,7 +39,9 @@
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/GameEngine.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/ProjectileAlly.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/Alien.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/SpaceShip.png</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/engine/controller/TitleScreenCommandSet.java</file>
+            <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/Cannon.png</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/graphics/sprite/CannonSprite.java</file>
             <file>file:/Users/matheusbellini/Desktop/USP/4o%20Período/Programação%20Orientada%20a%20Objetos/Projects/GUIapplication/SpaceInvaders/src/spaceinvaders/game_objects/Cannon.java</file>
         </group>

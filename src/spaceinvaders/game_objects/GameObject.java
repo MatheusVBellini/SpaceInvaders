@@ -104,6 +104,14 @@ public abstract class GameObject {
     public abstract void update();
     
     /**
+     * Method for updating visual information of the object
+     */
+    protected void updateSprite() {
+        sprite.getImage().setTranslateX(getX());
+        sprite.getImage().setTranslateY(getY());
+    }
+    
+    /**
      * Returns a copy of the original object
      * 
      * @return copy of the original object

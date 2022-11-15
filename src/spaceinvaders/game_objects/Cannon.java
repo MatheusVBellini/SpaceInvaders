@@ -76,6 +76,7 @@ public class Cannon extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
     }
         
     /**

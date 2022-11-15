@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -121,12 +122,15 @@ public class TitleScreenController implements Initializable {
     }
     
     /**
-     * Starts the game
+     * Starts the game (contains the main game loop)
      */
     public void startGame() throws IOException {
         if (selectedButton != 0) {
             return;
         }
+        
+        // new scene controller
+        GameScreenController controller = GameEngine.getGameScreenLoader().getController();
         
         // create new main game scene
         GameScreen scene = new GameScreen(GameEngine.getGameScreenLoader());

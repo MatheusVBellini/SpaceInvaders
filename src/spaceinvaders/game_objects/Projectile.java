@@ -27,6 +27,7 @@ public abstract class Projectile extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
     }
     
     /**

@@ -80,6 +80,7 @@ public class Alien extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
     }
     
     /**
@@ -99,6 +100,8 @@ public class Alien extends GameObject {
         } else {
             move();
         }
+        
+        updateSprite();
     }
     
     /**

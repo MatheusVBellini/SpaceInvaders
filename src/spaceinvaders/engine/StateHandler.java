@@ -48,7 +48,7 @@ public class StateHandler {
      * @param gameObjectCollection instantiated GameObjectCollection
      * @param dt frame in which the method access was made
      */
-    public void updateCollection(GameObjectCollection gameObjectCollection, int dt) {
+    public void updateCollection(GameObjectCollection gameObjectCollection, long dt) {
         // ensures that gameObjects are updated (speed) times per second
         if (dt == gameObjectsUpdateRate * gameObjectsUpdateCounter) {
             gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());

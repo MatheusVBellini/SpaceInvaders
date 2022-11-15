@@ -159,45 +159,21 @@ public class GameEngine {
      *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
      * </p>
      * 
+     * @param grid game main grid
+     * @param dt action time counter
+     * @return fatal error code
      */
-    public static void gameLoop(GameGrid grid) {
-        boolean breakLoop = false;
-        int dt = 0;
-        while (!breakLoop) {
-            // start time counting
-            long start = System.currentTimeMillis();
+    public static int gameLoop(GameGrid grid, long dt) {
+  
+        // update
+        stateHandler.updateCollection(gameObjectCollection, dt);
 
-            // process input
-            
-            
-            // render
-            grid.render(gameObjectCollection);
-            
-            // update
-            stateHandler.updateCollection(gameObjectCollection, dt);
-            
-            // hazards check
-            stateHandler.checkHazards(gameObjectCollection);
-            
-            // fatal hazards check
-            switch (stateHandler.checkFatalHazards(gameObjectCollection)) {
-                case 1:
-                    breakLoop = true;
-            }
-            
-            // reset dt after 1 second
-            dt++;
-            dt = dt % config.getFrameRate();
+        // hazards check
+        stateHandler.checkHazards(gameObjectCollection);
 
-            // wait the correct amount of time for the cycle to end
-            try {
-                Thread.sleep(config.getFrameTime() + start - System.currentTimeMillis());
-            } catch (IllegalArgumentException ex) {
-                // do nothing -- framerate lower than expected
-            } catch (InterruptedException ex) {
-                System.out.println("Thread interrupted");
-            }
-        }
+        // fatal hazards check
+        return stateHandler.checkFatalHazards(gameObjectCollection);            
+        
     }
         
     /**

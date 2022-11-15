@@ -32,6 +32,7 @@ public class SpaceShip extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
     }
     
     /**

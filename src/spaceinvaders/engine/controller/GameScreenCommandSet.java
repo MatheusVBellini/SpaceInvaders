@@ -15,8 +15,11 @@ public class GameScreenCommandSet extends CommandSet {
     
     private GameScreenController controller;
     
-    public GameScreenCommandSet(FXMLLoader loader) {
+    public GameScreenCommandSet(FXMLLoader loader, Cannon player) {
         controller = loader.getController();
+        this.player = player;
+        
+        controller.startGameLoop();
     }
     
     /**
@@ -24,19 +27,16 @@ public class GameScreenCommandSet extends CommandSet {
      */
     @Override
     public void processInput(KeyCode key) {
-//        switch (key) {
-//            case 'z':
+        switch (key) {
 //            case 'Z':
 //                player.shoot(); // shoot
 //                break;
-//            case 'm':
-//            case 'M':
-//                player.move(1); // move right
-//                break;
-//            case 'n':
-//            case 'N':
-//                player.move(-1); // move left
-//                break;
-//        }
+            case RIGHT:
+                player.move(1); // move right
+                break;
+            case LEFT:
+                player.move(-1); // move left
+                break;
+        }
     }
 }

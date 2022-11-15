@@ -2,8 +2,9 @@ package spaceinvaders.graphics;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import spaceinvaders.engine.GameEngine;
 import spaceinvaders.engine.controller.GameScreenCommandSet;
-import spaceinvaders.engine.controller.GameScreenController;
+import spaceinvaders.game_objects.Cannon;
 
 /**
  *
@@ -13,7 +14,13 @@ public class GameScreen extends GameScene {
     
     public GameScreen(FXMLLoader loader) throws IOException {
         super(loader);
-        setCommandSet(new GameScreenCommandSet(loader));
+        
+        setCommandSet(
+                new GameScreenCommandSet(
+                        loader, 
+                        (Cannon)GameEngine.getGameObjectCollection().getGameObject(new Cannon(0,0).getClass())
+                )
+        );
     }
 
 }

@@ -3,6 +3,7 @@ package spaceinvaders.engine.controller;
 import static java.lang.System.exit;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -35,7 +36,7 @@ public class GameScreenController implements Initializable {
         GameEngine.loadGame();                                                  // initilizazes game variables
         gameScreen.getChildren().add(gridPane);                                 // add GridPane to AnchorPane
         
-        // draw test
+        // show objects on the screen
         draw(GameEngine.getGameObjectCollection());
     }
     
@@ -52,7 +53,6 @@ public class GameScreenController implements Initializable {
     /**
      * Draw GameObjectCollection
      * 
-     * @deprecated 
      */
     public void draw(GameObjectCollection gameObjectCollection) {
         // draw allies
@@ -84,5 +84,23 @@ public class GameScreenController implements Initializable {
                        alien.getY()
                )
        );
+    }
+    
+    // main game loop activator
+    AnimationTimer timer = new AnimationTimer() {
+        long dt = 0;
+        
+        @Override
+        public void handle(long now) {
+            dt++;
+            dt = dt % GameEngine.settings().getFrameRate();
+            if (GameEngine.gameLoop(gridPane,dt) != 0) {
+                stop();
+            }
+        }
+    };
+    
+    public void startGameLoop() {
+        timer.start();
     }
 }
