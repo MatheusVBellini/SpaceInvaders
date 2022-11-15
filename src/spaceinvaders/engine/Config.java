@@ -1,6 +1,5 @@
 package spaceinvaders.engine;
 
-import spaceinvaders.graphics.Scene;
 
 /**
  * Class containing default values of in-game and meta-game 
@@ -28,6 +27,16 @@ public class Config {
     private int swarmWidth;
     
     /**
+     * Height of the game window
+     */
+    private int resHeight;
+    
+    /**
+     * Width of the game window
+     */
+    private int resWidth;
+    
+    /**
      * Constructor that instantiate variables with default values
      * 
      * <p><strong>Default values:</strong></p>
@@ -43,6 +52,8 @@ public class Config {
         swarmWidth = 9;
         frameRate = 60;
         frameTime = 1000 / frameRate;
+        resHeight = 600;
+        resWidth = 400;
     }
     
     /**
@@ -84,8 +95,8 @@ public class Config {
      * @throws IllegalArgumentException game objects don't fit in specified resolution
      */
     public Config setResolution(int height, int width) {  
-        Scene.setHeight(height);
-        Scene.setWidth(width);
+        resHeight = height;
+        resWidth = width;
         return this;
     }
     
@@ -124,4 +135,23 @@ public class Config {
     public int getSwarmWidth() {
         return swarmWidth;
     }
+    
+    /**
+     * Gets the height of the game window
+     * 
+     * @return resolution height
+     */
+    public int getResHeight() {
+        return resHeight;
+    }
+    
+    /**
+     * Gets the height of the game window
+     * 
+     * @return resolution height
+     */
+    public int getResWidth() {
+        return resWidth;
+    }
+   
 }

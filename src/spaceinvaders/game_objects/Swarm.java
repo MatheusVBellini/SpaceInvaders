@@ -1,8 +1,7 @@
 package spaceinvaders.game_objects;
 
 import java.util.LinkedList;
-
-import spaceinvaders.graphics.Scene;
+import spaceinvaders.engine.GameEngine;
 
 /**
  * Collection of aliens that move together
@@ -35,16 +34,27 @@ public class Swarm {
         numOfAliens = rAliens * cAliens;
         swarm = new LinkedList<>();
         
-        int initX = Scene.getCenterX() - cAliens * (GameObject.getHitboxWidth());
-        int initY = GameObject.getHitboxHeight() + 1;
+        int initX = GameEngine.settings().getResWidth() / 4; //- cAliens;
+        int initY = 6 * GameObject.getGameObjectHeight();
         
+        int incX = 0;
+        int incY = 0;
+        int sel = 3;
         for (int i = 0; i < rAliens; i++) {
             for (int j = 0; j < cAliens; j++) {
                 swarm.add(new Alien(
-                        initX + j * (GameObject.getHitboxWidth() + 1), 
-                        initY + i * (GameObject.getHitboxHeight() + 1)
+                        initX + incX, 
+                        initY + incY,
+                        sel
                 ));
+                
+                incX += GameObject.getGameObjectWidth() + 4;
             }
+            
+            incX = 0;
+            incY += GameObject.getGameObjectHeight() + 3;
+            if (i == 0) { sel--; }
+            if (i == 2) { sel--; }
         }
     }
     
@@ -55,16 +65,27 @@ public class Swarm {
     public void update() {
         boolean switch_warning = false;
         for (GameObject alien : swarm) {
-            alien.update();
-            if (alien.getX() < 0 || alien.getX() > Scene.getWidth() - GameObject.getHitboxWidth()) {
+            for (int i = 0; i < speed; i++) {
+                alien.update();
+            }
+            
+            if (alien.getX() < 0 || alien.getX() > GameEngine.settings().getResWidth() - GameObject.getGameObjectWidth()) {
                 switch_warning = true;
             }
+            
         }
         
         if (switch_warning) {
             for (GameObject alien : swarm) {
                 ((Alien)alien).update(switch_warning);
             }
+        }
+        
+        // checks if swarm needs a speed-up
+        if (swarm.size() <= numOfAliens/2) {
+            speed = 2;
+        } if (swarm.size() <= numOfAliens/4) {
+            speed = 3;
         }
     }
     
@@ -85,4 +106,5 @@ public class Swarm {
     public int getSpeed() {
         return speed;
     }
+
 }

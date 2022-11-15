@@ -1,26 +1,17 @@
 package spaceinvaders.game_objects;
 
+import spaceinvaders.engine.GameEngine;
 import spaceinvaders.graphics.sprite.Sprite;
 
 /**
  *  Abstract class for defining game objects
  * 
  */
-public abstract class GameObject {
-    /**
-     * Height of the collision susceptible box which the object is contained within
-     */
-    private static final int hitboxHeight = 1;
-    
-    /**
-     * Width of the collision susceptible box which the object is contained within
-     */
-    private static final int hitboxWidth = 1;
-    
+public abstract class GameObject {    
     /**
      * Maximum moving speed of game objects
      */
-    private static final int speed = 6;
+    private static int speed = 3;
     
     /**
      *  x-axis position of object's pivot
@@ -41,6 +32,9 @@ public abstract class GameObject {
      * Health of a GameObjects (helps determine whether it's alive)
      */
     protected int health;
+    
+    private static int gameObjectWidth = GameEngine.settings().getResWidth()/20;
+    private static int gameObjectHeight = GameEngine.settings().getResHeight()/30;
 
     
     /**
@@ -50,20 +44,17 @@ public abstract class GameObject {
      * @param y
      */
     protected GameObject(int x, int y) {
-        this.x = x - (hitboxWidth / 2);
-        this.y = y - (hitboxHeight - 1);
+        this.x = x;
+        this.y = y;
     }
-
-    // setters
     
     /**
      * Changes the x-axis coordinate of the pivot coordinate
      * 
      * @param x new pivot position in the x-axis
      */
-    public void setPivotX(int x) {
-        int coordinate = x - (hitboxWidth / 2);
-        this.x = coordinate;
+    public void setX(int x) {
+        this.x = x;
     }
 
     /**
@@ -71,29 +62,8 @@ public abstract class GameObject {
      * 
      * @param y new pivot position in the y-axis
      */
-    public void setPivotY(int y) {
-        int coordinate = y - (hitboxHeight - 1);
-        this.y = coordinate;
-    }
-    
-    // getters
-    
-    /**
-     * Gets the pivot coordinate of the x-axis
-     * 
-     * @return pivot coordinate of the x-axis
-     */
-    public int getPivotX() {
-        return x + (hitboxWidth / 2);
-    }
-
-    /**
-     * Gets the pivot coordinate of the y-axis
-     * 
-     * @return pivot coordinate of the y-axis
-     */
-    public int getPivotY() {
-        return y + (hitboxHeight - 1);
+    public void setY(int y) {
+        this.y = y;
     }
 
     /**
@@ -115,30 +85,20 @@ public abstract class GameObject {
     }
 
     /**
-     * Gets the height of the game object's hitbox
-     * 
-     * @return height of the game object's hitbox
-     */
-    public static int getHitboxHeight() {
-        return hitboxHeight;
-    }
-
-    /**
-     * Gets the width of the game object's hitbox
-     * 
-     * @return width of the game object's hitbox
-     */
-    public static int getHitboxWidth() {
-        return hitboxWidth;
-    }
-
-    /**
      * Gets the sprite of game object
      * 
      * @return sprite of the game object
      */
     public Sprite getSprite() {
         return sprite;
+    }
+    
+    public static int getGameObjectWidth() {
+        return gameObjectWidth;
+    }
+    
+    public static int getGameObjectHeight() {
+        return gameObjectHeight;
     }
     
     /**
@@ -154,6 +114,14 @@ public abstract class GameObject {
      * Method to change inner states of the game object
      */
     public abstract void update();
+    
+    /**
+     * Method for updating visual information of the object
+     */
+    protected void updateSprite() {
+        sprite.getImage().setTranslateX(getX());
+        sprite.getImage().setTranslateY(getY());
+    }
     
     /**
      * Returns a copy of the original object

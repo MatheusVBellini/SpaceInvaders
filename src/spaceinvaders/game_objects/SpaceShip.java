@@ -23,7 +23,7 @@ public class SpaceShip extends GameObject {
      * Move the ship one pixel rightwards
      */
     private void move() {
-        setPivotX(getPivotX() + 1);
+        setX(getX() + 1);
     }
     
     /**
@@ -31,7 +31,10 @@ public class SpaceShip extends GameObject {
      */
     @Override
     public void update() {
+        
         move();
+        updateSprite();
+        
     }
     
     /**
@@ -41,6 +44,6 @@ public class SpaceShip extends GameObject {
      */
     @Override
     public SpaceShip copy() {
-        return new SpaceShip(getPivotX(), getPivotY());
+        return new SpaceShip(getX(), getY());
     }
 }

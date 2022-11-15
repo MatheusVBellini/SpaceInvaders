@@ -1,6 +1,6 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.Scene;
+import spaceinvaders.engine.GameEngine;
 import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
@@ -27,6 +27,11 @@ public class Cannon extends GameObject {
     private boolean shot;
     
     /**
+     * Flag to know whether previous bullet is still on the screen
+     */
+    private boolean bulletAlive;
+    
+    /**
      * Get the boolean value of the shot flag
      * 
      * @return boolean that is true when the cannon has shot 
@@ -39,7 +44,7 @@ public class Cannon extends GameObject {
     /**
      * turn off shot flag
      */
-    public void reload() {
+    public void recoil() {
         shot = false;
     }
     
@@ -48,6 +53,29 @@ public class Cannon extends GameObject {
      */
     public void shoot() {
         shot = true;
+        bulletAlive = true;
+    }
+    
+    /**
+     * Guarantees one shot at a time in the game
+     */
+    public boolean canShoot() {
+        return !bulletAlive;
+    }
+    
+    /**
+     * makes bulletAlive false when bullet hit the target
+     */
+    public void hit() {
+        bulletAlive = false;
+    }
+    
+    /**
+     * get the Player health
+     * @return player's health
+     */
+    public int getHealth() {
+        return health;
     }
     
     /**
@@ -63,10 +91,9 @@ public class Cannon extends GameObject {
      * @param x how much the cannon is to be moved in the x-axis
      */
     public void move(int x) {
-        int newPivotX = getPivotX() + x;
-        if (newPivotX >= 0 && newPivotX < Scene.getWidth()) {
-            System.out.println(newPivotX);
-            setPivotX(newPivotX);
+        int newPivotX = getX() + 10 * x;
+        if (newPivotX >= 0 && newPivotX < GameEngine.settings().getResWidth()) {
+            setX(newPivotX);
         }
     }
     
@@ -76,6 +103,19 @@ public class Cannon extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
+    }
+    
+    /**
+     * Cannon gets teleported to the center of the screen
+     */
+    @Override
+    public void takeDamage() {
+        super.takeDamage();
+        setX(GameEngine.settings().getResWidth() / 2);
+        setY(GameEngine.settings().getResHeight() - getGameObjectHeight() + 4);
+        sprite.getImage().setTranslateX(getX());
+        sprite.getImage().setTranslateY(getY());
     }
         
     /**
@@ -85,6 +125,6 @@ public class Cannon extends GameObject {
      */
     @Override
     public Cannon copy() {
-        return new Cannon(getPivotX(), getPivotY());
+        return new Cannon(getX(), getY());
     }
 }

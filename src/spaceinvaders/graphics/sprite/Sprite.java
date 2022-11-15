@@ -1,45 +1,29 @@
 package spaceinvaders.graphics.sprite;
 
-import spaceinvaders.game_objects.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import spaceinvaders.game_objects.GameObject;
+
 
 /**
  * Graphical information game objects
  */
 public abstract class Sprite {
-    /**
-     * Height of the sprite according to the game object's hitbox height
-     */
-    private final int height = GameObject.getHitboxHeight();
+    ImageView imgView;
     
-    /**
-     * Width of the sprite according to the game object's hitbox width
-     */
-    private final int width = GameObject.getHitboxWidth();
+    protected Sprite(String spriteFilePath) {
+        Image img = new Image(
+                getClass().getResource(spriteFilePath).toExternalForm(),        // image source file
+                GameObject.getGameObjectWidth(),                                // image width
+                GameObject.getGameObjectHeight(),                               // image height
+                true,                                                           // preserve ratio
+                true                                                            // smooth
+        );
+        
+        imgView = new ImageView(img);
+    }
     
-    /**
-     * Pixel information of the game object sprite
-     */
-    protected char pixels[][];
-
-    /**
-     * Fills the pixel matrix with '.'
-     */
-    protected Sprite() {
-        pixels = new char[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                pixels[i][j] = '.';
-            }
-        }
+    public ImageView getImage() {
+        return imgView;
     }
-
-    /**
-     * return the matrix of pixels
-     * 
-     * @return pixel matrix
-     */
-    public char[][] getPixels() {
-        return pixels;
-    }
-
 }

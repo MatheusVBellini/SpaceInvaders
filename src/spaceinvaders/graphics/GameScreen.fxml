@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="gameScreen" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceinvaders.engine.controller.GameScreenController">
+   <children>
+      <Label layoutX="13.0" layoutY="14.0" text="Score:" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLabel" layoutX="74.0" layoutY="14.0" text="0000" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="387.0" layoutY="14.0" text="Lives:" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lifeLabel" layoutX="448.0" layoutY="14.0" text="♡♡♡" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="pauseLabel" alignment="CENTER" layoutX="115.0" layoutY="220.0" opacity="0.0" text="PAUSED" textAlignment="CENTER" textFill="#ff3535">
+         <font>
+            <Font name="Modern DOS 9x16" size="81.0" />
+         </font>
+      </Label>
+      <Label fx:id="stageLabel" layoutX="204.0" layoutY="14.0" text="Stage:&lt;0&gt;" textFill="WHITE">
+         <font>
+            <Font name="Modern DOS 9x16" size="18.0" />
+         </font>
+      </Label>
+   </children>
+   <cursor>
+      <Cursor fx:constant="NONE" />
+   </cursor>
+</AnchorPane>

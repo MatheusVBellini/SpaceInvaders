@@ -32,6 +32,6 @@ public class Barricade extends GameObject {
      */
     @Override
     public Barricade copy() {
-        return new Barricade(getPivotX(), getPivotY());
+        return new Barricade(getX(), getY());
     }
 }

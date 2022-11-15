@@ -1,11 +1,12 @@
 package spaceinvaders.graphics.sprite;
 
+import java.net.MalformedURLException;
+
 /**
  * SpaceShip GameObject graphical representation
  */
 public class SpaceShipSprite extends Sprite {
     public SpaceShipSprite() {
-        super();
-        pixels[0][0] = '\u21E8';
+        super("SpaceShip.png");
     }
 }

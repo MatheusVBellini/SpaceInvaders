@@ -1,6 +1,8 @@
 package spaceinvaders.game_objects;
 
-import spaceinvaders.graphics.sprite.AlienSprite;
+import spaceinvaders.graphics.sprite.AlienSprite1;
+import spaceinvaders.graphics.sprite.AlienSprite2;
+import spaceinvaders.graphics.sprite.AlienSprite3;
 
 /**
  * Base enemy class
@@ -15,8 +17,63 @@ public class Alien extends GameObject {
      */
     public Alien(int x, int y) {
         super(x,y);
-        sprite = new AlienSprite();
+        sprite = new AlienSprite1();
         health = 1;
+        shot = false;
+    }
+    
+    /**
+     * Sets the initial position on screen of the alien, sets its health to 1
+     * and assigns a sprite to the object
+     * 
+     * @param x x-axis alien's pivot position
+     * @param y y-axis alien's pivot position
+     * @param sel sprite selector
+     */
+    public Alien(int x, int y, int sel) {
+        super(x,y);
+        health = 1;
+        shot = false;
+        
+        switch(sel) {
+            case 1:
+                sprite = new AlienSprite1();
+                break;
+            case 2:
+                sprite = new AlienSprite2();
+                break;
+            case 3:
+                sprite = new AlienSprite3();
+        }
+    }
+    
+    /**
+     * Flag for engine to know whether Alien has shot
+     */
+    private boolean shot;
+    
+    /**
+     * Get the boolean value of the shot flag
+     * 
+     * @return boolean that is true when the Alien has shot 
+     * and false when it hasn't
+     */
+    public boolean hasShot() {
+        return shot;
+    }
+    
+    /**
+     * turn off shot flag
+     */
+    public void recoil() {
+        shot = false;
+    }
+    
+    /**
+     * shoot command, actives the shot flag
+     */
+    public void shoot() {
+        shot = true;
     }
     
     /**
@@ -27,7 +84,7 @@ public class Alien extends GameObject {
     };
     
     /**
-     * Enum attribute with deafult value 'right'
+     * Enum attribute with default value 'right'
      */
     private Direction direction = Direction.right;
 
@@ -35,21 +92,21 @@ public class Alien extends GameObject {
      * Define the rightward movement of the alien
      */
     private void moveRight() {
-        setPivotX(getPivotX() + 1);
+        setX(getX() + 1);
     }
 
     /**
      *  Define the leftward movement of the alien
      */
     private void moveLeft() {
-        setPivotX(getPivotX() - 1);
+        setX(getX() - 1);
     }
 
     /**
      * Define the downward movement of the alien
      */
     private void moveDown() {
-        setPivotY(getPivotY() + 1);
+        setY(getY() + getGameObjectHeight()/3);
     }
 
     /**
@@ -80,6 +137,7 @@ public class Alien extends GameObject {
     @Override
     public void update() {
         move();
+        updateSprite();
     }
     
     /**
@@ -99,6 +157,8 @@ public class Alien extends GameObject {
         } else {
             move();
         }
+        
+        updateSprite();
     }
     
     /**
@@ -108,6 +168,6 @@ public class Alien extends GameObject {
      */
     @Override
     public Alien copy() {
-        return new Alien(getPivotX(), getPivotY());
+        return new Alien(getX(), getY());
     }
 }

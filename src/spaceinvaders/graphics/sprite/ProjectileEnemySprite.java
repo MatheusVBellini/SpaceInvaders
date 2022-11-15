@@ -1,5 +1,6 @@
 package spaceinvaders.graphics.sprite;
 
+import java.net.MalformedURLException;
 import spaceinvaders.game_objects.Projectile;
 
 /**
@@ -7,7 +8,6 @@ import spaceinvaders.game_objects.Projectile;
  */
 public class ProjectileEnemySprite extends Sprite {
     public ProjectileEnemySprite() {
-        pixels = new char[Projectile.getHitboxHeight()][Projectile.getHitboxWidth()];
-        pixels[0][0] = '\u29BF';
+        super("ProjectileEnemy.png");
     }
 }

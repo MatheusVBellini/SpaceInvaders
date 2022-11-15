@@ -1,11 +1,12 @@
 package spaceinvaders.graphics.sprite;
 
+import java.net.MalformedURLException;
+
 /**
  * Cannon GameObject graphical representation
  */
 public class CannonSprite extends Sprite {
     public CannonSprite() {
-        super();
-        pixels[0][0] = '\u26E2';
+        super("Cannon.png");
     }
 }

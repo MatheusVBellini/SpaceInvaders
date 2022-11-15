@@ -4,16 +4,6 @@ package spaceinvaders.game_objects;
  * Damage inflicting game objects that can be shot
  */
 public abstract class Projectile extends GameObject {
-    /**
-     * Special hitbox height for the class 
-     */
-    private static final int hitboxHeight = 1;
-    
-    /**
-     * Special hitbox width for the class 
-     */
-    private static final int hitboxWidth = 1;
-
 
     /**
      * Set the coordinates of the game object and its health to 1
@@ -22,7 +12,7 @@ public abstract class Projectile extends GameObject {
      * @param y y-axis coordinate
      */
     protected Projectile(int x, int y) {
-        super(x + (GameObject.getHitboxWidth() / 2), y + (GameObject.getHitboxHeight() - 1));
+        super(x, y);
         health = 1;
     }
     
@@ -36,7 +26,10 @@ public abstract class Projectile extends GameObject {
      */
     @Override
     public void update() {
-        move();
+        for (int i = 0; i < getSpeed(); i++) {
+            move();
+            updateSprite();
+        }
     }
     
     /**

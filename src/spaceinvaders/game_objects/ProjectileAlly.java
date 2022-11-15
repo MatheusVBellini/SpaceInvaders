@@ -22,7 +22,7 @@ public class ProjectileAlly extends Projectile {
      */
     @Override
     protected void move() {
-        setPivotY(getPivotY() - 1);
+        setY(getY() - 1);
     }
      
     /**
@@ -32,6 +32,6 @@ public class ProjectileAlly extends Projectile {
      */
     @Override
     public ProjectileAlly copy() {
-        return new ProjectileAlly(getPivotX(),getPivotY());
+        return new ProjectileAlly(getX(),getY());
     } 
 }

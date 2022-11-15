@@ -80,6 +80,13 @@ public class GameObjectCollection {
     }
     
     /**
+     * Set the swarm once emptied
+     */
+    public void setAliens(Swarm swarm) {
+        this.aliens = swarm;
+    }
+    
+    /**
      * Get a specific GameObject in the gameObjectCollection
      * 
      * @return GameObject in gameObjectCollection or null pointer 

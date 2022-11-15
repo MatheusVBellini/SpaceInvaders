@@ -1,13 +1,13 @@
 package spaceinvaders.graphics.sprite;
 
-import spaceinvaders.game_objects.Projectile;
+import java.net.MalformedURLException;
+
 
 /**
  * ProjectileAllySprite GameObject graphical representation
  */
 public class ProjectileAllySprite extends Sprite {
     public ProjectileAllySprite() {
-        pixels = new char[Projectile.getHitboxHeight()][Projectile.getHitboxWidth()];
-        pixels[0][0] = '\u29BE';
+        super("ProjectileAlly.png");
     }
 }

@@ -1,10 +1,20 @@
 package spaceinvaders.engine;
 
 // internal imports
-import spaceinvaders.engine.controller.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
-import spaceinvaders.graphics.Scene;
 import spaceinvaders.game_objects.*;
+import spaceinvaders.graphics.TitleScreen;
 
 /**
  *  Class that contains all the event handling necessary for the game
@@ -13,34 +23,125 @@ public class GameEngine {
     /**
      * Configuration class composed into the GameEngine
      */
-    private final Config config;
+    private static Config config = new Config();
     
     /**
      * StateHandler class composed into the GameEngine
      */
-    private StateHandler stateHandler;
-    
-    /**
-     * Scene class for printing the game UI
-     */
-    private Scene gameScene;
-    
-    /**
-     * Controller to manipulate the game
-     */
-    private Controller controller;
+    private static StateHandler stateHandler;
     
     /**
      * GameObjectCollection for creating and removing GameObjects from the game
      */
-    private GameObjectCollection gameObjectCollection;
+    private static GameObjectCollection gameObjectCollection;
+    
+    /**
+     * Stage where every graphical object appears
+     */
+    private static Stage stage;
+    
+    /**
+     * Title screen FXMLoader
+     */
+    private static FXMLLoader titleScreenLoader;
+    
+    /**
+     * Main game screen FXMLLoader
+     */
+    private static FXMLLoader gameScreenLoader;
+    
+    /**
+     * Game Over screen FXMLLoader
+     */
+    private static FXMLLoader gameOverScreenLoader;
+    
+    /**
+     * Random stream to coordinate random events
+     */
+    private static Random rand = new Random();
+    
+    /**
+     * get next random int
+     * 
+     * @param upperbound
+     * @return next int in the random stream 
+     */
+    public static int getNextRandInt(int upperbound) {
+        return rand.nextInt(upperbound);
+    }
+    
+    /**
+     * Game score
+     */
+    private static int score = 0;
 
     /**
-     * Constructor that instantiates Config class attribute
+     * increase game score by x
+     * @param x value which the score will be increased by
      */
-    public GameEngine() {
-        config = new Config();
-        controller = new Controller();
+    public static void increaseScore(int x) {
+        score += x;
+    }
+    
+    /**
+     * Get score value
+     * @return score value
+     */
+    public static int getScore() {
+        return score;
+    }
+    
+    /**
+     * Instantiates titleScreenLoader
+     * @param titleScreenLoader
+     */
+    public static void setTitleScreenLoader(FXMLLoader titleScreenLoader) {
+        GameEngine.titleScreenLoader = titleScreenLoader;
+    }
+    
+    /**
+     * Instantiates gameScreenLoader
+     * @param gameScreenLoader
+     */
+    public static void setGameScreenLoader(FXMLLoader gameScreenLoader) {
+        GameEngine.gameScreenLoader = gameScreenLoader;
+    }
+    
+    /**
+     * Instantiates gameOverScreenLoader
+     * @param gameOverScreenLoader
+     */
+    public static void setGameOverScreenLoader(FXMLLoader gameOverScreenLoader) {
+        GameEngine.gameOverScreenLoader = gameOverScreenLoader;
+    }
+    
+    /**
+     * Saves stage for fast switch scene usage
+     * @param stage
+     */
+    public static void setStage(Stage stage) {
+        GameEngine.stage = stage;
+    }
+    
+    /**
+     * Get StateHandler
+     */
+    public static StateHandler getStateHandler() {
+        return stateHandler;
+    }
+    
+    /**
+     * Get GameObjectCollection
+     */
+    public static GameObjectCollection getGameObjectCollection() {
+        return gameObjectCollection;
+    }
+    
+    /**
+     * Gets the stage in use for fast switch scene usage
+     */
+    public static Stage getStage() {
+        return stage;
     }
     
     /**
@@ -49,8 +150,35 @@ public class GameEngine {
      * 
      * @return Config class attribute
      */
-    public Config settings() {
+    public static Config settings() {
         return config;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the main game
+     * 
+     * @return main game FXMLoader
+     */
+    public static FXMLLoader getGameScreenLoader() {
+        return gameScreenLoader;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the game over
+     * 
+     * @return main game FXMLoader
+     */
+    public static FXMLLoader getGameOverScreenLoader() {
+        return gameOverScreenLoader;
+    }
+    
+    /**
+     * Returns the FXMLLoader for the title screen
+     * 
+     * @return title screen FXMLoader
+     */
+    public static FXMLLoader getTitleScreenLoader() {
+        return titleScreenLoader;
     }
     
     /**
@@ -60,30 +188,61 @@ public class GameEngine {
      * Also fills GameObjectCollection with a Cannon and Barricades
      * </p>
      */
-    private void loadGame() {
-        gameScene = new Scene();
+    public static void loadGame() {
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
-        stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
+        stateHandler = new StateHandler();
         
-        Cannon player = new Cannon(Scene.getCenterX() , Scene.getHeight() - 1);
-        controller.setCommandSet(new GameCommandSet(player));
+        Cannon player = new Cannon(config.getResWidth() / 2 , config.getResHeight() - GameObject.getGameObjectHeight() + 4);
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(player);
         
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 5 * GameObject.getGameObjectWidth(), 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 6 * GameObject.getGameObjectWidth() - 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 7 * GameObject.getGameObjectWidth() - 4, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
         
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() - 9 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 5 * GameObject.getGameObjectWidth(), 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 6 * GameObject.getGameObjectWidth() + 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 7 * GameObject.getGameObjectWidth() + 4, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
         
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth() - 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth(), Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        gameObjectCollection.add(new Barricade(Scene.getCenterX() + 9 * GameObject.getHitboxWidth() + 1, Scene.getHeight() - GameObject.getHitboxHeight() - 3));
-        
-        gameObjectCollection.add(new SpaceShip(0, 1));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + GameObject.getGameObjectWidth() + 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - GameObject.getGameObjectWidth() - 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+     
+    }
+    
+    /**
+     * Replenish swarm when going to next level
+     */
+    public static void replenishSwarm() {
+        gameObjectCollection.setAliens(new Swarm(config.getSwarmHeight(), config.getSwarmWidth()));
     }
     
     /**
@@ -94,57 +253,49 @@ public class GameEngine {
      *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
      * </p>
      * 
-     * @throws InterruptedException thread was interrupted
+     * @param graphicalObjects list containing all screen elements
+     * @return fatal error code
      */
-    private void gameLoop() {
-        boolean breakLoop = false;
-        int dt = 0;
-        while (!breakLoop) {
-            // start time counting
-            long start = System.currentTimeMillis();
-
-            // process input
-            controller.listen();
-            
-            // render
-            gameScene.render(gameObjectCollection);
-            
-            // update
-            stateHandler.updateCollection(gameObjectCollection, dt);
-            
-            // hazards check
-            stateHandler.checkHazards(gameObjectCollection);
-            
-            // fatal hazards check
-            switch (stateHandler.checkFatalHazards(gameObjectCollection)) {
-                case 1:
-                    breakLoop = true;
-            }
-            
-            // reset dt after 1 second
-            dt++;
-            dt = dt % config.getFrameRate();
-
-            // wait the correct amount of time for the cycle to end
-            try {
-                Thread.sleep(config.getFrameTime() + start - System.currentTimeMillis());
-            } catch (IllegalArgumentException ex) {
-                // do nothing -- framerate lower than expected
-            } catch (InterruptedException ex) {
-                System.out.println("Thread interrupted");
-            }
+    public static int gameLoop(ObservableList<Node> graphicalObjects) {
+        
+        int hazardReturn = stateHandler.checkFatalHazards(gameObjectCollection);
+        if (hazardReturn != 0) {
+            return hazardReturn;
         }
+        
+        // tries to generate a SpaceShip
+        if (rand.nextInt(1000) == 100) {
+            SpaceShip tmp = new SpaceShip(0, 4 * GameObject.getGameObjectHeight());
+            tmp.getSprite().getImage().setTranslateX(tmp.getX());
+            tmp.getSprite().getImage().setTranslateY(tmp.getY());
+            
+            gameObjectCollection.add(tmp);
+            graphicalObjects.add(tmp.getSprite().getImage());
+        }
+        
+        // update
+        stateHandler.updateCollection(gameObjectCollection);
+        
+        // hazards check
+        stateHandler.checkHazards(graphicalObjects, gameObjectCollection);
+
+        return 0;            
+        
     }
-    
+        
     /**
-     * Used to initiate the main game
+     * Used to initiate the game in the title screen
      * 
-     * <p>
-     *  Guarantees that the loadGame method is called before the gameLoop method
-     * </p>
+     * @throws IOException
      */
-    public void initGame() {
-        loadGame();
-        gameLoop();
+    public static void startGUI() throws IOException {
+        // initializing scene components
+        TitleScreen scene = new TitleScreen(titleScreenLoader);
+        
+        // listens to keyboard commands
+        scene.listenToKey();
+        
+        stage.setScene(scene);
+        stage.show();
     }
 }
