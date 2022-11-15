@@ -9,10 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.game_objects.GameObject;
 import spaceinvaders.game_objects.GameObjectCollection;
-import spaceinvaders.graphics.GameGrid;
 import spaceinvaders.graphics.sprite.CannonSprite;
 
 /**
@@ -23,8 +22,6 @@ public class GameScreenController implements Initializable {
     @FXML
     private AnchorPane gameScreen;
     
-    private final GameGrid gridPane = new GameGrid();
-    
     /**
      * Initializes the controller class.
      */
@@ -33,8 +30,7 @@ public class GameScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // initializing variables
         applySettings();                                                        // initializes graphic variables
-        GameEngine.loadGame();                                                  // initilizazes game variables
-        gameScreen.getChildren().add(gridPane);                                 // add GridPane to AnchorPane
+        GameEngine.loadGame();                                                  // initilizazes game variables                           
         
         // show objects on the screen
         draw(GameEngine.getGameObjectCollection());
@@ -46,8 +42,8 @@ public class GameScreenController implements Initializable {
     public void applySettings() {
         gameScreen.setPrefHeight(GameEngine.settings().getResHeight());
         gameScreen.setPrefWidth(GameEngine.settings().getResWidth());
-        gridPane.setPrefHeight(GameEngine.settings().getResHeight());
-        gridPane.setPrefWidth(GameEngine.settings().getResWidth());
+        gameScreen.setPrefHeight(GameEngine.settings().getResHeight());
+        gameScreen.setPrefWidth(GameEngine.settings().getResWidth());
     }
     
     /**
@@ -55,35 +51,31 @@ public class GameScreenController implements Initializable {
      * 
      */
     public void draw(GameObjectCollection gameObjectCollection) {
+        ImageView tmp;
+
         // draw allies
-        gameObjectCollection.getAllies().forEach(
-               ally -> 
-               gridPane.add(
-                       ally.getSprite().getImage(),
-                       ally.getX(),
-                       ally.getY()
-               )
-       );
+        for (GameObject ally : gameObjectCollection.getAllies()) {
+            tmp = ally.getSprite().getImage();
+            tmp.setTranslateX(ally.getX());
+            tmp.setTranslateY(ally.getY());
+            gameScreen.getChildren().add(tmp);
+        }
         
-       // draw projectiles
-       gameObjectCollection.getProjectiles().forEach(
-               projectile -> 
-               gridPane.add(
-                       projectile.getSprite().getImage(),
-                       projectile.getX(),
-                       projectile.getY()
-               )
-       );
+        // draw projectiles
+        for (GameObject projectile : gameObjectCollection.getProjectiles()) {
+            tmp = projectile.getSprite().getImage();
+            tmp.setTranslateX(projectile.getX());
+            tmp.setTranslateY(projectile.getY());
+            gameScreen.getChildren().add(tmp);
+        }
        
-       // draw aliens
-       gameObjectCollection.getAliens().getListOfAliens().forEach(
-               alien -> 
-               gridPane.add(
-                       alien.getSprite().getImage(),
-                       alien.getX(),
-                       alien.getY()
-               )
-       );
+        // draw aliens
+        for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {
+            tmp = alien.getSprite().getImage();
+            tmp.setTranslateX(alien.getX());
+            tmp.setTranslateY(alien.getY());
+            gameScreen.getChildren().add(tmp);
+        }
     }
     
     // main game loop activator
@@ -94,7 +86,7 @@ public class GameScreenController implements Initializable {
         public void handle(long now) {
             dt++;
             dt = dt % GameEngine.settings().getFrameRate();
-            if (GameEngine.gameLoop(gridPane,dt) != 0) {
+            if (GameEngine.gameLoop(gameScreen.getChildren(), dt) != 0) {
                 stop();
             }
         }

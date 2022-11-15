@@ -1,5 +1,6 @@
 package spaceinvaders.game_objects;
 
+import spaceinvaders.engine.GameEngine;
 import spaceinvaders.graphics.sprite.Sprite;
 
 /**
@@ -10,7 +11,7 @@ public abstract class GameObject {
     /**
      * Maximum moving speed of game objects
      */
-    private static final int speed = 6;
+    private static int speed = 1;
     
     /**
      *  x-axis position of object's pivot
@@ -31,6 +32,9 @@ public abstract class GameObject {
      * Health of a GameObjects (helps determine whether it's alive)
      */
     protected int health;
+    
+    private static int gameObjectWidth = GameEngine.settings().getResWidth()/20;
+    private static int gameObjectHeight = GameEngine.settings().getResHeight()/30;
 
     
     /**
@@ -87,6 +91,14 @@ public abstract class GameObject {
      */
     public Sprite getSprite() {
         return sprite;
+    }
+    
+    public static int getGameObjectWidth() {
+        return gameObjectWidth;
+    }
+    
+    public static int getGameObjectHeight() {
+        return gameObjectHeight;
     }
     
     /**

@@ -2,45 +2,15 @@ package spaceinvaders.engine;
 
 import java.util.LinkedList;
 import java.util.Stack;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import spaceinvaders.game_objects.*;
 
 /**
  * Class responsible for updating and verifying hazards and collision between GameObjects
  */
-public class StateHandler {
-    /**
-     * rate of updates to be done on the swarm based on its speed
-     */
-    private int alienUpdateRate;
-    
-    /**
-     * counter to keep track of how many times the swarm has moved in the second
-     */
-    private int alienUpdateCounter;
-    
-    /**
-     * rate of updates to be done on the gameObjects based on their general speed
-     */
-    private int gameObjectsUpdateRate;
-    
-    /**
-     * counter to keep track of how many times the gameObjects have moved in the second
-     */
-    private int gameObjectsUpdateCounter;
-    
-    /**
-     * Defines values of StateHandler attributes
-     * 
-     * @param frameRate game's frame-rate
-     * @param gameObjectCollection instantiated GameObjectCollection
-     */
-    public StateHandler(int frameRate, GameObjectCollection gameObjectCollection) {
-        alienUpdateRate = frameRate / gameObjectCollection.getAliens().getSpeed();
-        alienUpdateCounter = 0;
-        gameObjectsUpdateRate = frameRate / GameObject.getSpeed();
-        gameObjectsUpdateCounter = 0;
-    }
-    
+public class StateHandler {       
     /**
      * Calls GameObject update methods at the correct moment in time
      * and guarantees frame-rate agnostic game speed
@@ -49,33 +19,27 @@ public class StateHandler {
      * @param dt frame in which the method access was made
      */
     public void updateCollection(GameObjectCollection gameObjectCollection, long dt) {
-        // ensures that gameObjects are updated (speed) times per second
-        if (dt == gameObjectsUpdateRate * gameObjectsUpdateCounter) {
-            gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());
-            gameObjectCollection.getProjectiles().forEach(projectile -> projectile.update());
-            gameObjectsUpdateCounter = (gameObjectsUpdateCounter + 1) % GameObject.getSpeed();
-        }
         
-        // ensures that aliens are updated (speed) times per second
-        if (dt == alienUpdateRate * alienUpdateCounter) {
-            gameObjectCollection.getAliens().update();
-            alienUpdateCounter = (alienUpdateCounter + 1) % gameObjectCollection.getAliens().getSpeed();
-        }
+        gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());
+        gameObjectCollection.getProjectiles().forEach(projectile -> projectile.update());
+        gameObjectCollection.getAliens().update();
+        
     }
     
     
     /**
      * Detect non-fatal hazards, such as collisions
      * 
+     * @param graphicalObjects
      * @param gameObjectCollection all instantiated game objects
      */
-    public void checkHazards(GameObjectCollection gameObjectCollection) {
-        cannonShoot(gameObjectCollection); // checks if cannon has requested to shoot
+    public void checkHazards(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
+        cannonShoot(graphicalObjects, gameObjectCollection); // checks if cannon has requested to shoot
         // checks if any alien has requested to shoot
         projectileCollisions(gameObjectCollection); // Check if a projectile has hit a GameObject
         spaceShipCourseComplete(gameObjectCollection); // check spaceship course completion
         projectileCourseComplete(gameObjectCollection); // check projectiles course completion
-        collectCorpses(gameObjectCollection); // removes dead GameObjects
+        collectCorpses(graphicalObjects, gameObjectCollection); // removes dead GameObjects
     }
     
     /**
@@ -85,7 +49,7 @@ public class StateHandler {
         SpaceShip tmp = new SpaceShip(0,0);
         SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(tmp.getClass());
         
-        if (spaceShip != null && spaceShip.getX() == GameEngine.settings().getGameGridWidth()) {
+        if (spaceShip != null && spaceShip.getX() == GameEngine.settings().getResWidth()) {
             spaceShip.takeDamage();
         }
     }
@@ -96,15 +60,19 @@ public class StateHandler {
      * 
      * @param gameObjectCollection
      */
-    private void cannonShoot(GameObjectCollection gameObjectCollection) {
+    private void cannonShoot(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
         Cannon tmp = new Cannon(0,0);
         Cannon cannon = (Cannon)gameObjectCollection.getGameObject(tmp.getClass());
         if (cannon.hasShot()) {
-            gameObjectCollection.add(
-                    new ProjectileAlly(
-                            cannon.getX(), 
-                            cannon.getY() - 1
-                    ));
+            ProjectileAlly projectile = new ProjectileAlly(
+                                                cannon.getX() + GameObject.getGameObjectWidth()/2 - 2, 
+                                                cannon.getY() - GameObject.getGameObjectHeight()
+                                        );
+            projectile.getSprite().getImage().setTranslateX(projectile.getX());
+            projectile.getSprite().getImage().setTranslateY(projectile.getY());
+            
+            gameObjectCollection.add(projectile);
+            graphicalObjects.add(projectile.getSprite().getImage());
             cannon.reload();
         }
     }
@@ -153,7 +121,7 @@ public class StateHandler {
             if (projectile instanceof ProjectileAlly && projectile.getY() - 1 < 0) {
                 projectile.takeDamage();
             } 
-            if (projectile instanceof ProjectileEnemy && projectile.getY() >= GameEngine.settings().getGameGridHeight()) {
+            if (projectile instanceof ProjectileEnemy && projectile.getY() >= GameEngine.settings().getResHeight()) {
                 projectile.takeDamage();
             }
         }
@@ -164,8 +132,9 @@ public class StateHandler {
      * 
      * @param gameObjectCollection
      */
-    private void collectCorpses(GameObjectCollection gameObjectCollection) {
+    private void collectCorpses(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
         Stack<GameObject> corpses = new Stack<>();
+        GameObject tmp;
         
         // check if any aliens are dead
         LinkedList<GameObject> list = gameObjectCollection.getAliens().getListOfAliens();
@@ -176,7 +145,9 @@ public class StateHandler {
         }
         
         while (!corpses.empty()) {
-            list.remove(corpses.pop());
+            tmp = corpses.pop();
+            list.remove(tmp);
+            graphicalObjects.remove(tmp.getSprite().getImage());
         }
         
         // check for dead spaceship and barricades
@@ -188,7 +159,9 @@ public class StateHandler {
         }
         
         while (!corpses.empty()) {
-            list.remove(corpses.pop());
+            tmp = corpses.pop();
+            list.remove(tmp);
+            graphicalObjects.remove(tmp.getSprite().getImage());
         }
         
         // check for collided projectiles
@@ -200,7 +173,9 @@ public class StateHandler {
         }
         
         while (!corpses.empty()) {
-            list.remove(corpses.pop());
+            tmp = corpses.pop();
+            list.remove(tmp);
+            graphicalObjects.remove(tmp.getSprite().getImage());
         }
     }
     
@@ -254,8 +229,8 @@ public class StateHandler {
      * @return boolean specifying whether the course is complete
      */
     private boolean swarmCourseComplete(Swarm swarm) {
-        int y = GameEngine.settings().getGameGridHeight() - 4;
+        int y = GameEngine.settings().getResHeight() - GameObject.getGameObjectHeight() * 4;
         
-        return swarm.getListOfAliens().getLast().getY() == y;
+        return swarm.getListOfAliens().getLast().getY() >= y;
     }
 }

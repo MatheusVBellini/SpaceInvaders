@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.game_objects.*;
-import spaceinvaders.graphics.GameGrid;
 import spaceinvaders.graphics.TitleScreen;
 
 /**
@@ -129,26 +131,56 @@ public class GameEngine {
      */
     public static void loadGame() {
         gameObjectCollection = new GameObjectCollection(config.getSwarmHeight(), config.getSwarmWidth());
-        stateHandler = new StateHandler(config.getFrameRate(), gameObjectCollection);
+        stateHandler = new StateHandler();
         
-        Cannon player = new Cannon(config.getGameGridWidth() / 2 , config.getGameGridHeight() - 1);
+        Cannon player = new Cannon(config.getResWidth() / 2 , config.getResHeight() - GameObject.getGameObjectHeight() + 4);
         
         // fill gameObjectColletion with inital state
         gameObjectCollection.add(player);
         
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 1, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 1, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 5 * GameObject.getGameObjectWidth(), 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 6 * GameObject.getGameObjectWidth() - 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - 7 * GameObject.getGameObjectWidth() - 4, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
         
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 8, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 7, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 - 6, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 5 * GameObject.getGameObjectWidth(), 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 6 * GameObject.getGameObjectWidth() + 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + 7 * GameObject.getGameObjectWidth() + 4, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
         
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 5, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 6, config.getGameGridHeight() - 4));
-        gameObjectCollection.add(new Barricade(config.getGameGridWidth() / 2 + 7, config.getGameGridHeight() - 4));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 + GameObject.getGameObjectWidth() + 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
+        gameObjectCollection.add(new Barricade(
+                config.getResWidth() / 2 - GameObject.getGameObjectWidth() - 2, 
+                config.getResHeight() - 3 * GameObject.getGameObjectHeight()
+        ));
         
-        gameObjectCollection.add(new SpaceShip(0, 4));
+        gameObjectCollection.add(new SpaceShip(
+                GameObject.getGameObjectWidth(), 
+                4 * GameObject.getGameObjectHeight()
+        ));
     }
     
     /**
@@ -159,17 +191,17 @@ public class GameEngine {
      *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
      * </p>
      * 
-     * @param grid game main grid
+     * @param graphicalObjects list containing all screen elements
      * @param dt action time counter
      * @return fatal error code
      */
-    public static int gameLoop(GameGrid grid, long dt) {
+    public static int gameLoop(ObservableList<Node> graphicalObjects, long dt) {
   
         // update
         stateHandler.updateCollection(gameObjectCollection, dt);
 
         // hazards check
-        stateHandler.checkHazards(gameObjectCollection);
+        stateHandler.checkHazards(graphicalObjects, gameObjectCollection);
 
         // fatal hazards check
         return stateHandler.checkFatalHazards(gameObjectCollection);            

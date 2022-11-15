@@ -63,9 +63,8 @@ public class Cannon extends GameObject {
      * @param x how much the cannon is to be moved in the x-axis
      */
     public void move(int x) {
-        int newPivotX = getX() + x;
-        if (newPivotX >= 0 && newPivotX < GameEngine.settings().getGameGridWidth()) {
-            System.out.println(newPivotX);
+        int newPivotX = getX() + 10 * x;
+        if (newPivotX >= 0 && newPivotX < GameEngine.settings().getResWidth()) {
             setX(newPivotX);
         }
     }

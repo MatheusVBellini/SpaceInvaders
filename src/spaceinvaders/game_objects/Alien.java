@@ -27,7 +27,7 @@ public class Alien extends GameObject {
     };
     
     /**
-     * Enum attribute with deafult value 'right'
+     * Enum attribute with default value 'right'
      */
     private Direction direction = Direction.right;
 
@@ -49,7 +49,7 @@ public class Alien extends GameObject {
      * Define the downward movement of the alien
      */
     private void moveDown() {
-        setY(getY() + 1);
+        setY(getY() + getGameObjectHeight()/3);
     }
 
     /**
