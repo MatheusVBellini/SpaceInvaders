@@ -129,9 +129,6 @@ public class TitleScreenController implements Initializable {
             return;
         }
         
-        // new scene controller
-        GameScreenController controller = GameEngine.getGameScreenLoader().getController();
-        
         // create new main game scene
         GameScreen scene = new GameScreen(GameEngine.getGameScreenLoader());
         Stage stage = GameEngine.getStage();

@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Stack;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.layout.AnchorPane;
 import spaceinvaders.game_objects.*;
 
 /**
@@ -16,9 +15,8 @@ public class StateHandler {
      * and guarantees frame-rate agnostic game speed
      * 
      * @param gameObjectCollection instantiated GameObjectCollection
-     * @param dt frame in which the method access was made
      */
-    public void updateCollection(GameObjectCollection gameObjectCollection, long dt) {
+    public void updateCollection(GameObjectCollection gameObjectCollection) {
         
         gameObjectCollection.getAllies().forEach(gameObject -> gameObject.update());
         gameObjectCollection.getProjectiles().forEach(projectile -> projectile.update());
@@ -46,8 +44,7 @@ public class StateHandler {
      * Collision between spaceship and end of the screen
      */
     private void spaceShipCourseComplete(GameObjectCollection gameObjectCollection) {
-        SpaceShip tmp = new SpaceShip(0,0);
-        SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(tmp.getClass());
+        SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(SpaceShip.class);
         
         if (spaceShip != null && spaceShip.getX() == GameEngine.settings().getResWidth()) {
             spaceShip.takeDamage();
@@ -61,19 +58,18 @@ public class StateHandler {
      * @param gameObjectCollection
      */
     private void cannonShoot(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
-        Cannon tmp = new Cannon(0,0);
-        Cannon cannon = (Cannon)gameObjectCollection.getGameObject(tmp.getClass());
+        Cannon cannon = (Cannon)gameObjectCollection.getGameObject(Cannon.class);
         if (cannon.hasShot()) {
             ProjectileAlly projectile = new ProjectileAlly(
                                                 cannon.getX() + GameObject.getGameObjectWidth()/2 - 2, 
-                                                cannon.getY() - GameObject.getGameObjectHeight()
+                                                cannon.getY() - GameObject.getGameObjectHeight() - 4
                                         );
             projectile.getSprite().getImage().setTranslateX(projectile.getX());
             projectile.getSprite().getImage().setTranslateY(projectile.getY());
             
             gameObjectCollection.add(projectile);
             graphicalObjects.add(projectile.getSprite().getImage());
-            cannon.reload();
+            cannon.recoil();
         }
     }
     
@@ -94,7 +90,11 @@ public class StateHandler {
             if (projectile instanceof ProjectileAlly) {
                 // collision with aliens
                 for (GameObject alien : aliens) {
-                    if ((projectile.getX() == alien.getX()) && (projectile.getY() == alien.getY())) {
+                    if (alien.getSprite()
+                             .getImage()
+                             .getBoundsInParent()
+                             .intersects(projectile.getSprite().getImage().getBoundsInParent())
+                        ) {
                         alien.takeDamage();
                         projectile.takeDamage();
                     }
@@ -103,7 +103,11 @@ public class StateHandler {
             
             // rest of the possible collisions
             for (GameObject ally : allies) {
-                if ((projectile.getX() == ally.getX()) && (projectile.getY() == ally.getY())) {
+                if (ally.getSprite()
+                             .getImage()
+                             .getBoundsInParent()
+                             .intersects(projectile.getSprite().getImage().getBoundsInParent())
+                        ) {
                     ally.takeDamage();
                     projectile.takeDamage();
                 }
@@ -148,12 +152,13 @@ public class StateHandler {
             tmp = corpses.pop();
             list.remove(tmp);
             graphicalObjects.remove(tmp.getSprite().getImage());
+            GameEngine.increaseScore();
         }
         
         // check for dead spaceship and barricades
         list = gameObjectCollection.getAllies();
         for (GameObject ally : list) {
-            if (ally.isDead()) {
+            if (ally.isDead() && !(ally instanceof Cannon)) {
                 corpses.push(ally);
             }
         }
@@ -179,6 +184,8 @@ public class StateHandler {
         }
     }
     
+     
+    
     /**
      * Responsible for detecting possible runtime and gameplay fatal hazards
      * 
@@ -203,6 +210,11 @@ public class StateHandler {
      *      <td>swarm collided with barricade</td>
      *      <td>end game</td>
      *  </tr>
+     *  <tr>
+     *      <td>2</td>
+     *      <td>player lost all its lives</td>
+     *      <td>end game</td>
+     *  </tr>
      * </table>
      * 
      * @param gameObjectCollection instantiated GameObjects that need to be verified 
@@ -211,6 +223,9 @@ public class StateHandler {
     public int checkFatalHazards(GameObjectCollection gameObjectCollection) {
         if (swarmCourseComplete(gameObjectCollection.getAliens())) {
             return 1;
+        }
+        if (playerIsDead()) {
+            return 2;
         }
         
         return 0;
@@ -232,5 +247,20 @@ public class StateHandler {
         int y = GameEngine.settings().getResHeight() - GameObject.getGameObjectHeight() * 4;
         
         return swarm.getListOfAliens().getLast().getY() >= y;
+    }
+    
+    /**
+     * Checks if has already lost all its lives
+     * 
+     * <p>
+     *  if it did, end game, continue otherwise
+     * </p>
+     * 
+     * @param swarm Game's current swarm 
+     * @return boolean specifying whether the course is complete
+     */
+    private boolean playerIsDead() {
+        Cannon player = (Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class);
+        return player.isDead();
     }
 }

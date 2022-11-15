@@ -48,7 +48,27 @@ public class GameEngine {
      * Main game screen FXMLLoader
      */
     private static FXMLLoader gameScreenLoader;
+    
+    /**
+     * Game score
+     */
+    private static int score = 0;
 
+    /**
+     * increase game score by 10
+     */
+    public static void increaseScore() {
+        score += 10;
+    }
+    
+    /**
+     * Get score value
+     * @return score value
+     */
+    public static int getScore() {
+        return score;
+    }
+    
     /**
      * Instantiates titleScreenLoader
      * @param titleScreenLoader
@@ -195,10 +215,10 @@ public class GameEngine {
      * @param dt action time counter
      * @return fatal error code
      */
-    public static int gameLoop(ObservableList<Node> graphicalObjects, long dt) {
+    public static int gameLoop(ObservableList<Node> graphicalObjects) {
   
         // update
-        stateHandler.updateCollection(gameObjectCollection, dt);
+        stateHandler.updateCollection(gameObjectCollection);
 
         // hazards check
         stateHandler.checkHazards(graphicalObjects, gameObjectCollection);

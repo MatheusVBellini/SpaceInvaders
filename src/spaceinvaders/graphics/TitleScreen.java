@@ -3,7 +3,6 @@ package spaceinvaders.graphics;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import spaceinvaders.engine.controller.TitleScreenCommandSet;
-import spaceinvaders.engine.controller.TitleScreenController;
 
 /**
  * Title Screen where the game opens

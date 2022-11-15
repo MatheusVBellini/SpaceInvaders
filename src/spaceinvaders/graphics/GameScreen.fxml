@@ -12,7 +12,7 @@
             <Font name="Modern DOS 9x16" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="74.0" layoutY="14.0" text="000" textFill="WHITE">
+      <Label fx:id="scoreLabel" layoutX="74.0" layoutY="14.0" text="000" textFill="WHITE">
          <font>
             <Font name="Modern DOS 9x16" size="18.0" />
          </font>

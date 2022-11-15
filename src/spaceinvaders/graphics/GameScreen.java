@@ -18,7 +18,7 @@ public class GameScreen extends GameScene {
         setCommandSet(
                 new GameScreenCommandSet(
                         loader, 
-                        (Cannon)GameEngine.getGameObjectCollection().getGameObject(new Cannon(0,0).getClass())
+                        (Cannon)GameEngine.getGameObjectCollection().getGameObject(Cannon.class)
                 )
         );
     }

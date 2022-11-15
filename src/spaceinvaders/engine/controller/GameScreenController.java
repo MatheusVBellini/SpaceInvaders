@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +22,9 @@ public class GameScreenController implements Initializable {
     
     @FXML
     private AnchorPane gameScreen;
+    
+    @FXML
+    private Label scoreLabel;
     
     /**
      * Initializes the controller class.
@@ -81,14 +85,29 @@ public class GameScreenController implements Initializable {
     // main game loop activator
     AnimationTimer timer = new AnimationTimer() {
         long dt = 0;
+        int score = 0;
         
         @Override
         public void handle(long now) {
+            // run game loop
             dt++;
             dt = dt % GameEngine.settings().getFrameRate();
-            if (GameEngine.gameLoop(gameScreen.getChildren(), dt) != 0) {
+            if (GameEngine.gameLoop(gameScreen.getChildren()) != 0) {
                 stop();
             }
+            
+            // update score
+            score = GameEngine.getScore();
+            if (score < 10) {
+                scoreLabel.setText("00" + score);
+            } else if (score < 100) {
+                scoreLabel.setText("0" + score);
+            } else {
+                scoreLabel.setText("" + score);
+            }
+            
+            // update player life
+            
         }
     };
     
