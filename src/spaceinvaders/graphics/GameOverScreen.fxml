@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="gameOverScreen" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="spaceinvaders.engine.controller.GameOverScreenController">
+<AnchorPane id="AnchorPane" fx:id="gameOverScreen" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceinvaders.engine.controller.GameOverScreenController">
    <children>
       <Label layoutX="103.0" layoutY="107.0" text="GAME OVER" textFill="#ff4343">
          <font>
@@ -22,14 +21,9 @@
             <Font name="Modern DOS 9x16" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="140.0" layoutY="428.0" text="Press 'ENTER' to return" textFill="WHITE">
+      <Label layoutX="102.0" layoutY="428.0" text="Press 'ENTER' to close the game" textFill="WHITE">
          <font>
             <Font name="Modern DOS 9x16" size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="154.0" layoutY="449.0" text="to the Title Screen" textFill="WHITE">
-         <font>
-            <Font name="Modern DOS 9x16" size="18.0" />
          </font>
       </Label>
    </children>

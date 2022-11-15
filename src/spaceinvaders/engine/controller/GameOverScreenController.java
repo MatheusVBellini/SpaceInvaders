@@ -4,13 +4,18 @@
  */
 package spaceinvaders.engine.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
+import spaceinvaders.graphics.TitleScreen;
 
 /**
  * FXML Controller class
@@ -30,6 +35,17 @@ public class GameOverScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        int score = GameEngine.getScore();
+        if (score < 10) {
+            scoreLabel.setText("000" + score);
+        } else if (score < 100) {
+            scoreLabel.setText("00" + score);
+        } else if (score < 1000) {
+            scoreLabel.setText("0" + score);
+        } else {
+            scoreLabel.setText("" + score);
+        }
+        
         applySettings();
     }   
     
@@ -40,5 +56,6 @@ public class GameOverScreenController implements Initializable {
         gameOverScreen.setPrefHeight(GameEngine.settings().getResHeight());
         gameOverScreen.setPrefWidth(GameEngine.settings().getResWidth());
     }
+    
     
 }

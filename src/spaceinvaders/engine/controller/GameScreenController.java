@@ -101,7 +101,7 @@ public class GameScreenController implements Initializable {
             // run game loop
             switch (GameEngine.gameLoop(gameScreen.getChildren())) {
                 case 0: break;
-                case 1: gameOver(); break;
+                case 1: stop(); gameOver(); break;
                 case 2:
             }
             
