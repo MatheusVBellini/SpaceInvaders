@@ -1,6 +1,6 @@
 /**
  * Responsible for graphical-related classes in the application 
- * for drawing, rendering and cleaning them
+ * such as sprites and scenes for the JavaFX framework
  * 
  * @author Matheus Violaro Bellini
  */

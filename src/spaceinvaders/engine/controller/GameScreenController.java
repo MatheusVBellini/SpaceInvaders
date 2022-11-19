@@ -80,7 +80,7 @@ public class GameScreenController implements Initializable {
     /**
      * Sets the values defined by the settings component of the game engine
      */
-    public void applySettings() {
+    private void applySettings() {
         gameScreen.setPrefHeight(GameEngine.settings().getResHeight());
         gameScreen.setPrefWidth(GameEngine.settings().getResWidth());
         gameScreen.setPrefHeight(GameEngine.settings().getResHeight());
@@ -92,7 +92,7 @@ public class GameScreenController implements Initializable {
      * 
      * @param gameObjectCollection
      */
-    public void draw(GameObjectCollection gameObjectCollection) {
+    private void draw(GameObjectCollection gameObjectCollection) {
         ImageView tmp;
 
         // draw allies
@@ -190,7 +190,7 @@ public class GameScreenController implements Initializable {
     /**
      * Go to Game Over screen
      */
-    public void gameOver() {
+    private void gameOver() {
         try {
             GameOverScreen scene = new GameOverScreen(GameEngine.getGameOverScreenLoader());
             Stage stage = GameEngine.getStage();
@@ -209,7 +209,7 @@ public class GameScreenController implements Initializable {
      * 
      * @param gameObjectCollection
      */
-    public void nextLevel(GameObjectCollection gameObjectCollection) {
+    private void nextLevel(GameObjectCollection gameObjectCollection) {
         ImageView tmp;
         GameEngine.replenishSwarm();
         for (GameObject alien : gameObjectCollection.getAliens().getListOfAliens()) {

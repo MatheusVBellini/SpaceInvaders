@@ -5,10 +5,16 @@ import javafx.fxml.FXMLLoader;
 import spaceinvaders.engine.controller.TitleScreenCommandSet;
 
 /**
- * Title Screen where the game opens
+ * title screen
  */
 public class TitleScreen extends GameScene {
     
+    /**
+     * Instantiates scene and set its command set
+     * 
+     * @param loader
+     * @throws IOException 
+     */
     public TitleScreen(FXMLLoader loader) throws IOException {
         super(loader);
         setCommandSet(new TitleScreenCommandSet(loader));

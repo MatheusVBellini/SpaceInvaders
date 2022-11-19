@@ -50,7 +50,7 @@ public class GameOverScreenController implements Initializable {
     /**
      * Sets the values defined by the settings component of the game engine
      */
-    public void applySettings() {
+    private void applySettings() {
         gameOverScreen.setPrefHeight(GameEngine.settings().getResHeight());
         gameOverScreen.setPrefWidth(GameEngine.settings().getResWidth());
     }

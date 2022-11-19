@@ -11,15 +11,15 @@ public abstract class GameObject {
     /**
      * Maximum moving speed of game objects
      */
-    private static int speed = 3;
+    private static final int speed = 3;
     
     /**
-     *  x-axis position of object's pivot
+     *  x-axis position of object
      */
     private int x;
     
     /**
-     *  y-axis position of object's pivot
+     *  y-axis position of object
      */
     private int y;
     
@@ -33,12 +33,19 @@ public abstract class GameObject {
      */
     protected int health;
     
-    private static int gameObjectWidth = GameEngine.settings().getResWidth()/20;
-    private static int gameObjectHeight = GameEngine.settings().getResHeight()/30;
+    /**
+     * object width defined by screen size
+     */
+    private static final int gameObjectWidth = GameEngine.settings().getResWidth()/20;
+    
+    /**
+     * object height defined by screen size
+     */
+    private static final int gameObjectHeight = GameEngine.settings().getResHeight()/30;
 
     
     /**
-     * Sets the game object's pivot coordinates
+     * Sets the game object coordinates
      * 
      * @param x
      * @param y
@@ -49,36 +56,36 @@ public abstract class GameObject {
     }
     
     /**
-     * Changes the x-axis coordinate of the pivot coordinate
+     * Changes the x-axis coordinate of the coordinate
      * 
-     * @param x new pivot position in the x-axis
+     * @param x new position in the x-axis
      */
     public void setX(int x) {
         this.x = x;
     }
 
     /**
-     * Changes the y-axis coordinate of the pivot coordinate
+     * Changes the y-axis coordinate of the coordinate
      * 
-     * @param y new pivot position in the y-axis
+     * @param y new position in the y-axis
      */
     public void setY(int y) {
         this.y = y;
     }
 
     /**
-     * Gets the x-axis coordinate of the top-left-most pixel of the game object
+     * Gets the x-axis coordinate of the object
      * 
-     * @return x-axis coordinate of the top-left-most pixel of the game object
+     * @return x-axis coordinate of the object
      */
     public int getX() {
         return x;
     }
 
     /**
-     * Gets the y-axis coordinate of the top-left-most pixel of the game object
+     * Gets the y-axis coordinate of the object
      * 
-     * @return y-axis coordinate of the top-left-most pixel of the game object
+     * @return y-axis coordinate of the object
      */
     public int getY() {
         return y;
@@ -93,10 +100,16 @@ public abstract class GameObject {
         return sprite;
     }
     
+    /**
+     * @return object width on the screen
+     */
     public static int getGameObjectWidth() {
         return gameObjectWidth;
     }
     
+    /**
+     * @return object height on the screen 
+     */
     public static int getGameObjectHeight() {
         return gameObjectHeight;
     }

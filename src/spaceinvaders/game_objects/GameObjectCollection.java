@@ -89,6 +89,7 @@ public class GameObjectCollection {
     /**
      * Get a specific GameObject in the gameObjectCollection
      * 
+     * @param c class of the sought object
      * @return GameObject in gameObjectCollection or null pointer 
      * if it does not exist
      */

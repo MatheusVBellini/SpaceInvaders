@@ -1,12 +1,13 @@
 package spaceinvaders.graphics.sprite;
 
-import java.net.MalformedURLException;
-import spaceinvaders.game_objects.Projectile;
 
 /**
  * ProjectileEnemy GameObject graphical representation
  */
 public class ProjectileEnemySprite extends Sprite {
+    /**
+     * Passes image file path to the parent class constructor
+     */
     public ProjectileEnemySprite() {
         super("ProjectileEnemy.png");
     }

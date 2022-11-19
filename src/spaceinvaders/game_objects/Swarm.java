@@ -60,7 +60,7 @@ public class Swarm {
     
     /**
      * Move aliens in the swarm, if one of them hits a wall, the 
-     * movement is inverted and all the aliens go downwards by 1 pixel
+     * movement is inverted and all the aliens go downwards
      */
     public void update() {
         boolean switch_warning = false;

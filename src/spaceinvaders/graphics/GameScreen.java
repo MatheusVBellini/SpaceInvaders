@@ -7,11 +7,16 @@ import spaceinvaders.engine.controller.GameScreenCommandSet;
 import spaceinvaders.game_objects.Cannon;
 
 /**
- *
- * @author matheusbellini
+ * game's main screen
  */
 public class GameScreen extends GameScene {
     
+    /**
+     * Instantiates scene and set its command set
+     * 
+     * @param loader
+     * @throws IOException 
+     */
     public GameScreen(FXMLLoader loader) throws IOException {
         super(loader);
         

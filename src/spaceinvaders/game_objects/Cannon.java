@@ -58,6 +58,9 @@ public class Cannon extends GameObject {
     
     /**
      * Guarantees one shot at a time in the game
+     * 
+     * @return if there's an ally projectile on the screen returns false, 
+     * if not, then true
      */
     public boolean canShoot() {
         return !bulletAlive;

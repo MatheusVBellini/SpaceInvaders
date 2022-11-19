@@ -121,6 +121,7 @@ public class TitleScreenController implements Initializable {
     
     /**
      * Starts the game (contains the main game loop)
+     * @throws java.io.IOException
      */
     public void startGame() throws IOException {
         if (selectedButton != 0) {
