@@ -1,14 +1,8 @@
 package spaceinvaders.engine.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,8 +14,7 @@ import spaceinvaders.engine.GameEngine;
 import spaceinvaders.graphics.GameScreen;
 
 /**
- *
- * @author matheusbellini
+ * Controller for the title game screen
  */
 public class TitleScreenController implements Initializable {
     /**
@@ -72,7 +65,12 @@ public class TitleScreenController implements Initializable {
     @FXML
     private Button quitBtn;
    
-    
+    /**
+     * Applies window settings and sets player's hi-score
+     * 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         applySettings();

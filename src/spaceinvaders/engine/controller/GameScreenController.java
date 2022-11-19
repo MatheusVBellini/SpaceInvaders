@@ -23,25 +23,47 @@ import spaceinvaders.graphics.GameOverScreen;
  */
 public class GameScreenController implements Initializable {
     
+    /**
+     * top-level parent node
+     */
     @FXML
     private AnchorPane gameScreen;
     
+    /**
+     * player's score indicator
+     */
     @FXML
     private Label scoreLabel;
     
+    /**
+     * player's life indicator
+     */
     @FXML
     private Label lifeLabel;
     
+    /**
+     * label shown when game is paused
+     */
     @FXML
     private Label pauseLabel;
-    
+
+    /**
+     * game stage indicator
+     */
     @FXML
     private Label stageLabel;
     
+    /**
+     * counts which stage the game is in
+     */
     private int stageCounter;
     
     /**
-     * Initializes the controller class.
+     * Initializes the controller class, sets stageCounter to 0, 
+     * applies window settings, loads game assets and draw them on the screen
+     * 
+     * @param url
+     * @param rb
      */
     @Override
     @FXML
@@ -68,6 +90,7 @@ public class GameScreenController implements Initializable {
     /**
      * Draw GameObjectCollection
      * 
+     * @param gameObjectCollection
      */
     public void draw(GameObjectCollection gameObjectCollection) {
         ImageView tmp;
@@ -97,7 +120,9 @@ public class GameScreenController implements Initializable {
         }
     }
     
-    // main game loop activator
+    /**
+     * Timer that coordinates main game loop, score change and life change
+     */
     AnimationTimer timer = new AnimationTimer() {
         int score = 0;
         int life = 3;
@@ -144,11 +169,17 @@ public class GameScreenController implements Initializable {
         }
     };
     
+    /**
+     * Starts the main game loop
+     */
     public void startGameLoop() {
         pauseLabel.setOpacity(0);
         timer.start();
     }
     
+    /**
+     * Pauses the game and show the pause label on the screen
+     */
     public void pause() {
        gameScreen.getChildren().remove(pauseLabel);
        pauseLabel.setOpacity(1);
@@ -175,6 +206,8 @@ public class GameScreenController implements Initializable {
     
     /**
      * Go to next level
+     * 
+     * @param gameObjectCollection
      */
     public void nextLevel(GameObjectCollection gameObjectCollection) {
         ImageView tmp;

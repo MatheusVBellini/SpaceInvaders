@@ -1,37 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package spaceinvaders.engine.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import spaceinvaders.engine.GameEngine;
-import spaceinvaders.graphics.TitleScreen;
 
 /**
- * FXML Controller class
- *
- * @author matheusbellini
+ * FXML Controller class for the game over screen
  */
 public class GameOverScreenController implements Initializable {
 
+    /**
+     * Top-level parent node of the scene
+     */
     @FXML
     private AnchorPane gameOverScreen;
     
+    /**
+     * Label specifying player's score
+     */
     @FXML
     private Label scoreLabel;
     
     /**
-     * Initializes the controller class.
+     * Sets the correct score on the screen and apply window settings
+     * 
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

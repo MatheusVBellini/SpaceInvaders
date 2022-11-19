@@ -1,29 +1,29 @@
 package spaceinvaders.engine;
 
 // internal imports
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import spaceinvaders.game_objects.Cannon;
 import spaceinvaders.game_objects.*;
 import spaceinvaders.graphics.TitleScreen;
 
 /**
- *  Class that contains all the event handling necessary for the game
+ *  Game's centralized information class
+ * 
+ * <p> 
+ *  Responsible for inner processes activation and 
+ *  key information distribution across methods
+ * </p>
  */
 public class GameEngine {
     /**
      * Configuration class composed into the GameEngine
      */
-    private static Config config = new Config();
+    private static final Config config = new Config();
     
     /**
      * StateHandler class composed into the GameEngine
@@ -58,12 +58,12 @@ public class GameEngine {
     /**
      * Random stream to coordinate random events
      */
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
     
     /**
-     * get next random int
+     * Get next random int
      * 
-     * @param upperbound
+     * @param upperbound maximum value the random int can take
      * @return next int in the random stream 
      */
     public static int getNextRandInt(int upperbound) {
@@ -92,7 +92,7 @@ public class GameEngine {
     }
     
     /**
-     * Instantiates titleScreenLoader
+     * Saves titleScreenLoader for easy scene controller access
      * @param titleScreenLoader
      */
     public static void setTitleScreenLoader(FXMLLoader titleScreenLoader) {
@@ -100,7 +100,7 @@ public class GameEngine {
     }
     
     /**
-     * Instantiates gameScreenLoader
+     * Saves gameScreenLoader for easy scene controller access
      * @param gameScreenLoader
      */
     public static void setGameScreenLoader(FXMLLoader gameScreenLoader) {
@@ -108,7 +108,7 @@ public class GameEngine {
     }
     
     /**
-     * Instantiates gameOverScreenLoader
+     * Saves gameOverScreenLoader for easy scene controller access
      * @param gameOverScreenLoader
      */
     public static void setGameOverScreenLoader(FXMLLoader gameOverScreenLoader) {
@@ -182,7 +182,7 @@ public class GameEngine {
     }
     
     /**
-     * Instantiates Scene class, GameobjectCollection class and StateHandler class
+     * Instantiates GameObjectCollection class and StateHandler class
      * 
      * <p>
      * Also fills GameObjectCollection with a Cannon and Barricades
@@ -249,9 +249,16 @@ public class GameEngine {
      * Main game loop
      * 
      * <p>
-     *  Responsible for coordinating gameplay sequentiality, such as 
-     *  calling the graphical renderer and calling the stateHandler to update and verify runtime hazards
+     *  Responsible for coordinating gameplay sequentiality:
      * </p>
+     * 
+     * <ul>
+     *      <li>Verifying fatal hazards</li>
+     *      <li>Generating random elements</li>
+     *      <li>Updating the GameObjects</li>
+     *      <li>Verifying non-fatal hazards</li>
+     * </ul>
+     * 
      * 
      * @param graphicalObjects list containing all screen elements
      * @return fatal error code

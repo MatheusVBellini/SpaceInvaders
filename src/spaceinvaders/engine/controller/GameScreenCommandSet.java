@@ -13,10 +13,26 @@ public class GameScreenCommandSet extends CommandSet {
      */
     private Cannon player;
     
+    /**
+     * screen controller for applying commands to the scene
+     */
     private GameScreenController controller;
     
+    /**
+     * Specifies what ESCAPE key activates
+     * 
+     * <p>0 - pause</p>
+     * <p>1 - continue game</p>
+     */
     private int escFunc;
     
+    
+    /**
+     * Gets the scene controller through its loader
+     * 
+     * @param loader
+     * @param player
+     */
     public GameScreenCommandSet(FXMLLoader loader, Cannon player) {
         controller = loader.getController();
         this.player = player;
@@ -26,7 +42,16 @@ public class GameScreenCommandSet extends CommandSet {
     }
     
     /**
-     * Gets the player input to command the cannon
+     * @param key
+     * 
+     * Commands accepted:
+     * 
+     * <ul>
+     *      <li><strong>z</strong> -> shoot with player's Cannon</li>
+     *      <li><strong>right arrow key</strong> -> move Cannon right</li>
+     *      <li><strong>left arrow key</strong> -> move Cannon left</li>
+     *      <li><strong>ESCAPE</strong> -> pause game</li>
+     * </ul>
      */
     @Override
     public void processInput(KeyCode key) {

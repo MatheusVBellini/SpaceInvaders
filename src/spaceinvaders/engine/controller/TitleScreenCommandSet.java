@@ -10,15 +10,33 @@ import javafx.scene.input.KeyCode;
  * Command set to be used in the menu
  */
 public class TitleScreenCommandSet extends CommandSet {
+    /**
+     * screen controller for applying commands to the scene
+     */
     private TitleScreenController controller;
     
+    
+    /**
+     * Gets the scene controller through its loader
+     * 
+     * @param loader
+     */
     public TitleScreenCommandSet(FXMLLoader loader) {
         controller = loader.getController();
     }
     
     /**
-     * Commands available in the menus
+     * @param key
+     * 
+     * Commands accepted:
+     * 
+     * <ul>
+     *      <li><strong>up arrow key</strong> -> selects option above of current</li>
+     *      <li><strong>down arrow key</strong> -> selects option below current</li>
+     *      <li><strong>ENTER</strong> -> select option</li>
+     * </ul>
      */
+    @Override
     public void processInput(KeyCode key) {
         switch (key) {
             case UP: controller.buttonUp(); break;

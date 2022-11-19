@@ -31,7 +31,7 @@ public class StateHandler {
     /**
      * Detect non-fatal hazards, such as collisions
      * 
-     * @param graphicalObjects
+     * @param graphicalObjects graphical elements of the game
      * @param gameObjectCollection all instantiated game objects
      */
     public void checkHazards(ObservableList<Node> graphicalObjects, GameObjectCollection gameObjectCollection) {
@@ -45,6 +45,8 @@ public class StateHandler {
     
     /**
      * Collision between spaceship and end of the screen
+     * 
+     * @param gameObjectCollection ObjectCollection containing the SpaceShip object
      */
     private void spaceShipCourseComplete(GameObjectCollection gameObjectCollection) {
         SpaceShip spaceShip = (SpaceShip)gameObjectCollection.getGameObject(SpaceShip.class);
@@ -110,6 +112,8 @@ public class StateHandler {
     
     /**
      * Check collisions between GameObjects and Projectiles
+     * 
+     * @param gameObjectCollection
      */
     private void projectileCollisions(GameObjectCollection gameObjectCollection) {
         LinkedList<GameObject> aliens = gameObjectCollection.getAliens().getListOfAliens();
@@ -157,7 +161,9 @@ public class StateHandler {
     }
     
     /**
-     * Check if projectiles hit screen boundries
+     * Check if projectiles hit screen boundaries
+     * 
+     * @param gameObjectCollection
      */
     private void projectileCourseComplete(GameObjectCollection gameObjectCollection) {
         LinkedList<GameObject> projectiles = gameObjectCollection.getProjectiles();
@@ -315,6 +321,7 @@ public class StateHandler {
      *  if it did, end game, continue otherwise
      * </p>
      * 
+     * @param player
      * @return boolean specifying whether the player is dead
      */
     private boolean playerIsDead(Cannon player) {
@@ -323,6 +330,9 @@ public class StateHandler {
     
     /**
      * Swarm is dead -- go to next level
+     * 
+     * @param swarm 
+     * @return boolean specifying whether the swarm's been emptied
      */
     private boolean swarmIsDead(Swarm swarm) {
         return swarm.getListOfAliens().isEmpty();

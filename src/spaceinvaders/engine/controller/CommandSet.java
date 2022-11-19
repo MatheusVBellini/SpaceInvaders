@@ -1,6 +1,5 @@
 package spaceinvaders.engine.controller;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 
 /**

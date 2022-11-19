@@ -16,7 +16,7 @@ import spaceinvaders.engine.GameEngine;
  * 
  * <p>
  *  This code was projected and written by Matheus Violaro Bellini (nUSP: 12547600)
- *  of the Computer Engineering course (EESC/ICMC)
+ *  from the Computer Engineering course (EESC/ICMC)
  * </p>
  * 
  * @author Matheus Violaro Bellini
@@ -33,7 +33,6 @@ public class SpaceInvaders extends Application {
     public void start(Stage stage) throws IOException {
         // configuring game
         GameEngine.settings()
-                .setFrameRate(60)
                 .setSwarmSize(5,11)
                 .setResolution(600,500);
         

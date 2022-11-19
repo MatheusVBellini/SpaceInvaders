@@ -7,16 +7,6 @@ package spaceinvaders.engine;
  */
 public class Config {    
     /**
-     * Game's running frame-rate in frames-per-second
-     */
-    private int frameRate;
-    
-    /**
-     * Game's frame-time in milliseconds
-     */
-    private int frameTime;
-    
-    /**
      * Height of the swarm in units of alien
      */
     private int swarmHeight;
@@ -41,36 +31,17 @@ public class Config {
      * 
      * <p><strong>Default values:</strong></p>
      *  <ul>
-     *      <li>Height of the swarm = 4 aliens</li>
-     *      <li>Width of the swarm = 5 aliens</li>
-     *      <li>Game's frame-rate = 60 fps</li>
-     *      <li>Time spent in a frame = 16 ms</li>
+     *      <li>Height of the swarm = 5 aliens</li>
+     *      <li>Width of the swarm = 9 aliens</li>
+     *      <li>Window resolution height = 600</li>
+     *      <li>Window resolution width = 500</li>
      *  </ul> 
      */
     public Config() {
         swarmHeight = 5;
         swarmWidth = 9;
-        frameRate = 60;
-        frameTime = 1000 / frameRate;
         resHeight = 600;
-        resWidth = 400;
-    }
-    
-    /**
-     * Sets the frame-rate of the game
-     * 
-     * @throws IllegalArgumentException argument smaller than 1
-     * @param frameRate game running frame-rate 
-     * @return this
-     */
-    public Config setFrameRate(int frameRate) throws IllegalArgumentException {
-        if (frameRate < 1) {
-            throw new IllegalArgumentException("Framerate must be a positive integer value.");
-        }
-        
-        this.frameRate = frameRate;
-        this.frameTime = 1000 / frameRate;
-        return this;
+        resWidth = 500;
     }
     
     /**
@@ -98,24 +69,6 @@ public class Config {
         resHeight = height;
         resWidth = width;
         return this;
-    }
-    
-    /**
-     * Gets the value of the game's set frame-rate in frames-per-second
-     * 
-     * @return frame-rate
-     */
-    public int getFrameRate() {
-        return frameRate;
-    }
-    
-    /**
-     * Gets the value of the frame-tie in milliseconds
-     * 
-     * @return frame-time
-     */
-    public int getFrameTime() {
-        return frameTime;
     }
     
     /**
