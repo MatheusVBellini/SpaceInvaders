@@ -125,6 +125,7 @@ public class GameEngine {
     
     /**
      * Get StateHandler
+     * @return stateHandler
      */
     public static StateHandler getStateHandler() {
         return stateHandler;
@@ -132,6 +133,7 @@ public class GameEngine {
     
     /**
      * Get GameObjectCollection
+     * @return gameObjectCollection
      */
     public static GameObjectCollection getGameObjectCollection() {
         return gameObjectCollection;
@@ -139,6 +141,7 @@ public class GameEngine {
     
     /**
      * Gets the stage in use for fast switch scene usage
+     * @return stage
      */
     public static Stage getStage() {
         return stage;

@@ -80,7 +80,7 @@ public class TitleScreenController implements Initializable {
     /**
      * Sets the values defined by the settings component of the game engine
      */
-    public void applySettings() {
+    private void applySettings() {
         titleScreen.setPrefHeight(GameEngine.settings().getResHeight());
         titleScreen.setPrefWidth(GameEngine.settings().getResWidth());
     }
@@ -89,7 +89,7 @@ public class TitleScreenController implements Initializable {
      * Read and set player's latest hi-score
      * 
      */
-    public void setScore() {
+    private void setScore() {
 
     }
     
