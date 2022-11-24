@@ -1,8 +1,14 @@
 package spaceinvaders.engine.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -90,7 +96,26 @@ public class TitleScreenController implements Initializable {
      * 
      */
     private void setScore() {
+        FileInputStream reader = null;
+        
+        try {
+            
+            byte[] buffer = new byte[4];
+            
+            // read previous saved score
+            File hiScore = new File("./src/spaceinvaders/engine/controller/hiScore.txt");   
+            reader = new FileInputStream(hiScore);
+            reader.read(buffer);
+            scoreText.setText(new String(buffer, StandardCharsets.UTF_8));
 
+            reader.close();
+            
+        } catch (Exception ex) {
+            
+            // default value
+            scoreText.setText("0000");
+            
+        }
     }
     
     /**

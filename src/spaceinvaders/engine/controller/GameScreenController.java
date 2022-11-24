@@ -1,7 +1,12 @@
 package spaceinvaders.engine.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,6 +139,7 @@ public class GameScreenController implements Initializable {
                 case 0: 
                     break;
                 case 1: 
+                    writeScoreToFile(scoreLabel.getText());
                     stop(); 
                     gameOver(); 
                     break;
@@ -221,5 +227,54 @@ public class GameScreenController implements Initializable {
         
         stageCounter++;
         stageLabel.setText("Stage:<" + stageCounter + ">");
+    }
+    
+    /**
+     * Write end-of-game score to hiScore.txt if higher than previous score 
+     * 
+     * @param score 
+     */
+    private void writeScoreToFile(String score) {
+        // checks if current score is higher than previous
+        int previous = 0;
+        int current = Integer.parseInt(score);
+        boolean isHigher = false;
+        File hiScore = new File("./src/spaceinvaders/engine/controller/hiScore.txt");
+        
+        try {
+            byte[] buffer = new byte[4];
+            FileInputStream reader = new FileInputStream(hiScore);
+            reader.read(buffer);
+            
+            previous = Integer.parseInt(new String(buffer, StandardCharsets.UTF_8));
+            isHigher = (current > previous);
+            
+            reader.close();
+        } catch (Exception ex) {
+            isHigher = false;
+        }
+
+        // if is higher, write score to file
+        if (isHigher) {
+            try {
+                String complement;
+                
+                if (current < 10) {
+                    complement = "000";
+                } else if (current < 100) {
+                    complement = "00";
+                } else if (current < 1000) {
+                    complement = "0";
+                } else {
+                    complement = "";
+                }
+                
+                PrintWriter writer = new PrintWriter(hiScore);
+                writer.write(complement + Integer.toString(current));
+                writer.close();
+            } catch (Exception ex) {
+                // could not write to file -- do nothing
+            }
+        }
     }
 }
