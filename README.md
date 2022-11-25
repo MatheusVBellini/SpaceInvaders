@@ -2,6 +2,9 @@
 
 This project consists of a fully functional Space Invaders game implemented in JavaFX.
 
+## Class UML of the project
+![](ClassUML.jpg)
+
 # How to use it
 
 The game was made using the NetBeans IDE and uses JavaFX with FXML features in Java 8, so it needs to be built locally either in NetBeans or manually by the user accounting for the libraries used.
