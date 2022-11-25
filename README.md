@@ -3,7 +3,7 @@
 This project consists of a fully functional Space Invaders game implemented in JavaFX.
 
 ## Class UML of the project
-![](ClassUML.svg)
+![](ClassUML.png)
 
 # How to use it
 
