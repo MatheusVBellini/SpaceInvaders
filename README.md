@@ -45,6 +45,6 @@ This is the last screen to appear on the game once the player has lost it. It sh
 - ENTER -> quit game
 
 # What's left to do?
-- [] The game code was first planned for a command line application and the JavaFX layer was added layer, because of this, the code has some redundancies, specially in StateHandler.java. That said, it would be a good thing to refactor the code for a JavaFX only logic in order to organize and unbloat it, since the command line version idea was abandoned.
-- [] Implement sprite-changing animations.
-- [] Implement game audio.
+- [ ] The game code was first planned for a command line application and the JavaFX layer was added layer, because of this, the code has some redundancies, specially in StateHandler.java. That said, it would be a good thing to refactor the code for a JavaFX only logic in order to organize and unbloat it, since the command line version idea was abandoned.
+- [ ] Implement sprite-changing animations.
+- [ ] Implement game audio.
