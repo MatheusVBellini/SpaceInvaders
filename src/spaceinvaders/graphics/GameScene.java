@@ -20,8 +20,8 @@ public abstract class GameScene extends Scene {
     /**
      * Instantiates scene
      * 
-     * @param loader
-     * @throws IOException 
+     * @param loader loader
+     * @throws IOException error initializing process
      */
     protected GameScene(FXMLLoader loader) throws IOException {
         super(loader.load());
@@ -29,7 +29,7 @@ public abstract class GameScene extends Scene {
     
     /**
      * setter for the scene's commandSet
-     * @param commandSet 
+     * @param commandSet set of commands
      */
     protected void setCommandSet(CommandSet commandSet) {
         this.commandSet = commandSet;
@@ -38,7 +38,7 @@ public abstract class GameScene extends Scene {
     /**
      * Pipelines the KeyCode obtained from the KeyEventHandler to the commandSet
      * 
-     * @param key 
+     * @param key key code
      */
     protected void listenToKey(KeyCode key) {
         commandSet.processInput(key);

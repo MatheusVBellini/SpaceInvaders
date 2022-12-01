@@ -28,8 +28,8 @@ public class GameOverScreenController implements Initializable {
     /**
      * Sets the correct score on the screen and apply window settings
      * 
-     * @param url
-     * @param rb
+     * @param url default initialize function arg
+     * @param rb default initialize function arg
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -12,8 +12,8 @@ public class TitleScreen extends GameScene {
     /**
      * Instantiates scene and set its command set
      * 
-     * @param loader
-     * @throws IOException 
+     * @param loader loader
+     * @throws IOException error initializing process
      */
     public TitleScreen(FXMLLoader loader) throws IOException {
         super(loader);

@@ -19,7 +19,7 @@ public class TitleScreenCommandSet extends CommandSet {
     /**
      * Gets the scene controller through its loader
      * 
-     * @param loader
+     * @param loader loader
      */
     public TitleScreenCommandSet(FXMLLoader loader) {
         controller = loader.getController();
@@ -31,9 +31,9 @@ public class TitleScreenCommandSet extends CommandSet {
      * Commands accepted:
      * 
      * <ul>
-     *      <li><strong>up arrow key</strong> -> selects option above of current</li>
-     *      <li><strong>down arrow key</strong> -> selects option below current</li>
-     *      <li><strong>ENTER</strong> -> select option</li>
+     *      <li><strong>up arrow key</strong> - selects option above of current</li>
+     *      <li><strong>down arrow key</strong> - selects option below current</li>
+     *      <li><strong>ENTER</strong> - select option</li>
      * </ul>
      */
     @Override

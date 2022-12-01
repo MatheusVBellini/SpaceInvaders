@@ -19,7 +19,7 @@ public abstract class Sprite {
      * Initializes the Image object with sizes corresponding to that of the scene
      * and binds them to the ImageViewer
      * 
-     * @param spriteFilePath 
+     * @param spriteFilePath file path
      */
     protected Sprite(String spriteFilePath) {
         Image img = new Image(

@@ -16,7 +16,7 @@ public class GameOverScreenCommandSet extends CommandSet {
     /**
      * Gets the scene controller through its loader
      * 
-     * @param loader
+     * @param loader loader
      */
     public GameOverScreenCommandSet(FXMLLoader loader) {
         controller = loader.getController();
@@ -28,7 +28,7 @@ public class GameOverScreenCommandSet extends CommandSet {
      * Commands accepted:
      * 
      * <ul>
-     *      <li><strong>ENTER</strong> -> exits the game</li>
+     *      <li><strong>ENTER</strong> - exits the game</li>
      * </ul>
      */
     @Override

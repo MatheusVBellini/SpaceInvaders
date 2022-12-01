@@ -47,8 +47,8 @@ public abstract class GameObject {
     /**
      * Sets the game object coordinates
      * 
-     * @param x
-     * @param y
+     * @param x coordinate
+     * @param y coordinate
      */
     protected GameObject(int x, int y) {
         this.x = x;

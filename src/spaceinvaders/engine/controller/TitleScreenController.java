@@ -74,8 +74,8 @@ public class TitleScreenController implements Initializable {
     /**
      * Applies window settings and sets player's hi-score
      * 
-     * @param url
-     * @param rb 
+     * @param url default
+     * @param rb  default
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -146,7 +146,7 @@ public class TitleScreenController implements Initializable {
     
     /**
      * Starts the game (contains the main game loop)
-     * @throws java.io.IOException
+     * @throws java.io.IOException error initializing process
      */
     public void startGame() throws IOException {
         if (selectedButton != 0) {

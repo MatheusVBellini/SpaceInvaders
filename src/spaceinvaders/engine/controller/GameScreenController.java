@@ -67,8 +67,8 @@ public class GameScreenController implements Initializable {
      * Initializes the controller class, sets stageCounter to 0, 
      * applies window settings, loads game assets and draw them on the screen
      * 
-     * @param url
-     * @param rb
+     * @param url default
+     * @param rb default
      */
     @Override
     @FXML

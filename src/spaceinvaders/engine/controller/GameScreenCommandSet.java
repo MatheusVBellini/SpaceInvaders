@@ -30,8 +30,8 @@ public class GameScreenCommandSet extends CommandSet {
     /**
      * Gets the scene controller through its loader
      * 
-     * @param loader
-     * @param player
+     * @param loader loader
+     * @param player player object
      */
     public GameScreenCommandSet(FXMLLoader loader, Cannon player) {
         controller = loader.getController();
@@ -47,10 +47,10 @@ public class GameScreenCommandSet extends CommandSet {
      * Commands accepted:
      * 
      * <ul>
-     *      <li><strong>z</strong> -> shoot with player's Cannon</li>
-     *      <li><strong>right arrow key</strong> -> move Cannon right</li>
-     *      <li><strong>left arrow key</strong> -> move Cannon left</li>
-     *      <li><strong>ESCAPE</strong> -> pause game</li>
+     *      <li><strong>z</strong> - shoot with player's Cannon</li>
+     *      <li><strong>right arrow key</strong> - move Cannon right</li>
+     *      <li><strong>left arrow key</strong> - move Cannon left</li>
+     *      <li><strong>ESCAPE</strong> - pause game</li>
      * </ul>
      */
     @Override

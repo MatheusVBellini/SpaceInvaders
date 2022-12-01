@@ -11,8 +11,8 @@ public class GameOverScreen extends GameScene {
     /**
      * Instantiates scene and set its command set
      * 
-     * @param loader
-     * @throws IOException 
+     * @param loader loader
+     * @throws IOException error initializing process
      */
     public GameOverScreen(FXMLLoader loader) throws IOException {
         super(loader);

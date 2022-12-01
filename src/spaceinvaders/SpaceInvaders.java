@@ -26,8 +26,8 @@ public class SpaceInvaders extends Application {
     /**
      * GUI default initializer
      * 
-     * @param stage
-     * @throws IOException 
+     * @param stage game stage
+     * @throws IOException error initializing process
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -47,7 +47,7 @@ public class SpaceInvaders extends Application {
     /**
      * Main
      * 
-     * @param args
+     * @param args default command line arguments
      */
     public static void main(String[] args) {
         launch(args);

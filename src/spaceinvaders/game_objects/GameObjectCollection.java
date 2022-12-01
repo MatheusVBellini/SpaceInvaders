@@ -81,6 +81,7 @@ public class GameObjectCollection {
     
     /**
      * Set the swarm once emptied
+     * @param swarm alien swarm
      */
     public void setAliens(Swarm swarm) {
         this.aliens = swarm;

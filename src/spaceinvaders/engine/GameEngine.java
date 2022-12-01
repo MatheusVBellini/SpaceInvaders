@@ -93,7 +93,7 @@ public class GameEngine {
     
     /**
      * Saves titleScreenLoader for easy scene controller access
-     * @param titleScreenLoader
+     * @param titleScreenLoader loader
      */
     public static void setTitleScreenLoader(FXMLLoader titleScreenLoader) {
         GameEngine.titleScreenLoader = titleScreenLoader;
@@ -101,7 +101,7 @@ public class GameEngine {
     
     /**
      * Saves gameScreenLoader for easy scene controller access
-     * @param gameScreenLoader
+     * @param gameScreenLoader loader
      */
     public static void setGameScreenLoader(FXMLLoader gameScreenLoader) {
         GameEngine.gameScreenLoader = gameScreenLoader;
@@ -109,7 +109,7 @@ public class GameEngine {
     
     /**
      * Saves gameOverScreenLoader for easy scene controller access
-     * @param gameOverScreenLoader
+     * @param gameOverScreenLoader loader
      */
     public static void setGameOverScreenLoader(FXMLLoader gameOverScreenLoader) {
         GameEngine.gameOverScreenLoader = gameOverScreenLoader;
@@ -117,7 +117,7 @@ public class GameEngine {
     
     /**
      * Saves stage for fast switch scene usage
-     * @param stage
+     * @param stage stage
      */
     public static void setStage(Stage stage) {
         GameEngine.stage = stage;
@@ -296,7 +296,7 @@ public class GameEngine {
     /**
      * Used to initiate the game in the title screen
      * 
-     * @throws IOException
+     * @throws IOException error initiating process
      */
     public static void startGUI() throws IOException {
         // initializing scene components
