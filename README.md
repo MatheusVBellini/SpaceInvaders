@@ -11,6 +11,9 @@ The game was made using the NetBeans IDE and uses JavaFX with FXML features in J
 Once built, the game can be executed normally.
 
 ## Title Screen
+
+![plot](./screenshots/titlescreen.png)
+
 The game starts on this screen. Here you will be able to see your local Hi-Score and will have two options to select, either Start Game or Quit whose functionality is evident from the names. 
 In order to interact with this screen, you can use the UP and DOWN arrowkeys to cycle through the option and press ENTER to select the current highlighted one.
 
@@ -20,6 +23,9 @@ In order to interact with this screen, you can use the UP and DOWN arrowkeys to 
 - ENTER -> selects the option highlighted
 
 ## Main Game Screen
+
+![plot](./screenshots/gamescreen.png)
+
 Once the Start Game button has been pressed on the Title Screen, the user will be redirected to this screen. Here is where the main game occurs.
 
 ### General description
@@ -42,6 +48,9 @@ The player starts the game with 3 lives that are shown at the top-right corner o
 - ESCAPE -> pauses the game
 
 ## Game Over Screen
+
+![plot](./screenshots/gameover.png)
+
 This is the last screen to appear on the game once the player has lost it. It shows the player score and if it is higher than the previous Hi-Score, the current score will be saved as the new Hi-Score. From here, the only option the user has is to quit the game pressing ENTER.
 
 ### Contols
